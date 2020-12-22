@@ -6,7 +6,7 @@ Option 4 gives a  hint that special characters may cause errors, after trying to
 ```
 And we escape to the shell.
 
-
+```
    ___                                                      _    
   / __|   _  _     __      __      ___     ___     ___     | |   
   \__ \  | +| |   / _|    / _|    / -_)   (_-<    (_-<     |_|   
@@ -17,3 +17,4 @@ _|"""""|_|"""""|_|"""""|_|"""""|_|"""""|_|"""""|_|"""""|_| """ |
 Type 'exit' to return to the menu.
 
 shinny@9bf4b0fee057:~$
+```
