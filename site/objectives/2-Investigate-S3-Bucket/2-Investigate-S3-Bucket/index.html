@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  
+  <link rel="shortcut icon" href="../../../img/favicon.ico">
+  <title>Objective2 - Spartantri KringleCon 2020 Write-Up</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
+
+  <link rel="stylesheet" href="../../../css/theme.css" />
+  <link rel="stylesheet" href="../../../css/theme_extra.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" />
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Objective2";
+    var mkdocs_page_input_path = "objectives/2-Investigate-S3-Bucket/2-Investigate-S3-Bucket.md";
+    var mkdocs_page_url = null;
+  </script>
+  
+  <script src="../../../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../../../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+        <a href="../../.." class="icon icon-home"> Spartantri KringleCon 2020 Write-Up</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../..">Home</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../1-Uncover-Santas-Gift-list/1-Uncover-Santas-Gift-list/">Objective1</a>
+                    </li>
+                </ul>
+                <ul class="current">
+                    <li class="toctree-l1 current"><a class="reference internal current" href="./">Objective2</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#starting-the-challenge">Starting the challenge</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#get-the-pakcage">Get the pakcage</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#unwarapping-the-package">Unwarapping the package</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#cyberchef">Cyberchef</a>
+    </li>
+    </ul>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../3-Point-of-Sale-Password-Recovery/3-Point-of-Sale-Password-Recovery-soulution/">Objective3</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../4-Operate-the-Santavator/4-Operate-the-Santavator/">Objective4</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../5-Open-HID-Lock/5-Open-HID-Lock/">Objective5</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../6-Splunk-Challenge/6-Splunk-Challenge/">Objective6</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../7-Solve-the-sleighs-CAN-D-BUS/7-Solve-the-sleighs-CAN-D-BUS/">Objective7</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../8-Broken-Tag-Generator/8-Broken-Tag-Generator/">Objective8</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../9-ARP-Shenanigans/9-ARP-Shenanigans/">Objective9</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../10-Defeat-Fingerprint-Sensor/10-Defeat-Fingerprint-Sensor/">Objective10</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../11a-Blockchain-Part-1/11a-Blockchain-Part-1/">Objective11a</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../11b-Blockchain-Part-2/11b-Blockchain-Part-2/">Objective11b</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../achivements/A-Unescape-Tmux/A-Unescape-Tmux/">AchivementTmux</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../achivements/A-Elf-Code/A-Elf-Code/">AchivementElfCode</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../achivements/A-Redis/A-Redis/">AchivementRedis</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../achivements/A-Kringle-kiosk/A-Kringle-kiosk/">AchivementKiosk</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../achivements/A-hiddenspot/A-HiddenSpot/">AchivementHidden</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../achivements/A-Speaker-UNPrep/A-Speaker-UNPrep/">AchivementUNPrep</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../achivements/A-Sort-O-Matic/A-Sort-O-Matic/">AchivementSortOMatic</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../achivements/A-Scapy-Prepper/A-Scapy-Prepper/">AchivementScapyPrepper</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../achivements/A-CAN-Bus-Investigation/A-CAN-Bus-Investigation/">AchivementCAN-BUS</a>
+                    </li>
+                </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../../..">Spartantri KringleCon 2020 Write-Up</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../..">Docs</a> &raquo;</li>
+    
+      
+    
+    <li>Objective2</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="2-investigate-s3-bucket">2) Investigate S3 Bucket</h1>
+<p>Difficulty: 1/5</p>
+<p>When you unwrap the over-wrapped file, what text string is inside the package? Talk to Shinny Upatree in front of the castle for hints on this challenge.</p>
+<p>ANSWER: North Pole: The Frostiest Place on Earth</p>
+<h2 id="starting-the-challenge">Starting the challenge</h2>
+<p>Click on the challenge terminal and it will pop-up on the scree and will show the following banner:</p>
+<pre><code>Can you help me? Santa has been experimenting with new wrapping technology, and
+we've run into a ribbon-curling nightmare!
+We store our essential data assets in the cloud, and what a joy it's been!
+Except I don't remember where, and the Wrapper3000 is on the fritz!
+Can you find the missing package, and unwrap it all the way?
+Hints: Use the file command to identify a file type. You can also examine
+tool help using the man command. Search all man pages for a string such as
+a file extension using the apropos command.
+To see this help again, run cat /etc/motd.
+elf@098428dd9488:~$
+</code></pre>
+<h2 id="get-the-pakcage">Get the pakcage</h2>
+<p>The bucket finder script needs a word list so we add wraper3000 as per the description on the banner and we execute the script</p>
+<pre><code>elf@098428dd9488:~$ echo &quot;wrapper3000&quot; &gt;&gt;bucket_finder/wordlist 
+elf@098428dd9488:~$ bucket_finder.rb -r us -d bucket_finder/wordlist -l log.txt
+http://s3.amazonaws.com/kringlecastle
+Bucket found but access denied: kringlecastle
+http://s3.amazonaws.com/wrapper
+Bucket found but access denied: wrapper
+http://s3.amazonaws.com/santa
+Bucket santa redirects to: santa.s3.amazonaws.com
+http://santa.s3.amazonaws.com/
+        Bucket found but access denied: santa
+http://s3.amazonaws.com/wrapper3000
+Bucket Found: wrapper3000 ( http://s3.amazonaws.com/wrapper3000 )
+        &lt;Downloaded&gt; http://s3.amazonaws.com/wrapper3000/package
+</code></pre>
+<p>The script will create a directory with the same name as the bucket and downloads the content  into the directory.
+There is a single file in the directory and contains a base64 encoded payload.</p>
+<h2 id="unwarapping-the-package">Unwarapping the package</h2>
+<p>The package file contains several layers of packaging, a simple base64 decode and unzip in cyberchef shows it contains a file named <code>package.txt.Z.xz.xxd.tar.bz2</code></p>
+<p>So let's unwrap it, we first do the base64 decode, then unzip then decompress bz2 and un tar the file</p>
+<pre><code>cat wrapper3000/package |base64 -d |gzip -d - |tar -jxf -
+</code></pre>
+<p>Now we have un-xxd the resulting file</p>
+<pre><code>cat package.txt.Z.xz.xxd |xxd -r -p &gt; package.txt.Z.xz
+</code></pre>
+<p>Opening the xz file with the GUI showed the archive contained the <code>package.txt</code> file which contains the challenge solution.</p>
+<p><code>North Pole: The Frostiest Place on Earth</code></p>
+<h2 id="cyberchef">Cyberchef</h2>
+<p>http://icyberchef.com/#recipe=From_Base64('A-Za-z0-9%2B/%3D',true)Unzip('',false)Bzip2_Decompress(false)Untar()From_Hexdump()Detect_File_Type(true,true,true,true,true,true,true)&amp;input=VUVzREJBb0FBQUFBQUlBd2hGRWJSVDhhbndFQUFKOEJBQUFjQUJ3QWNHRmphMkZuWlM1MGVIUXVXaTU0ZWk1NGVHUXVkR0Z5TG1KNk1sVlVDUUFEb0JmS1g2QVh5bDkxZUFzQUFRVDJBUUFBQkJRQUFBQkNXbWc1TVVGWkpsTloya3RpdndBQkh2K1EzaEFTZ0dTbi8vQXZCeER3Zi94ZTBnUUFBQWd3QVZta1lSVEtlMVBWTTlVMGVrTWcycG9BQUFHZ1BVUFVHcWVoaENNU2dhQm9BRDFOTkFBQUF5RW1KcFI1UUdnMGJTUFUvVkEwZW85SWFIcUJreHcyWVpLMk5VQVNPZWdESXp3TVhNSEJDRkFDZ0lFdlEySnJnOFY1MHREamg2MVB0M1E4Q21ncEZGdW5jMUlwdWkrU3FzWUIwNE0vZ1dLS2MwVnMyRFhremVKbWlrdElOcWpvM0pqS0FBNGRMZ0x0UE4xNW9BRExlODB0bmZMR1hoSVdhSk1pRWVTWDk5MnV4b2RSSjZFQXpJRnpxU2JXdG5OcUNURURNTDlBSzdISFN6eXlCWUt3Q0ZCVkpoMTdUNjM2YTZZZ3lqWDBlRTBJc0NiamNCa1JQZ2tLejZxMG9rYjFzV2ljTWFreTJNZ3NxdzJuVW01YXlQSFVlSWt0bkJJdmtpVVd4WUVpUnM1bkZPTThNVGs4U2l0VjdsY3hPS3N0MlFlZFN4Wjg1MWNlRFFleHNMc0ozQzg5Wi9nUTZYbjZLQktxRnNLeVRrYXFPKzFGZ21JbXRIS29Ka01jdGQyQjlKa2N3dk1yK2hXSUVjSVFqQVpHaFNLWU5QeEhKRnFKM3QzMlZqZ24vT0dkUUppSUh2NHU1SXB3b1NHMGxzVitVRXNCQWg0RENnQUFBQUFBZ0RDRVVSdEZQeHFmQVFBQW53RUFBQndBR0FBQUFBQUFBQUFBQUtTQkFBQUFBSEJoWTJ0aFoyVXVkSGgwTGxvdWVIb3VlSGhrTG5SaGNpNWllakpWVkFVQUE2QVh5bDkxZUFzQUFRVDJBUUFBQkJRQUFBQlFTd1VHQUFBQUFBRUFBUUJpQUFBQTlRRUFBQUFB</p>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../../3-Point-of-Sale-Password-Recovery/3-Point-of-Sale-Password-Recovery-soulution/" class="btn btn-neutral float-right" title="Objective3">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../../1-Uncover-Santas-Gift-list/1-Uncover-Santas-Gift-list/" class="btn btn-neutral" title="Objective1"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+      
+        <span><a href="../../1-Uncover-Santas-Gift-list/1-Uncover-Santas-Gift-list/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../../3-Point-of-Sale-Password-Recovery/3-Point-of-Sale-Password-Recovery-soulution/" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+    <script>var base_url = '../../..';</script>
+    <script src="../../../js/theme.js" defer></script>
+      <script src="../../../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  
+  <link rel="shortcut icon" href="../../../img/favicon.ico">
+  <title>AchivementCAN-BUS - Spartantri KringleCon 2020 Write-Up</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
+
+  <link rel="stylesheet" href="../../../css/theme.css" />
+  <link rel="stylesheet" href="../../../css/theme_extra.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" />
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "AchivementCAN-BUS";
+    var mkdocs_page_input_path = "achivements/A-CAN-Bus-Investigation/A-CAN-Bus-Investigation.md";
+    var mkdocs_page_url = null;
+  </script>
+  
+  <script src="../../../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../../../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+        <a href="../../.." class="icon icon-home"> Spartantri KringleCon 2020 Write-Up</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../..">Home</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../objectives/1-Uncover-Santas-Gift-list/1-Uncover-Santas-Gift-list/">Objective1</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../objectives/2-Investigate-S3-Bucket/2-Investigate-S3-Bucket/">Objective2</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../objectives/3-Point-of-Sale-Password-Recovery/3-Point-of-Sale-Password-Recovery-soulution/">Objective3</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../objectives/4-Operate-the-Santavator/4-Operate-the-Santavator/">Objective4</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../objectives/5-Open-HID-Lock/5-Open-HID-Lock/">Objective5</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../objectives/6-Splunk-Challenge/6-Splunk-Challenge/">Objective6</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../objectives/7-Solve-the-sleighs-CAN-D-BUS/7-Solve-the-sleighs-CAN-D-BUS/">Objective7</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../objectives/8-Broken-Tag-Generator/8-Broken-Tag-Generator/">Objective8</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../objectives/9-ARP-Shenanigans/9-ARP-Shenanigans/">Objective9</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../objectives/10-Defeat-Fingerprint-Sensor/10-Defeat-Fingerprint-Sensor/">Objective10</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../objectives/11a-Blockchain-Part-1/11a-Blockchain-Part-1/">Objective11a</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../objectives/11b-Blockchain-Part-2/11b-Blockchain-Part-2/">Objective11b</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../A-Unescape-Tmux/A-Unescape-Tmux/">AchivementTmux</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../A-Elf-Code/A-Elf-Code/">AchivementElfCode</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../A-Redis/A-Redis/">AchivementRedis</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../A-Kringle-kiosk/A-Kringle-kiosk/">AchivementKiosk</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../A-hiddenspot/A-HiddenSpot/">AchivementHidden</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../A-Speaker-UNPrep/A-Speaker-UNPrep/">AchivementUNPrep</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../A-Sort-O-Matic/A-Sort-O-Matic/">AchivementSortOMatic</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../A-Scapy-Prepper/A-Scapy-Prepper/">AchivementScapyPrepper</a>
+                    </li>
+                </ul>
+                <ul class="current">
+                    <li class="toctree-l1 current"><a class="reference internal current" href="./">AchivementCAN-BUS</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#solution">Solution</a>
+    </li>
+    </ul>
+                    </li>
+                </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../../..">Spartantri KringleCon 2020 Write-Up</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../..">Docs</a> &raquo;</li>
+    
+      
+    
+    <li>AchivementCAN-BUS</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="can-bus-investigation">CAN-Bus Investigation</h1>
+<p>Welcome to the CAN bus terminal challenge!</p>
+<p>In your home folder, there's a CAN bus capture from Santa's sleigh. Some of
+the data has been cleaned up, so don't worry - it isn't too noisy. What you
+will see is a record of the engine idling up and down. Also in the data are
+a LOCK signal, an UNLOCK signal, and one more LOCK. Can you find the UNLOCK?
+We'd like to encode another key mechanism.</p>
+<p>Find the decimal portion of the timestamp of the UNLOCK code in candump.log
+and submit it to ./runtoanswer!  (e.g., if the timestamp is 123456.112233,
+please submit 112233)</p>
+<h2 id="solution">Solution</h2>
+<p>The candump.log has many events but there are only three different ID in it.</p>
+<pre><code>elf@e9d6693bd207:~$ awk '{print $NF}' candump.log |cut -d\# -f1 |sort |uniq -c 
+     35 188
+      3 19B
+   1331 244
+</code></pre>
+<p>Also those with id <code>19B</code> are longer than the rest, so simple grep using a regular expression to filter the events with at least 11 characters will yield the <code>LOCK</code> and <code>UNLOCK</code> events that can also be confirmed in the Santa Sleigh. </p>
+<pre><code>elf@e9d6693bd207:~$ egrep '#.{11}' candump.log 
+(1608926664.626448) vcan0 19B#000000000000
+(1608926671.122520) vcan0 19B#00000F000000
+(1608926674.092148) vcan0 19B#000000000000
+</code></pre>
+<p>As per the instructions there are one <code>LOCK</code>, followed by the <code>UNLOCK</code> and another <code>LOCK</code> after that, so this make easy to identify that <code>122520</code> is the answer.</p>
+<pre><code>elf@e9d6693bd207:~$ ./runtoanswer 
+There are two LOCK codes and one UNLOCK code in the log.  What is the decimal portion of the UNLOCK timestamp?
+(e.g., if the timestamp of the UNLOCK were 1608926672.391456, you would enter 391456.
+&gt; 122520
+Your answer: 122520
+
+Checking....
+Your answer is correct!
+</code></pre>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+      
+        <a href="../../A-Scapy-Prepper/A-Scapy-Prepper/" class="btn btn-neutral" title="AchivementScapyPrepper"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+      
+        <span><a href="../../A-Scapy-Prepper/A-Scapy-Prepper/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+    </span>
+</div>
+    <script>var base_url = '../../..';</script>
+    <script src="../../../js/theme.js" defer></script>
+      <script src="../../../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>

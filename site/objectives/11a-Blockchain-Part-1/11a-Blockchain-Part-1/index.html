@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  
+  <link rel="shortcut icon" href="../../../img/favicon.ico">
+  <title>Objective11a - Spartantri KringleCon 2020 Write-Up</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
+
+  <link rel="stylesheet" href="../../../css/theme.css" />
+  <link rel="stylesheet" href="../../../css/theme_extra.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" />
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Objective11a";
+    var mkdocs_page_input_path = "objectives/11a-Blockchain-Part-1/11a-Blockchain-Part-1.md";
+    var mkdocs_page_url = null;
+  </script>
+  
+  <script src="../../../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../../../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+        <a href="../../.." class="icon icon-home"> Spartantri KringleCon 2020 Write-Up</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../..">Home</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../1-Uncover-Santas-Gift-list/1-Uncover-Santas-Gift-list/">Objective1</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../2-Investigate-S3-Bucket/2-Investigate-S3-Bucket/">Objective2</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../3-Point-of-Sale-Password-Recovery/3-Point-of-Sale-Password-Recovery-soulution/">Objective3</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../4-Operate-the-Santavator/4-Operate-the-Santavator/">Objective4</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../5-Open-HID-Lock/5-Open-HID-Lock/">Objective5</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../6-Splunk-Challenge/6-Splunk-Challenge/">Objective6</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../7-Solve-the-sleighs-CAN-D-BUS/7-Solve-the-sleighs-CAN-D-BUS/">Objective7</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../8-Broken-Tag-Generator/8-Broken-Tag-Generator/">Objective8</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../9-ARP-Shenanigans/9-ARP-Shenanigans/">Objective9</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../10-Defeat-Fingerprint-Sensor/10-Defeat-Fingerprint-Sensor/">Objective10</a>
+                    </li>
+                </ul>
+                <ul class="current">
+                    <li class="toctree-l1 current"><a class="reference internal current" href="./">Objective11a</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#naughty-list">Naughty list</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#pseudo-random-number-predictor">Pseudo random number predictor</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#extracting-the-nonces-of-the-block">Extracting the nonces of the block</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#predictor-script">Predictor script</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#predicting-the-next-four-nonces">Predicting the next four nonces</a>
+    </li>
+    </ul>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../11b-Blockchain-Part-2/11b-Blockchain-Part-2/">Objective11b</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../achivements/A-Unescape-Tmux/A-Unescape-Tmux/">AchivementTmux</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../achivements/A-Elf-Code/A-Elf-Code/">AchivementElfCode</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../achivements/A-Redis/A-Redis/">AchivementRedis</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../achivements/A-Kringle-kiosk/A-Kringle-kiosk/">AchivementKiosk</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../achivements/A-hiddenspot/A-HiddenSpot/">AchivementHidden</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../achivements/A-Speaker-UNPrep/A-Speaker-UNPrep/">AchivementUNPrep</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../achivements/A-Sort-O-Matic/A-Sort-O-Matic/">AchivementSortOMatic</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../achivements/A-Scapy-Prepper/A-Scapy-Prepper/">AchivementScapyPrepper</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../achivements/A-CAN-Bus-Investigation/A-CAN-Bus-Investigation/">AchivementCAN-BUS</a>
+                    </li>
+                </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../../..">Spartantri KringleCon 2020 Write-Up</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../..">Docs</a> &raquo;</li>
+    
+      
+    
+    <li>Objective11a</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="11a-naughtynice-list-with-blockchain-investigation-part-1">11a) Naughty/Nice List with Blockchain Investigation Part 1</h1>
+<p>Difficulty: 5/5</p>
+<p>Even though the chunk of the blockchain that you have ends with block 129996, can you predict the nonce for block 130000? Talk to Tangle Coalbox in the Speaker UNpreparedness Room for tips on prediction and Tinsel Upatree for more tips and tools(https://download.holidayhackchallenge.com/2020/OfficialNaughtyNiceBlockchainEducationPack.zip). (Enter just the 16-character hex value of the nonce)</p>
+<p>ANSWER: 57066318f32f729d</p>
+<h2 id="naughty-list">Naughty list</h2>
+<p>In  the Santa's office we can download the <code>blockchain.dat</code> file.</p>
+<h2 id="pseudo-random-number-predictor">Pseudo random number predictor</h2>
+<p>There is a tool from Tom Liston to help predict pseudo-random numbers using MT19937 at https://github.com/tliston/mt19937
+An easier to addpt tool can be downloaded from https://github.com/kmyk/mersenne-twister-predictor.git</p>
+<h2 id="extracting-the-nonces-of-the-block">Extracting the nonces of the block</h2>
+<p>The function <code>load_a_block</code> of the provided python script can be modified to print the nonces of all blocks on the chain.</p>
+<pre><code>def load_a_block(self, fh):
+    self.index = int(fh.read(16), 16)
+    print (self.index) #MLR
+    self.nonce = int(fh.read(16), 16)
+    #print([self.nonce, self.index]) #MLR
+    print(str('%016.016x' % (self.nonce))) #MLR
+</code></pre>
+<p>We save the extracted nonces to <code>nonceshex.txt</code>.</p>
+<h3 id="predictor-script">Predictor script</h3>
+<p>The script will recreate a random state with the same parameters as the one that generated the nonces, and will feed them in order so that it recreates the state and then we call our custom random number generator to generate the next four nonces.</p>
+<pre><code>predictor = MT19937Predictor()
+    with open('nonceshex.txt') as nonces:
+        for nonce in nonces.readlines():
+            knownnonce=int(nonce,16)
+            predictor.setrandbits(knownnonce, 64)
+    for i in range(4):
+        print(str('%016.016x' % (predictor.getrandbits(64))))
+</code></pre>
+<h2 id="predicting-the-next-four-nonces">Predicting the next four nonces</h2>
+<p>Once the nonces are stored in the <code>nonceshex.txt</code> file we run the <code>mt19937predictorBlockchain11a.py</code> predict the following values on the sequence.</p>
+<pre><code>b744baba65ed6fce
+01866abd00f13aed
+844f6b07bd9403e4
+57066318f32f729d
+</code></pre>
+<p>ANSWER: 57066318f32f729d</p>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../../11b-Blockchain-Part-2/11b-Blockchain-Part-2/" class="btn btn-neutral float-right" title="Objective11b">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../../10-Defeat-Fingerprint-Sensor/10-Defeat-Fingerprint-Sensor/" class="btn btn-neutral" title="Objective10"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+      
+        <span><a href="../../10-Defeat-Fingerprint-Sensor/10-Defeat-Fingerprint-Sensor/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../../11b-Blockchain-Part-2/11b-Blockchain-Part-2/" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+    <script>var base_url = '../../..';</script>
+    <script src="../../../js/theme.js" defer></script>
+      <script src="../../../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>
