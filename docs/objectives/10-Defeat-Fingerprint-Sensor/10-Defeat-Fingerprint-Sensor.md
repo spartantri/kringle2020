@@ -1,6 +1,8 @@
 # 10) Defeat Fingerprint Sensor
 Dificulty: 3/5
 
+![Difficulty](../../img/Dificulty3.png)
+
 Bypass the Santavator fingerprint sensor. Enter Santa's office without Santa's fingerprint.
 
 ## Client side authentication
@@ -45,3 +47,5 @@ We can also use the Chrome console to modify the content of the variables in the
 ```
 tokens = ["marble", "elevator-key", "nut2", "yellowlight", "candycane", "nut", "ball", "greenlight", "workshop-button", "redlight", "besanta"]
 ```
+
+![Solution](10-Defeat-Fingerprint-Sensor-solution.png)

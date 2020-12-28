@@ -1,9 +1,13 @@
 # 2) Investigate S3 Bucket
 Difficulty: 1/5
 
+![Difficulty](../../img/Dificulty1.png)
+
 When you unwrap the over-wrapped file, what text string is inside the package? Talk to Shinny Upatree in front of the castle for hints on this challenge.
 
 ANSWER: North Pole: The Frostiest Place on Earth
+
+![Access](2-access.png)
 
 ## Starting the challenge
 Click on the challenge terminal and it will pop-up on the scree and will show the following banner:
@@ -38,7 +42,7 @@ Bucket Found: wrapper3000 ( http://s3.amazonaws.com/wrapper3000 )
 ```
 The script will create a directory with the same name as the bucket and downloads the content  into the directory.
 There is a single file in the directory and contains a base64 encoded payload.
-
+![Get the package](2-get-the-package.png)
 ## Unwarapping the package
 The package file contains several layers of packaging, a simple base64 decode and unzip in cyberchef shows it contains a file named `package.txt.Z.xz.xxd.tar.bz2`
 

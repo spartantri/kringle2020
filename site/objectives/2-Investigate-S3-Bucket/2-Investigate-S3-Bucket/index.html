@@ -179,8 +179,10 @@
               
                 <h1 id="2-investigate-s3-bucket">2) Investigate S3 Bucket</h1>
 <p>Difficulty: 1/5</p>
+<p><img alt="Difficulty" src="../../../img/Dificulty1.png" /></p>
 <p>When you unwrap the over-wrapped file, what text string is inside the package? Talk to Shinny Upatree in front of the castle for hints on this challenge.</p>
 <p>ANSWER: North Pole: The Frostiest Place on Earth</p>
+<p><img alt="Access" src="../2-access.png" /></p>
 <h2 id="starting-the-challenge">Starting the challenge</h2>
 <p>Click on the challenge terminal and it will pop-up on the scree and will show the following banner:</p>
 <pre><code>Can you help me? Santa has been experimenting with new wrapping technology, and
@@ -211,7 +213,8 @@ Bucket Found: wrapper3000 ( http://s3.amazonaws.com/wrapper3000 )
         &lt;Downloaded&gt; http://s3.amazonaws.com/wrapper3000/package
 </code></pre>
 <p>The script will create a directory with the same name as the bucket and downloads the content  into the directory.
-There is a single file in the directory and contains a base64 encoded payload.</p>
+There is a single file in the directory and contains a base64 encoded payload.
+<img alt="Get the package" src="../2-get-the-package.png" /></p>
 <h2 id="unwarapping-the-package">Unwarapping the package</h2>
 <p>The package file contains several layers of packaging, a simple base64 decode and unzip in cyberchef shows it contains a file named <code>package.txt.Z.xz.xxd.tar.bz2</code></p>
 <p>So let's unwrap it, we first do the base64 decode, then unzip then decompress bz2 and un tar the file</p>

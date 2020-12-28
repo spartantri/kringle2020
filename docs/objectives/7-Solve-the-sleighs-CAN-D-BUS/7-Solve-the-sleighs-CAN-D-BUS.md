@@ -1,7 +1,11 @@
 # 7) Solve the sleighs CAN-D-BUS
 Difficulty: 3/5
 
+![Difficulty](../../img/Dificulty3.png)
+
 Jack Frost is somehow inserting malicious messages onto the sleigh's CAN-D bus. We need you to exclude the malicious messages and no others to fix the sleigh. Visit the NetWars room on the roof and talk to Wunorse Openslae for hints.
+
+![Access](7-Solve-the-sleighs-CAN-D-BUS-access.png)
 
 # Finding the needle in the hey
 The Sledge console displays numbers that can be filtered by entering the respective filters containing the hex codes. The possible filter are `ALL`, `Equals`, `Not Equal`, `Contains`, `Greater`, and `Less`.
@@ -23,3 +27,5 @@ Final Filters
 19B# equals 0000000F2057
 080# contains FFFF
 ```
+
+![Solution](7-Solve-the-sleighs-CAN-D-BUS-solution.png)

@@ -1,9 +1,13 @@
 # 9) ARP Shenanigans
 Difficulty: 4/5
 
+![Difficulty](../../img/Dificulty4.png)
+
 Go to the NetWars room on the roof and help Alabaster Snowball get access back to a host using ARP. Retrieve the document at /NORTH_POLE_Land_Use_Board_Meeting_Minutes.txt. Who recused herself from the vote described on the document?
 
 ANSWER: Tanta Kringle
+
+![Access](9-ARP-Shenanigans-access.png)
 
 ## The challenge
 Jack Frost has hijacked the host at 10.6.6.35 with some custom malware.
@@ -35,6 +39,7 @@ scripts/arp_resp.py
 Sent 1 packets.
 ```
 
+[ARP script](arp.py)
 ### Modified values for ARP poisoning
 ```
 def handle_arp_packets(packet):
@@ -67,6 +72,7 @@ listening on eth0, link-type EN10MB (Ethernet), capture size 262144 bytes
 ```
 Now we modify the DNS poisoning script with the information we already know so it respond to all DNS requests giving our own machin IP and MAC addresses as destination.
 
+[DNS script](dns.py)
 ### Modified values for DNS poisoning
 ```ipaddr_we_arp_spoofed = "10.6.6.53"
 def handle_dns_request(packet):

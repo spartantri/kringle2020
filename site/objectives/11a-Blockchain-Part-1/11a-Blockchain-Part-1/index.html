@@ -183,15 +183,19 @@
               
                 <h1 id="11a-naughtynice-list-with-blockchain-investigation-part-1">11a) Naughty/Nice List with Blockchain Investigation Part 1</h1>
 <p>Difficulty: 5/5</p>
+<p><img alt="Difficulty" src="../../../img/Dificulty5.png" /></p>
 <p>Even though the chunk of the blockchain that you have ends with block 129996, can you predict the nonce for block 130000? Talk to Tangle Coalbox in the Speaker UNpreparedness Room for tips on prediction and Tinsel Upatree for more tips and tools(https://download.holidayhackchallenge.com/2020/OfficialNaughtyNiceBlockchainEducationPack.zip). (Enter just the 16-character hex value of the nonce)</p>
 <p>ANSWER: 57066318f32f729d</p>
+<p><img alt="Access" src="../11a-Blockchain-Part-1-access.png" /></p>
 <h2 id="naughty-list">Naughty list</h2>
-<p>In  the Santa's office we can download the <code>blockchain.dat</code> file.</p>
+<p>The blockchain naughty list <code>blockchain.dat</code> file can download Santa's office.</p>
+<p><a href="../blockchain.dat">Block chain file</a></p>
 <h2 id="pseudo-random-number-predictor">Pseudo random number predictor</h2>
 <p>There is a tool from Tom Liston to help predict pseudo-random numbers using MT19937 at https://github.com/tliston/mt19937
 An easier to addpt tool can be downloaded from https://github.com/kmyk/mersenne-twister-predictor.git</p>
 <h2 id="extracting-the-nonces-of-the-block">Extracting the nonces of the block</h2>
 <p>The function <code>load_a_block</code> of the provided python script can be modified to print the nonces of all blocks on the chain.</p>
+<p><a href="../11a.py">Modified naugthy_nice.py script</a></p>
 <pre><code>def load_a_block(self, fh):
     self.index = int(fh.read(16), 16)
     print (self.index) #MLR
@@ -200,6 +204,7 @@ An easier to addpt tool can be downloaded from https://github.com/kmyk/mersenne-
     print(str('%016.016x' % (self.nonce))) #MLR
 </code></pre>
 <p>We save the extracted nonces to <code>nonceshex.txt</code>.</p>
+<p><a href="../nonceshex.txt">Nonces</a></p>
 <h3 id="predictor-script">Predictor script</h3>
 <p>The script will recreate a random state with the same parameters as the one that generated the nonces, and will feed them in order so that it recreates the state and then we call our custom random number generator to generate the next four nonces.</p>
 <pre><code>predictor = MT19937Predictor()
@@ -210,6 +215,7 @@ An easier to addpt tool can be downloaded from https://github.com/kmyk/mersenne-
     for i in range(4):
         print(str('%016.016x' % (predictor.getrandbits(64))))
 </code></pre>
+<p><a href="../mt19937predictorBlockchain11a.py">Predicting script</a></p>
 <h2 id="predicting-the-next-four-nonces">Predicting the next four nonces</h2>
 <p>Once the nonces are stored in the <code>nonceshex.txt</code> file we run the <code>mt19937predictorBlockchain11a.py</code> predict the following values on the sequence.</p>
 <pre><code>b744baba65ed6fce

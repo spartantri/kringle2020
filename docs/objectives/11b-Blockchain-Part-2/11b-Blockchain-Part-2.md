@@ -1,9 +1,18 @@
-11b) Naughty/Nice List with Blockchain Investigation Part 2
+# 11b) Naughty/Nice List with Blockchain Investigation Part 2
 Difficulty: 5/5
+
+![Difficulty](../../img/Dificulty5.png)
 
 The SHA256 of Jack's altered block is: 58a3b9335a6ceb0234c12d35a0564c4e f0e90152d0eb2ce2082383b38028a90f. If you're clever, you can recreate the original version of that block by changing the values of only 4 bytes. Once you've recreated the original block, what is the SHA256 of that block?
 
 ANSWER: fff054f33c2134e0230efb29dad515064ac97aa8c68d33c58c01213a0d408afb
+
+![Access](11b-Blockchain-Part-2.png)
+
+## Naughty list
+The blockchain naughty list `blockchain.dat` file can download Santa's office.
+
+[Block chain file](blockchain.dat)
 
 ## Extract the Block to a file
 The `load_a_block` function can be modified again to save to a file the Block matching the hash, we also add a function to compute the SHA256 hashes of the blocks.
@@ -83,6 +92,8 @@ def load_a_block(self, fh):
     return self
 ```
 
+[Modified naugthy_nice.py script](11b.py)
+
 ### Extracted block
 ```
 Loaded Frosted block 129459 sha256: 58a3b9335a6ceb0234c12d35a0564c4ef0e90152d0eb2ce2082383b38028a90f
@@ -110,6 +121,12 @@ Chain Index: 129459
           Signature: b'MJIxJy2iFXJRCN1EwDsqO9NzE2Dq1qlvZuFFlljmQ03+erFpqqgSI1xhfAwlfmI2MqZWXA9RDTVw3+aWPq2S0CKuKvXkDOrX92cPUz5wEMYNfuxrpOFhrK2sks0yeQWPsHFEV4cl6jtkZ//OwdIznTuVgfuA8UDcnqCpzSV9Uu8ugZpAlUY43Y40ecJPFoI/xi+VU4xM0+9vjY0EmQijOj5k89/AbMAD2R3UbFNmmR61w7cVLrDhx3XwTdY2RCc3ovnUYmhgPNnduKIUA/zKbuu95FFi5M2r6c5Mt6F+c9EdLza24xX2J4l3YbmagR/AEBaF9EBMDZ1o5cMTMCtHfw=='
 ```
 
+[Frosted block](frosted129459.block)
+
+The extracted block can be rendered with an application like `xpdf` or other PDF reader.
+
+![Frosted document](FrostModified.png)
+
 ## Fixing the PDF
 Once the block is extracted the resulting PDF show the letter that Frost modified, after analyzing the code in the PDF it is possible to change the object references to use the page at reference `3 0 R` instead of `2 0 R` by increasing the value by one at the offset `265` and to keep the MD5 hash intact we need to modify the offset `265+64` to be one less.
 
@@ -118,6 +135,9 @@ The Naughty byte is located at the offset `73`, we need to change it from `1` to
 
 ## Fixing the Block and solving the challenge
 The solution to the block is implemented in the python script but can be done with a hex editor.
+
+[Block defroster script](collider.py)
+
 ```
 python collider.py 
 MD5 collisions
@@ -142,3 +162,5 @@ SOLUTION MD5:b10b4a6bd373b61f32f4fd3a0cdfbf84 and SHA256:fff054f33c2134e0230efb2
 ```
 
 ANSWER: fff054f33c2134e0230efb29dad515064ac97aa8c68d33c58c01213a0d408afb
+
+![Defrosted document](FrostRecovered.png)

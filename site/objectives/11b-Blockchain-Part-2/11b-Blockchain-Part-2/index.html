@@ -98,7 +98,19 @@
                 <ul class="current">
                     <li class="toctree-l1 current"><a class="reference internal current" href="./">Objective11b</a>
     <ul class="current">
-    <li class="toctree-l2"><a class="reference internal" href="#extracted-block">Extracted block</a>
+    <li class="toctree-l2"><a class="reference internal" href="#naughty-list">Naughty list</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#extract-the-block-to-a-file">Extract the Block to a file</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#extracted-block">Extracted block</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#fixing-the-pdf">Fixing the PDF</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#fixing-the-naughty-byte">Fixing the Naughty byte</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#fixing-the-block-and-solving-the-challenge">Fixing the Block and solving the challenge</a>
     </li>
     </ul>
                     </li>
@@ -171,10 +183,15 @@
           <div role="main">
             <div class="section">
               
-                <p>11b) Naughty/Nice List with Blockchain Investigation Part 2
-Difficulty: 5/5</p>
+                <h1 id="11b-naughtynice-list-with-blockchain-investigation-part-2">11b) Naughty/Nice List with Blockchain Investigation Part 2</h1>
+<p>Difficulty: 5/5</p>
+<p><img alt="Difficulty" src="../../../img/Dificulty5.png" /></p>
 <p>The SHA256 of Jack's altered block is: 58a3b9335a6ceb0234c12d35a0564c4e f0e90152d0eb2ce2082383b38028a90f. If you're clever, you can recreate the original version of that block by changing the values of only 4 bytes. Once you've recreated the original block, what is the SHA256 of that block?</p>
 <p>ANSWER: fff054f33c2134e0230efb29dad515064ac97aa8c68d33c58c01213a0d408afb</p>
+<p><img alt="Access" src="../11b-Blockchain-Part-2.png" /></p>
+<h2 id="naughty-list">Naughty list</h2>
+<p>The blockchain naughty list <code>blockchain.dat</code> file can download Santa's office.</p>
+<p><a href="../blockchain.dat">Block chain file</a></p>
 <h2 id="extract-the-block-to-a-file">Extract the Block to a file</h2>
 <p>The <code>load_a_block</code> function can be modified again to save to a file the Block matching the hash, we also add a function to compute the SHA256 hashes of the blocks.</p>
 <pre><code>def sha256er(self):
@@ -251,6 +268,7 @@ def load_a_block(self, fh):
             frosted.write(frostyblock)
     return self
 </code></pre>
+<p><a href="../11b.py">Modified naugthy_nice.py script</a></p>
 <h3 id="extracted-block">Extracted block</h3>
 <pre><code>Loaded Frosted block 129459 sha256: 58a3b9335a6ceb0234c12d35a0564c4ef0e90152d0eb2ce2082383b38028a90f
 Objective, generate a block by modifying 4 bytes in this block
@@ -276,12 +294,16 @@ Chain Index: 129459
   Data Hash to Sign: 347979fece8d403e06f89f8633b5231a
           Signature: b'MJIxJy2iFXJRCN1EwDsqO9NzE2Dq1qlvZuFFlljmQ03+erFpqqgSI1xhfAwlfmI2MqZWXA9RDTVw3+aWPq2S0CKuKvXkDOrX92cPUz5wEMYNfuxrpOFhrK2sks0yeQWPsHFEV4cl6jtkZ//OwdIznTuVgfuA8UDcnqCpzSV9Uu8ugZpAlUY43Y40ecJPFoI/xi+VU4xM0+9vjY0EmQijOj5k89/AbMAD2R3UbFNmmR61w7cVLrDhx3XwTdY2RCc3ovnUYmhgPNnduKIUA/zKbuu95FFi5M2r6c5Mt6F+c9EdLza24xX2J4l3YbmagR/AEBaF9EBMDZ1o5cMTMCtHfw=='
 </code></pre>
+<p><a href="../frosted129459.block">Frosted block</a></p>
+<p>The extracted block can be rendered with an application like <code>xpdf</code> or other PDF reader.</p>
+<p><img alt="Frosted document" src="../FrostModified.png" /></p>
 <h2 id="fixing-the-pdf">Fixing the PDF</h2>
 <p>Once the block is extracted the resulting PDF show the letter that Frost modified, after analyzing the code in the PDF it is possible to change the object references to use the page at reference <code>3 0 R</code> instead of <code>2 0 R</code> by increasing the value by one at the offset <code>265</code> and to keep the MD5 hash intact we need to modify the offset <code>265+64</code> to be one less.</p>
 <h2 id="fixing-the-naughty-byte">Fixing the Naughty byte</h2>
 <p>The Naughty byte is located at the offset <code>73</code>, we need to change it from <code>1</code> to <code>0</code> by decreasing the value by one, to adjust the MD5 and keep it identical we need to modify the byte at offset <code>73+64</code> from its current value to increase it by one.</p>
 <h2 id="fixing-the-block-and-solving-the-challenge">Fixing the Block and solving the challenge</h2>
 <p>The solution to the block is implemented in the python script but can be done with a hex editor.</p>
+<p><a href="../collider.py">Block defroster script</a></p>
 <pre><code>python collider.py 
 MD5 collisions
 We can modify a byte value up or down and maintain the same MD5
@@ -304,6 +326,7 @@ PDF attack byte fixed!!!
 SOLUTION MD5:b10b4a6bd373b61f32f4fd3a0cdfbf84 and SHA256:fff054f33c2134e0230efb29dad515064ac97aa8c68d33c58c01213a0d408afb
 </code></pre>
 <p>ANSWER: fff054f33c2134e0230efb29dad515064ac97aa8c68d33c58c01213a0d408afb</p>
+<p><img alt="Defrosted document" src="../FrostRecovered.png" /></p>
               
             </div>
           </div>

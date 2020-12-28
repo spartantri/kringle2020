@@ -187,8 +187,10 @@
               
                 <h1 id="9-arp-shenanigans">9) ARP Shenanigans</h1>
 <p>Difficulty: 4/5</p>
+<p><img alt="Difficulty" src="../../../img/Dificulty4.png" /></p>
 <p>Go to the NetWars room on the roof and help Alabaster Snowball get access back to a host using ARP. Retrieve the document at /NORTH_POLE_Land_Use_Board_Meeting_Minutes.txt. Who recused herself from the vote described on the document?</p>
 <p>ANSWER: Tanta Kringle</p>
+<p><img alt="Access" src="../9-ARP-Shenanigans-access.png" /></p>
 <h2 id="the-challenge">The challenge</h2>
 <p>Jack Frost has hijacked the host at 10.6.6.35 with some custom malware.
 Help the North Pole by getting command line access back to this host.</p>
@@ -211,6 +213,7 @@ listening on eth0, link-type EN10MB (Ethernet), capture size 262144 bytes
 .
 Sent 1 packets.
 </code></pre>
+<p><a href="../arp.py">ARP script</a></p>
 <h3 id="modified-values-for-arp-poisoning">Modified values for ARP poisoning</h3>
 <pre><code>def handle_arp_packets(packet):
     # if arp request, then we need to fill this out to send back our mac as the response
@@ -239,6 +242,7 @@ listening on eth0, link-type EN10MB (Ethernet), capture size 262144 bytes
 04:16:15.646731 IP 10.6.6.35.22953 &gt; 10.6.6.53.53: 0+ A? ftp.osuosl.org. (32)
 </code></pre>
 <p>Now we modify the DNS poisoning script with the information we already know so it respond to all DNS requests giving our own machin IP and MAC addresses as destination.</p>
+<p><a href="../dns.py">DNS script</a></p>
 <h3 id="modified-values-for-dns-poisoning">Modified values for DNS poisoning</h3>
 <p>```ipaddr_we_arp_spoofed = "10.6.6.53"
 def handle_dns_request(packet):

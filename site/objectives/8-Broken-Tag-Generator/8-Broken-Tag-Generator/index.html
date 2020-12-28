@@ -173,8 +173,10 @@
               
                 <h1 id="8-broken-tag-generator">8) Broken Tag Generator</h1>
 <p>Dificulty: 4/5</p>
+<p><img alt="Difficulty" src="../../../img/Dificulty4.png" /></p>
 <p>Help Noel Boetie fix the Tag Generator (https://tag-generator.kringlecastle.com/) in the Wrapping Room. What value is in the environment variable GREETZ? Talk to Holly Evergreen in the kitchen for help with this.</p>
 <p>ANSWER: JackFrostWasHere</p>
+<p><img alt="Access" src="../8-Broken-Tag-Generator-access.png" /></p>
 <h2 id="finding-the-vulnerability">Finding the vulnerability</h2>
 <p>After requesting the URL https://tag-generator.kringlecastle.com/image the server sends a hint of the possible vulenrability that is visible in the browser but curl or burp give more information, where we can see this response use <code>501</code> http status code.</p>
 <pre><code>HTTP/1.1 501 Not Implemented

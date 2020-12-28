@@ -1,9 +1,13 @@
 # 6) Splunk Challenge
 Difficulty: 3/5
 
+![Difficulty](../../img/Dificulty3.png)
+
 There is a photo of Santa's Desk on that billboard with his personal gift list. What gift is Santa planning on getting Josh Wright for the holidays? Talk to Jingle Ringford at the bottom of the mountain for advice.
 
 ASWER : The Lollipop Guild
+
+![Access](6-Splunk-Challenge-access.png)
 
 # Navigating Splunk
 The `KringleCastle SOC` application contains several hitns to solve the challenges in the different chat conversations, after every solved question a new one will appear as well as new hints to solve the challenge.
@@ -65,3 +69,5 @@ https://gchq.github.io/CyberChef/#recipe=From_Base64('A-Za-z0-9%2B/%3D',true)RC4
 
 
 ASWER : The Lollipop Guild
+
+![Solution](6-Splunk-Challenge-solution.png)

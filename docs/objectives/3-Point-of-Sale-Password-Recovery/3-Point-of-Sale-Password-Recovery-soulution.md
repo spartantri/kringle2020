@@ -1,9 +1,13 @@
 # 3) Point-of-Sale Password Recovery
 Difficulty: 1/5
 
+![Difficulty](../../img/Dificulty1.png)
+
 Help Sugarplum Mary in the Courtyard find the supervisor password for the point-of-sale terminal. What's the password?
 
 ANSWER: santapass
+
+![Access](3-access.png)
 
 ## Download the binary
 Download the binary from https://download.holidayhackchallenge.com/2020/santa-shop/santa-shop.exe
