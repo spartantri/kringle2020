@@ -1,13 +1,6 @@
 # SparatnTri KringleCon 2020 write-up
 
-For full documentation visit [Kringlecon](https://2020.kringlecon.com/).
-
-## Commands
-
-* `mkdocs new [dir-name]` - Create a new project.
-* `mkdocs serve` - Start the live-reloading docs server.
-* `mkdocs build` - Build the documentation site.
-* `mkdocs -h` - Print help message and exit.
+This is my write-up for the 2020 edition of [Kringlecon](https://2020.kringlecon.com/).
 
 ## Write-up layout
 
