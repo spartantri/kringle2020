@@ -5,24 +5,28 @@ plugins:
     #- with-pdf
 nav:
   - Home: index.md
-  - Objective1: objectives/1-Uncover-Santas-Gift-list/1-Uncover-Santas-Gift-list.md
-  - Objective2: objectives/2-Investigate-S3-Bucket/2-Investigate-S3-Bucket.md
-  - Objective3: objectives/3-Point-of-Sale-Password-Recovery/3-Point-of-Sale-Password-Recovery-soulution.md
-  - Objective4: objectives/4-Operate-the-Santavator/4-Operate-the-Santavator.md
-  - Objective5: objectives/5-Open-HID-Lock/5-Open-HID-Lock.md
-  - Objective6: objectives/6-Splunk-Challenge/6-Splunk-Challenge.md
-  - Objective7: objectives/7-Solve-the-sleighs-CAN-D-BUS/7-Solve-the-sleighs-CAN-D-BUS.md
-  - Objective8: objectives/8-Broken-Tag-Generator/8-Broken-Tag-Generator.md
-  - Objective9: objectives/9-ARP-Shenanigans/9-ARP-Shenanigans.md
-  - Objective10: objectives/10-Defeat-Fingerprint-Sensor/10-Defeat-Fingerprint-Sensor.md
-  - Objective11a: objectives/11a-Blockchain-Part-1/11a-Blockchain-Part-1.md
-  - Objective11b: objectives/11b-Blockchain-Part-2/11b-Blockchain-Part-2.md
-  - AchivementTmux: achivements/A-Unescape-Tmux/A-Unescape-Tmux.md
-  - AchivementElfCode: achivements/A-Elf-Code/A-Elf-Code.md
-  - AchivementRedis: achivements/A-Redis/A-Redis.md
-  - AchivementKiosk: achivements/A-Kringle-kiosk/A-Kringle-kiosk.md
-  - AchivementHidden: achivements/A-hiddenspot/A-HiddenSpot.md
-  - AchivementUNPrep: achivements/A-Speaker-UNPrep/A-Speaker-UNPrep.md
-  - AchivementSortOMatic: achivements/A-Sort-O-Matic/A-Sort-O-Matic.md
-  - AchivementScapyPrepper: achivements/A-Scapy-Prepper/A-Scapy-Prepper.md
-  - AchivementCAN-BUS: achivements/A-CAN-Bus-Investigation/A-CAN-Bus-Investigation.md
+  - Objective 1: objectives/1-Uncover-Santas-Gift-list/1-Uncover-Santas-Gift-list.md
+  - Objective 2: objectives/2-Investigate-S3-Bucket/2-Investigate-S3-Bucket.md
+  - Objective 3: objectives/3-Point-of-Sale-Password-Recovery/3-Point-of-Sale-Password-Recovery-soulution.md
+  - Objective 4: objectives/4-Operate-the-Santavator/4-Operate-the-Santavator.md
+  - Objective 5: objectives/5-Open-HID-Lock/5-Open-HID-Lock.md
+  - Objective 6: objectives/6-Splunk-Challenge/6-Splunk-Challenge.md
+  - Objective 7: objectives/7-Solve-the-sleighs-CAN-D-BUS/7-Solve-the-sleighs-CAN-D-BUS.md
+  - Objective 8: objectives/8-Broken-Tag-Generator/8-Broken-Tag-Generator.md
+  - Objective 9: objectives/9-ARP-Shenanigans/9-ARP-Shenanigans.md
+  - Objective 10: objectives/10-Defeat-Fingerprint-Sensor/10-Defeat-Fingerprint-Sensor.md
+  - Objective 11a: objectives/11a-Blockchain-Part-1/11a-Blockchain-Part-1.md
+  - Objective 11b: objectives/11b-Blockchain-Part-2/11b-Blockchain-Part-2.md
+  - Achivement Tmux: achivements/A-Unescape-Tmux/A-Unescape-Tmux.md
+  - Achivement ElfCode: achivements/A-Elf-Code/A-Elf-Code.md
+  - Achivement 33.6Kbps: achivements/A-33.6kbps/A-33.6kbps.md
+  - Achivement Redis: achivements/A-Redis/A-Redis.md
+  - Achivement Kiosk: achivements/A-Kringle-kiosk/A-Kringle-kiosk.md
+  - Achivement LinuxPrimer: achivements/A-Linux-Primer/A-Linux-Primer.md
+  - Achivement Hidden: achivements/A-hiddenspot/A-HiddenSpot.md
+  - Achivement UNPrep: achivements/A-Speaker-UNPrep/A-Speaker-UNPrep.md
+  - Achivement Snowball: achivements/A-Snowball/A-Snowball.md
+  - Achivement SortOMatic: achivements/A-Sort-O-Matic/A-Sort-O-Matic.md
+  - Achivement ScapyPrepper: achivements/A-Scapy-Prepper/A-Scapy-Prepper.md
+  - Achivement CAN-BUS: achivements/A-CAN-Bus-Investigation/A-CAN-Bus-Investigation.md
+  - Credits: credits.md

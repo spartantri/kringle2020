@@ -1,5 +1,7 @@
 # The ELF Code
-This is a web game that has multiple levels with progressive complexioty and to solve requires coding the avatar ovements in javascript.
+This is a web game that has multiple levels with progressive complexioty and to solve requires coding the avatar movements in javascript.
+
+![Access](A-Elf-Code-access.png)
 
 # Solution
 

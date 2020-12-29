@@ -15,6 +15,7 @@ This challenge teaches the use of scapy to manipulate packets and it gives some 
 ╚════════════════════════════════════════════════════════════════╝
 Type "yes" to begin.
 ```
+![Access](A-Scapy-Prepper-access.png)
 
 ## Solution
 
@@ -92,3 +93,5 @@ Q15 : The variable ARP_PACKETS contains an ARP request and response packets. The
 => ARP_PACKETS[1][ARP].hwdst = '00:16:ce:6e:8b:24'
 => ARP_PACKETS[1][ARP].hwsrc = '00:13:46:0b:22:ba'
 => task.submit(ARP_PACKETS)
+
+![Solution](A-Scapy-Prepper-solution.png)

@@ -9,6 +9,8 @@ curl http://localhost/maintenance.php
 
 We're pretty sure the bug is in the index page. Can you some
 
+![Access](A-Redis-access.png)
+
 ## Solution
 The redis console in the kitchen has a vulnerability that allows to dump the contents of the databse to a file in the file system. To simplify the execution of payloads we can build a helper function as follows:
 ```
@@ -95,3 +97,5 @@ Spaces have to be replaced with `+` or `%20` to succeed.
 ```
 curl localhost/rce.php?cmd=ls%20-al --output -
 ```
+
+![Solution](A-Redis-solution.png)

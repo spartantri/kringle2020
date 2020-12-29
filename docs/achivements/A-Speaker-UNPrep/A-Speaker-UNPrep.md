@@ -1,6 +1,12 @@
 # Speaker UNPrep
 This console contains multiple challenges, `door`, `lights` and `vending-machines`.
 
+![Access](A-Speaker-UNPrep-access.png)
+
+The `door` challenge opens the door to the UNPrep Speaker room, once the room opens the light is turned off. Solving the `lights` challenge will turn on the lights and enable the `Snowball` game. Then solving the `vending-machines` challenge will enable the vending machine that will give us the red and blue `orbs` for the santavator.
+
+![Challenges](A-Speaker-UNPrep-challenges.png)
+
 ## Door challenge
 The binary `door` contained the password end can be extracted with `strings`.
 ```
@@ -24,6 +30,8 @@ Door opened!
 ```
 
 ANSWER: `Op3nTheD00r`
+
+![Door](A-Speaker-UNPrep-door-solution.png)
 
 ## Lights challenge
 The `lights` binary uses a complementary `lights.conf` file that contains two fields `name` and `password`, after entering the string in cyberchef it did not get much out of it but the hints tells you can modify the files in `/lab` so we use teh same string that is in the `password` for the `name` and after running the challenge again it greets us with the password `Computer-TurnLightsOn`.
@@ -49,6 +57,8 @@ Lights on!
 ```
 
 ANSWER: `Computer-TurnLightsOn`
+
+![Lights](A-Speaker-UNPrep-lights-solution.png)
 
 ## Vendingmachine challenge
 The vending machine does not unencrypt the password as the `lights` challenges but if the `vending-machines.json` configuration file is delted it asks for a user and passwords and creates a new file.
@@ -108,3 +118,5 @@ elf@85c9114a15a1 ~/lab $ grep -B1 "  \"password\": \".r" bruteforcer.txt
 ```
 
 ANSWER: `CandyCane1`
+
+![Vending Machines](A-Speaker-UNPrep-vendingmachines-solution.png)
