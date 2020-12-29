@@ -10,7 +10,7 @@ ANSWER: North Pole: The Frostiest Place on Earth
 ![Access](2-access.png)
 
 ## Starting the challenge
-Click on the challenge terminal and it will pop-up on the scree and will show the following banner:
+Click on the challenge terminal and it will pop-up on the screen and will show the following banner:
 ```
 Can you help me? Santa has been experimenting with new wrapping technology, and
 we've run into a ribbon-curling nightmare!
@@ -23,7 +23,7 @@ a file extension using the apropos command.
 To see this help again, run cat /etc/motd.
 elf@098428dd9488:~$
 ```
-## Get the pakcage
+## Get the package
 The bucket finder script needs a word list so we add wraper3000 as per the description on the banner and we execute the script
 ```
 elf@098428dd9488:~$ echo "wrapper3000" >>bucket_finder/wordlist 

@@ -23,6 +23,6 @@ Holiday Hackers, they're no slackers, returned Jack a big, old null!
 ![Narrative](img/finalnarrative.png)
 
 # Credits
-Once all objectrives are solved, heading back to the balcony in santa's office reveals the final credits and a  link to buy the official KringleCon swag.
+Once all objectives are solved, heading back to the balcony in santa's office reveals the final credits and a  link to buy the official KringleCon swag.
 
 ![Credits](img/finalcredits.png)

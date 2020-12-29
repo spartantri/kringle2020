@@ -15,8 +15,8 @@ The blockchain naughty list `blockchain.dat` file can download Santa's office.
 [Block chain file](blockchain.dat)
 
 ## Pseudo random number predictor
-There is a tool from Tom Liston to help predict pseudo-random numbers using MT19937 at https://github.com/tliston/mt19937
-An easier to addpt tool can be downloaded from https://github.com/kmyk/mersenne-twister-predictor.git
+There is a tool from Tom Liston to help predict pseudo-random numbers using MT19937 at https://github.com/tliston/mt19937.
+An easier to adapt tool can be downloaded from https://github.com/kmyk/mersenne-twister-predictor.git
 
 ## Extracting the nonces of the block
 The function `load_a_block` of the provided python script can be modified to print the nonces of all blocks on the chain.
@@ -59,4 +59,4 @@ b744baba65ed6fce
 57066318f32f729d
 ```
 
-ANSWER: 57066318f32f729d
+ANSWER: `57066318f32f729d`

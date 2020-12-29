@@ -161,6 +161,6 @@ PDF attack byte fixed!!!
 SOLUTION MD5:b10b4a6bd373b61f32f4fd3a0cdfbf84 and SHA256:fff054f33c2134e0230efb29dad515064ac97aa8c68d33c58c01213a0d408afb
 ```
 
-ANSWER: fff054f33c2134e0230efb29dad515064ac97aa8c68d33c58c01213a0d408afb
+ANSWER: `fff054f33c2134e0230efb29dad515064ac97aa8c68d33c58c01213a0d408afb`
 
 ![Defrosted document](FrostRecovered.png)

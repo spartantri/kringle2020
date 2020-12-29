@@ -107,6 +107,10 @@
                     </li>
                 </ul>
                 <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../achivements/A-Kringle-kiosk/A-Kringle-kiosk/">Achivement Kiosk</a>
+                    </li>
+                </ul>
+                <ul>
                     <li class="toctree-l1"><a class="reference internal" href="../../../achivements/A-Elf-Code/A-Elf-Code/">Achivement ElfCode</a>
                     </li>
                 </ul>
@@ -116,10 +120,6 @@
                 </ul>
                 <ul>
                     <li class="toctree-l1"><a class="reference internal" href="../../../achivements/A-Redis/A-Redis/">Achivement Redis</a>
-                    </li>
-                </ul>
-                <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="../../../achivements/A-Kringle-kiosk/A-Kringle-kiosk/">Achivement Kiosk</a>
                     </li>
                 </ul>
                 <ul>
@@ -196,7 +196,7 @@
 <p>Jack Frost is somehow inserting malicious messages onto the sleigh's CAN-D bus. We need you to exclude the malicious messages and no others to fix the sleigh. Visit the NetWars room on the roof and talk to Wunorse Openslae for hints.</p>
 <p><img alt="Access" src="../7-Solve-the-sleighs-CAN-D-BUS-access.png" /></p>
 <h1 id="finding-the-needle-in-the-hey">Finding the needle in the hey</h1>
-<p>The Sledge console displays numbers that can be filtered by entering the respective filters containing the hex codes. The possible filter are <code>ALL</code>, <code>Equals</code>, <code>Not Equal</code>, <code>Contains</code>, <code>Greater</code>, and <code>Less</code>.</p>
+<p>The Sledge console displays numbers that can be filtered by entering the respective filters containing the hex codes. The possible filters are <code>ALL</code>, <code>Equals</code>, <code>Not Equal</code>, <code>Contains</code>, <code>Greater</code>, and <code>Less</code>.</p>
 <p>By process of elimination check the ranges of each control but to eliminate the noise we set the following filters:</p>
 <pre><code>188# equals 000000000000
 244# equals 000000000000
@@ -204,7 +204,7 @@
 080# equals 000000000000
 </code></pre>
 <p>The first code that stands out is <code>19B#0000000F2057</code>, it spells out FROST in leet so we filter it as well. After setting all these initial settings there are no more readings if the controls are all set to the default values (<code>0</code>).</p>
-<p>Now check the controls one by one, when testing the <code>Brake</code> control, it stands out that Break <code>080#</code> returns two different types of values <code>000001</code>-<code>000064</code> and another set of vlaues starts to appear when the break is higher than <code>3</code>, all of them starting with <code>FFFF</code> so we add another filter for all <code>080#</code> values containing <code>FFFF</code> in the first two positions, the testing with the started sleigh and acceleration seems fine so now we remove the initial filters and boom Sleigh deFrosted!</p>
+<p>Now check the controls one by one, when testing the <code>Brake</code> control, it stands out that Break <code>080#</code> returns two different types of values <code>000001</code>-<code>000064</code> and another set of values starts to appear when the break is higher than <code>3</code>, all of them starting with <code>FFFF</code> so we add another filter for all <code>080#</code> values containing <code>FFFF</code> in the first two positions, the testing with the started sleigh and acceleration seems fine so now we remove the initial filters and boom Sleigh deFrosted!</p>
 <p>Final Filters</p>
 <pre><code>19B# equals 0000000F2057
 080# contains FFFF

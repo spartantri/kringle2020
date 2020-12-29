@@ -1,5 +1,5 @@
 # Linux Primer
-This challenge requires to perform a serie of tasks in the linux command line
+This challenge requires to perform a series of tasks in the linux command line
 
 ![Access](A-Linux-Primer-access.png)
 

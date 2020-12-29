@@ -11,6 +11,8 @@ Find the decimal portion of the timestamp of the UNLOCK code in candump.log
 and submit it to ./runtoanswer!  (e.g., if the timestamp is 123456.112233,
 please submit 112233)
 
+![Access](A-CAN-Bus-Investigation-access.png)
+
 ## Solution
 The candump.log has many events but there are only three different ID in it.
 ```
@@ -19,7 +21,7 @@ elf@e9d6693bd207:~$ awk '{print $NF}' candump.log |cut -d\# -f1 |sort |uniq -c
       3 19B
    1331 244
 ```
-Also those with id `19B` are longer than the rest, so simple grep using a regular expression to filter the events with at least 11 characters will yield the `LOCK` and `UNLOCK` events that can also be confirmed in the Santa Sleigh. 
+Also, those with id `19B` are longer than the rest, so simple grep using a regular expression to filter the events with at least 11 characters will yield the `LOCK` and `UNLOCK` events that can also be confirmed in the Santa Sleigh. 
 ```
 elf@e9d6693bd207:~$ egrep '#.{11}' candump.log 
 (1608926664.626448) vcan0 19B#000000000000
@@ -37,3 +39,5 @@ Your answer: 122520
 Checking....
 Your answer is correct!
 ```
+
+![Solution](A-CAN-Bus-Investigation-solution.png)

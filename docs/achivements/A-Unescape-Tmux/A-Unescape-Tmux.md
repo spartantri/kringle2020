@@ -9,7 +9,7 @@ Can you help me find her? We were so attached!!
 ![Access](A-Unescape-Tmux-access.png)
 
 ## Solution
-This achivement gets unlocked with any of the following commands:
+This achievement gets unlocked with any of the following commands:
 ```
 tmux attach
 ```

@@ -105,6 +105,10 @@
                     </li>
                 </ul>
                 <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../A-Kringle-kiosk/A-Kringle-kiosk/">Achivement Kiosk</a>
+                    </li>
+                </ul>
+                <ul>
                     <li class="toctree-l1"><a class="reference internal" href="../../A-Elf-Code/A-Elf-Code/">Achivement ElfCode</a>
                     </li>
                 </ul>
@@ -114,10 +118,6 @@
                 </ul>
                 <ul>
                     <li class="toctree-l1"><a class="reference internal" href="../../A-Redis/A-Redis/">Achivement Redis</a>
-                    </li>
-                </ul>
-                <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="../../A-Kringle-kiosk/A-Kringle-kiosk/">Achivement Kiosk</a>
                     </li>
                 </ul>
                 <ul>
@@ -135,7 +135,7 @@
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#lights-challenge">Lights challenge</a>
     </li>
-    <li class="toctree-l2"><a class="reference internal" href="#vendingmachine-challenge">Vendingmachine challenge</a>
+    <li class="toctree-l2"><a class="reference internal" href="#vending-machine-challenge">Vending-machine challenge</a>
     </li>
     </ul>
                     </li>
@@ -209,7 +209,7 @@ password is probably stored right in the binary. There's gotta be a
 Be sure to finish the challenge in prod: And don't forget, the password is &quot;Op3nTheD00r&quot;
 Beep boop invalid password
 </code></pre>
-<p>The to unlock the achivement we simply run the binary and enter the discovered password.</p>
+<p>The to unlock the achievement we simply run the binary and enter the discovered password.</p>
 <pre><code>elf@85c9114a15a1 ~ $ ./door 
 You look at the screen. It wants a password. You roll your eyes - the 
 password is probably stored right in the binary. There's gotta be a
@@ -224,7 +224,7 @@ Door opened!
 <p><img alt="Door" src="../A-Speaker-UNPrep-door-solution.png" /></p>
 <h2 id="lights-challenge">Lights challenge</h2>
 <p>The <code>lights</code> binary uses a complementary <code>lights.conf</code> file that contains two fields <code>name</code> and <code>password</code>, after entering the string in cyberchef it did not get much out of it but the hints tells you can modify the files in <code>/lab</code> so we use teh same string that is in the <code>password</code> for the <code>name</code> and after running the challenge again it greets us with the password <code>Computer-TurnLightsOn</code>.</p>
-<p>To unlock the achivement we run the challenge using the password.</p>
+<p>To unlock the achievement, we run the challenge using the password.</p>
 <pre><code>elf@85c9114a15a1 ~ $ ./lights 
 The speaker unpreparedness room sure is dark, you're thinking (assuming
 you've opened the door; otherwise, you wonder how dark it actually is)
@@ -244,12 +244,12 @@ Lights on!
 </code></pre>
 <p>ANSWER: <code>Computer-TurnLightsOn</code></p>
 <p><img alt="Lights" src="../A-Speaker-UNPrep-lights-solution.png" /></p>
-<h2 id="vendingmachine-challenge">Vendingmachine challenge</h2>
+<h2 id="vending-machine-challenge">Vending-machine challenge</h2>
 <p>The vending machine does not unencrypt the password as the <code>lights</code> challenges but if the <code>vending-machines.json</code> configuration file is delted it asks for a user and passwords and creates a new file.</p>
 <p>After entering a long password <code>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA</code> it becomes evident that the same string repeats over and over giving which is a tell that we may be dealing with simple <code>XOR</code> or substitution mechanism in the back.</p>
-<p>For example when entering only <code>A</code>'s, tThe string that kept repeating is <code>XiGRehmw</code> in hex will be <code>19 28 06 13 24 29 2c 36</code>, but its different that the one when using only <code>B</code> but it kept the patter of repetition every eight characters.</p>
+<p>For example, when entering only <code>A</code>'s, the string that kept repeating is <code>XiGRehmw</code> in hex will be <code>19 28 06 13 24 29 2c 36</code>, but it's different that the one when using only <code>B</code> but it kept the patter of repetition every eight characters.</p>
 <p>To make this quick lets simply loop thru the alphabet and numbers.</p>
-<p>The bruteforcing loop:</p>
+<p>The brute forcing loop:</p>
 <pre><code>for p in `python -c 'for x in range(48,123): print(chr(x)*8)'`; do rm vending-machines.json ; echo -e &quot;${p}\n${p}\n${p}\n&quot; | ./vending-machines ;echo &quot; test: $p&quot;; grep pass vending-machines.json ; done |egrep &quot;test:|password&quot; &gt; bruteforcer.txt
 </code></pre>
 <p>Now to find the what character was entered that matched the exact position of the password we use simple regular expressions to get the value of the nth character matching <code>LVEdQPpBwr</code> in the <code>vending-machines.json</code> , once we get to the 8th character we search for the next chanacter at the 1st position as the pattern loops every 8 characters.</p>

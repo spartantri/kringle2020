@@ -20,7 +20,7 @@ app-64.7z   nsExec.dll   nsis7z.dll   nsProcess.dll   SpiderBanner.dll   StdUtil
 
 We extract the `app-64.7z` file with `7z e app-64.7z` which will extract 74 files and 3 folders.
 
-As many of the files are binary a simple grep don't get much useful but we can see that the `Chormium LICENSES` make cause a lof of false positives, so we make a search for strings on every file except the that searching for a password assignment in the code.
+As many of the files are binary a simple grep doesn't get much useful but we can see that the `Chormium LICENSES` make cause a lot of false positives, so we make a search for strings on every file except the that searching for a password assignment in the code.
 
 ```
 for f in $(find . -type f |grep -v LICEN); do cat $f |strings -n 20 |egrep -i "password ?= ?'" ;done

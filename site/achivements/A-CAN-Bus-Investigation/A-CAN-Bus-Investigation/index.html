@@ -105,6 +105,10 @@
                     </li>
                 </ul>
                 <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../A-Kringle-kiosk/A-Kringle-kiosk/">Achivement Kiosk</a>
+                    </li>
+                </ul>
+                <ul>
                     <li class="toctree-l1"><a class="reference internal" href="../../A-Elf-Code/A-Elf-Code/">Achivement ElfCode</a>
                     </li>
                 </ul>
@@ -114,10 +118,6 @@
                 </ul>
                 <ul>
                     <li class="toctree-l1"><a class="reference internal" href="../../A-Redis/A-Redis/">Achivement Redis</a>
-                    </li>
-                </ul>
-                <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="../../A-Kringle-kiosk/A-Kringle-kiosk/">Achivement Kiosk</a>
                     </li>
                 </ul>
                 <ul>
@@ -202,6 +202,7 @@ We'd like to encode another key mechanism.</p>
 <p>Find the decimal portion of the timestamp of the UNLOCK code in candump.log
 and submit it to ./runtoanswer!  (e.g., if the timestamp is 123456.112233,
 please submit 112233)</p>
+<p><img alt="Access" src="../A-CAN-Bus-Investigation-access.png" /></p>
 <h2 id="solution">Solution</h2>
 <p>The candump.log has many events but there are only three different ID in it.</p>
 <pre><code>elf@e9d6693bd207:~$ awk '{print $NF}' candump.log |cut -d\# -f1 |sort |uniq -c 
@@ -209,7 +210,7 @@ please submit 112233)</p>
       3 19B
    1331 244
 </code></pre>
-<p>Also those with id <code>19B</code> are longer than the rest, so simple grep using a regular expression to filter the events with at least 11 characters will yield the <code>LOCK</code> and <code>UNLOCK</code> events that can also be confirmed in the Santa Sleigh. </p>
+<p>Also, those with id <code>19B</code> are longer than the rest, so simple grep using a regular expression to filter the events with at least 11 characters will yield the <code>LOCK</code> and <code>UNLOCK</code> events that can also be confirmed in the Santa Sleigh. </p>
 <pre><code>elf@e9d6693bd207:~$ egrep '#.{11}' candump.log 
 (1608926664.626448) vcan0 19B#000000000000
 (1608926671.122520) vcan0 19B#00000F000000
@@ -225,6 +226,7 @@ Your answer: 122520
 Checking....
 Your answer is correct!
 </code></pre>
+<p><img alt="Solution" src="../A-CAN-Bus-Investigation-solution.png" /></p>
               
             </div>
           </div>

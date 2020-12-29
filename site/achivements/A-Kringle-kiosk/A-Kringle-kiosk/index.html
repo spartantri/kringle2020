@@ -104,6 +104,14 @@
                     <li class="toctree-l1"><a class="reference internal" href="../../A-Unescape-Tmux/A-Unescape-Tmux/">Achivement Tmux</a>
                     </li>
                 </ul>
+                <ul class="current">
+                    <li class="toctree-l1 current"><a class="reference internal current" href="./">Achivement Kiosk</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#escaping-to-shell">Escaping to shell</a>
+    </li>
+    </ul>
+                    </li>
+                </ul>
                 <ul>
                     <li class="toctree-l1"><a class="reference internal" href="../../A-Elf-Code/A-Elf-Code/">Achivement ElfCode</a>
                     </li>
@@ -114,14 +122,6 @@
                 </ul>
                 <ul>
                     <li class="toctree-l1"><a class="reference internal" href="../../A-Redis/A-Redis/">Achivement Redis</a>
-                    </li>
-                </ul>
-                <ul class="current">
-                    <li class="toctree-l1 current"><a class="reference internal current" href="./">Achivement Kiosk</a>
-    <ul class="current">
-    <li class="toctree-l2"><a class="reference internal" href="#escaping-to-shell">Escaping to shell</a>
-    </li>
-    </ul>
                     </li>
                 </ul>
                 <ul>
@@ -192,12 +192,12 @@
           <div role="main">
             <div class="section">
               
-                <h1 id="escape-to-shell">Escape to shell</h1>
+                <h1 id="kiosk-escape-to-shell">Kiosk escape to shell</h1>
 <p>Option 4 gives a  hint that special characters may cause errors, after trying to execute <code>/bin/bash</code> in between back ticks "`" it seems it works but we receive no output to the console so we try again to redirect the stdout to stderror</p>
 <p><img alt="Access" src="../A-KringleKiosk-access.png" /></p>
 <p><img alt="Welcome" src="../A-KringleKiosk-welcome.png" /></p>
 <h2 id="escaping-to-shell">Escaping to shell</h2>
-<p>Using back ticks can be used to execute shell comamnds but the output is being filtered so to show the output we redirect the <code>stdout</code> to <code>stderr</code></p>
+<p>Using back ticks can be used to execute shell comamnds but the output is being filtered, so to show the output we redirect the <code>stdout</code> to <code>stderr</code></p>
 <pre><code>`/bin/bash 1&gt;&amp;2`
 </code></pre>
 <p>And we escape to the shell.</p>
@@ -220,10 +220,10 @@ shinny@9bf4b0fee057:~$
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../../A-Linux-Primer/A-Linux-Primer/" class="btn btn-neutral float-right" title="Achivement LinuxPrimer">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../../A-Elf-Code/A-Elf-Code/" class="btn btn-neutral float-right" title="Achivement ElfCode">Next <span class="icon icon-circle-arrow-right"></span></a>
       
       
-        <a href="../../A-Redis/A-Redis/" class="btn btn-neutral" title="Achivement Redis"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../../A-Unescape-Tmux/A-Unescape-Tmux/" class="btn btn-neutral" title="Achivement Tmux"><span class="icon icon-circle-arrow-left"></span> Previous</a>
       
     </div>
   
@@ -249,10 +249,10 @@ shinny@9bf4b0fee057:~$
     <span class="rst-current-version" data-toggle="rst-current-version">
       
       
-        <span><a href="../../A-Redis/A-Redis/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+        <span><a href="../../A-Unescape-Tmux/A-Unescape-Tmux/" style="color: #fcfcfc;">&laquo; Previous</a></span>
       
       
-        <span style="margin-left: 15px"><a href="../../A-Linux-Primer/A-Linux-Primer/" style="color: #fcfcfc">Next &raquo;</a></span>
+        <span style="margin-left: 15px"><a href="../../A-Elf-Code/A-Elf-Code/" style="color: #fcfcfc">Next &raquo;</a></span>
       
     </span>
 </div>

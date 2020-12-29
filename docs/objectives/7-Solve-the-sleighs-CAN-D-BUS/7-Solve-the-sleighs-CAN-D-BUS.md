@@ -8,7 +8,7 @@ Jack Frost is somehow inserting malicious messages onto the sleigh's CAN-D bus. 
 ![Access](7-Solve-the-sleighs-CAN-D-BUS-access.png)
 
 # Finding the needle in the hey
-The Sledge console displays numbers that can be filtered by entering the respective filters containing the hex codes. The possible filter are `ALL`, `Equals`, `Not Equal`, `Contains`, `Greater`, and `Less`.
+The Sledge console displays numbers that can be filtered by entering the respective filters containing the hex codes. The possible filters are `ALL`, `Equals`, `Not Equal`, `Contains`, `Greater`, and `Less`.
 
 By process of elimination check the ranges of each control but to eliminate the noise we set the following filters:
 ```
@@ -20,7 +20,7 @@ By process of elimination check the ranges of each control but to eliminate the 
 
 The first code that stands out is `19B#0000000F2057`, it spells out FROST in leet so we filter it as well. After setting all these initial settings there are no more readings if the controls are all set to the default values (`0`).
 
-Now check the controls one by one, when testing the `Brake` control, it stands out that Break `080#` returns two different types of values `000001`-`000064` and another set of vlaues starts to appear when the break is higher than `3`, all of them starting with `FFFF` so we add another filter for all `080#` values containing `FFFF` in the first two positions, the testing with the started sleigh and acceleration seems fine so now we remove the initial filters and boom Sleigh deFrosted!
+Now check the controls one by one, when testing the `Brake` control, it stands out that Break `080#` returns two different types of values `000001`-`000064` and another set of values starts to appear when the break is higher than `3`, all of them starting with `FFFF` so we add another filter for all `080#` values containing `FFFF` in the first two positions, the testing with the started sleigh and acceleration seems fine so now we remove the initial filters and boom Sleigh deFrosted!
 
 Final Filters
 ```

@@ -4,7 +4,7 @@
 
 The snowball game in the easy level will generate the same layout over and over if the same name is used, in the hard level you cannot pick the name, it is automatically assigned to an integer number, if that same name is entered in another tab in the easy level the easy level will also have the exact same layout.
 
-In the impossible level you cannot see the name but in the source code of the /game page you can see a list of 623 integers except the last one which is the choosen one to generate the layout.
+In the impossible level you cannot see the name but in the source code of the /game page you can see a list of 623 integers except the last one which is the chosen one to generate the layout.
 
 [Random predict script](mt19937predictorSnowball.py)
 
@@ -33,6 +33,6 @@ d5f31c25
 ```
 
 ## Solved challenge
-Use the predicted missing code `3589479461` in this case, and use it in another window in the `Easy` level at the Snowball challenge source page https://snowball2.kringlecastle.com/, to have the achivement unlocked the game should be won at the impossible level inside the `iframe` on the kringlecon page.
+Use the predicted missing code `3589479461` in this case, and use it in another window in the `Easy` level at the Snowball challenge source page https://snowball2.kringlecastle.com/, to have the achievement unlocked the game should be won at the impossible level inside the `iframe` on the kringlecon page.
 
 ![Solved](A-Snowball-impossible.png)
