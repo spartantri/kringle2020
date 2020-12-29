@@ -15,6 +15,7 @@
   <link rel="stylesheet" href="../../../css/theme.css" />
   <link rel="stylesheet" href="../../../css/theme_extra.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" />
+  <link href="../../../css/print-site.css" rel="stylesheet" />
   
   <script>
     // Current page data
@@ -153,6 +154,10 @@
                     <li class="toctree-l1"><a class="reference internal" href="../../../credits/">Credits</a>
                     </li>
                 </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../print_page/">Print Site</a>
+                    </li>
+                </ul>
       </div>
     </div>
     </nav>
@@ -196,27 +201,30 @@
 <h2 id="1-how-many-distinct-mitre-attck-techniques-did-alice-emulate">1.   How many distinct MITRE ATT&amp;CK techniques did Alice emulate?</h2>
 <p>Request to solve :
 | eventcount summarize=false index=<em> index=_</em> | dedup index | fields index
-=&gt; 27 but there may be duplicates and there are subtechniques =&gt; answer is 13</p>
+There are 27 results, but there may be duplicates and there are subtechniques 
+* 13</p>
 <h2 id="2-what-are-the-names-of-the-two-indexes-that-contain-the-results-of-emulating-enterprise-attck-technique-1059003-put-them-in-alphabetical-order-and-separate-them-with-a-space">2.   What are the names of the two indexes that contain the results of emulating Enterprise ATT&amp;CK technique 1059.003? (Put them in alphabetical order and separate them with a space)</h2>
 <p>Request to solve :
 | eventcount summarize=false index=T1059.003*  | dedup index | fields index</p>
-<p>=&gt; t1059.003-main t1059.003-win</p>
+<ul>
+<li>t1059.003-main t1059.003-win</li>
+</ul>
 <h2 id="3-one-technique-that-santa-had-us-simulate-deals-with-system-information-discovery-what-is-the-full-name-of-the-registry-key-that-is-queried-to-determine-the-machineguid">3.  One technique that Santa had us simulate deals with 'system information discovery'. What is the full name of the registry key that is queried to determine the MachineGuid?</h2>
 <p>Request to solve :
-index=t1082<em> CommandLine="</em>" =&gt; we see that there are REG QUERIES 
+index=t1082<em> CommandLine="</em>" * we see that there are REG QUERIES 
 index=t1082<em> CommandLine="REG</em>"
-=&gt; HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Cryptography</p>
+* HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Cryptography</p>
 <h2 id="4-according-to-events-recorded-by-the-splunk-attack-range-when-was-the-first-ostap-related-atomic-test-executed-please-provide-the-alphanumeric-utc-timestamp">4.   According to events recorded by the Splunk Attack Range, when was the first OSTAP related atomic test executed? (Please provide the alphanumeric UTC timestamp.)</h2>
 <p>Request to solve :
 index=attack
 index=attack "Test Name"="OSTAP*"
-=&gt; 2020-11-30T17:44:15Z</p>
+* 2020-11-30T17:44:15Z</p>
 <h2 id="5-one-atomic-red-team-test-executed-by-the-attack-range-makes-use-of-an-open-source-package-authored-by-frgnca-on-github-according-to-sysmon-event-code-1-events-in-splunk-what-was-the-processid-associated-with-the-first-use-of-this-component">5. One Atomic Red Team test executed by the Attack Range makes use of an open source package authored by frgnca on GitHub. According to Sysmon (Event Code 1) events in Splunk, what was the ProcessId associated with the first use of this component?</h2>
 <p>Clone the RedCanary repository and find the script related to audio and use the cmdlet name to search
 Request to solve :
 index=* EventID=1 "WindowsAudioDevice-Powershell-Cmdlet"
 ProcessId 3648
-⇒ 3648</p>
+* 3648</p>
 <h2 id="6-alice-ran-a-simulation-of-an-attacker-abusing-windows-registry-run-keys-this-technique-leveraged-a-multi-line-batch-file-that-was-also-used-by-a-few-other-techniques-what-is-the-final-command-of-this-multi-line-batch-file-used-as-part-of-this-simulation">6. Alice ran a simulation of an attacker abusing Windows registry run keys. This technique leveraged a multi-line batch file that was also used by a few other techniques. What is the final command of this multi-line batch file used as part of this simulation?</h2>
 <p>Request to solve :
 index=<em> EventID=1 CommandLine="</em>.bat*"</p>
@@ -225,12 +233,12 @@ tail -3 ./T1074.001/src/Discovery.bat
 systeminfo
 qwinsta
 quser
-⇒ quser</p>
+* quser</p>
 <h2 id="7-according-to-x509-certificate-events-captured-by-zeek-formerly-bro-what-is-the-serial-number-of-the-tls-certificate-assigned-to-the-windows-domain-controller-in-the-attack-range">7. According to x509 certificate events captured by Zeek (formerly Bro), what is the serial number of the TLS certificate assigned to the Windows domain controller in the attack range</h2>
 <p>Request to solve :
 index=<em> sourcetype=bro</em> 
 index=* host=zeek sourcetype="bro:x509:json" "DC" "certificate.subject"="CN=win-dc-748.attackrange.local"| top limit=20 "certificate.serial"
-⇒ 55FCEEBB21270D9249E86F4B9DC7AA60</p>
+* 55FCEEBB21270D9249E86F4B9DC7AA60</p>
 <p>Challenge Question
 What is the name of the adversary group that Santa feared would attack KringleCon?
 Challenge given in chat : 7FXjP1lyfKbyDK/MChyf36h7
@@ -284,6 +292,8 @@ https://gchq.github.io/CyberChef/#recipe=From_Base64('A-Za-z0-9%2B/%3D',true)RC4
 </div>
     <script>var base_url = '../../..';</script>
     <script src="../../../js/theme.js" defer></script>
+      <script src="../../../js/print-site-instant-loading.js" defer></script>
+      <script src="../../../js/print-site.js" defer></script>
       <script src="../../../search/main.js" defer></script>
     <script defer>
         window.onload = function () {

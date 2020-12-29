@@ -3,6 +3,7 @@ theme: readthedocs
 plugins:
     - search
     #- with-pdf
+    - print-site
 nav:
   - Home: index.md
   - Objective 1: objectives/1-Uncover-Santas-Gift-list/1-Uncover-Santas-Gift-list.md

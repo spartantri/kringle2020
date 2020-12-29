@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  
+  <link rel="shortcut icon" href="../../../img/favicon.ico">
+  <title>Achivement LinuxPrimer - Spartantri KringleCon 2020 Write-Up</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
+
+  <link rel="stylesheet" href="../../../css/theme.css" />
+  <link rel="stylesheet" href="../../../css/theme_extra.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" />
+  <link href="../../../css/print-site.css" rel="stylesheet" />
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Achivement LinuxPrimer";
+    var mkdocs_page_input_path = "achivements/A-Linux-Primer/A-Linux-Primer.md";
+    var mkdocs_page_url = null;
+  </script>
+  
+  <script src="../../../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../../../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+        <a href="../../.." class="icon icon-home"> Spartantri KringleCon 2020 Write-Up</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../..">Home</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../objectives/1-Uncover-Santas-Gift-list/1-Uncover-Santas-Gift-list/">Objective 1</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../objectives/2-Investigate-S3-Bucket/2-Investigate-S3-Bucket/">Objective 2</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../objectives/3-Point-of-Sale-Password-Recovery/3-Point-of-Sale-Password-Recovery-soulution/">Objective 3</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../objectives/4-Operate-the-Santavator/4-Operate-the-Santavator/">Objective 4</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../objectives/5-Open-HID-Lock/5-Open-HID-Lock/">Objective 5</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../objectives/6-Splunk-Challenge/6-Splunk-Challenge/">Objective 6</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../objectives/7-Solve-the-sleighs-CAN-D-BUS/7-Solve-the-sleighs-CAN-D-BUS/">Objective 7</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../objectives/8-Broken-Tag-Generator/8-Broken-Tag-Generator/">Objective 8</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../objectives/9-ARP-Shenanigans/9-ARP-Shenanigans/">Objective 9</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../objectives/10-Defeat-Fingerprint-Sensor/10-Defeat-Fingerprint-Sensor/">Objective 10</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../objectives/11a-Blockchain-Part-1/11a-Blockchain-Part-1/">Objective 11a</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../objectives/11b-Blockchain-Part-2/11b-Blockchain-Part-2/">Objective 11b</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../A-Unescape-Tmux/A-Unescape-Tmux/">Achivement Tmux</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../A-Elf-Code/A-Elf-Code/">Achivement ElfCode</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../A-33.6kbps/A-33.6kbps/">Achivement 33.6Kbps</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../A-Redis/A-Redis/">Achivement Redis</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../A-Kringle-kiosk/A-Kringle-kiosk/">Achivement Kiosk</a>
+                    </li>
+                </ul>
+                <ul class="current">
+                    <li class="toctree-l1 current"><a class="reference internal current" href="./">Achivement LinuxPrimer</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#task-1">task 1</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#task-2">task 2</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#task-3">task 3</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#task-4">task 4</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#task-5">task 5</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#task-6">task 6</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#task-7">task 7</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#task-8">task 8</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#task-9">task 9</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#task-10">task 10</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#task-11">task 11</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#task-12">task 12</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#task-13">task 13</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#task-14">task 14</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#task-15">task 15</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#task-16">task 16</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#task-17">task 17</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#task-18">task 18</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#task-19">task 19</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#task-20">task 20</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#task-21">task 21</a>
+    </li>
+    </ul>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../A-hiddenspot/A-HiddenSpot/">Achivement Hidden</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../A-Speaker-UNPrep/A-Speaker-UNPrep/">Achivement UNPrep</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../A-Snowball/A-Snowball/">Achivement Snowball</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../A-Sort-O-Matic/A-Sort-O-Matic/">Achivement SortOMatic</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../A-Scapy-Prepper/A-Scapy-Prepper/">Achivement ScapyPrepper</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../A-CAN-Bus-Investigation/A-CAN-Bus-Investigation/">Achivement CAN-BUS</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../credits/">Credits</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../print_page/">Print Site</a>
+                    </li>
+                </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../../..">Spartantri KringleCon 2020 Write-Up</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../..">Docs</a> &raquo;</li>
+    
+      
+    
+    <li>Achivement LinuxPrimer</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="linux-primer">Linux Primer</h1>
+<p>This challenge requires to perform a serie of tasks in the linux command line</p>
+<p><img alt="Access" src="../A-Linux-Primer-access.png" /></p>
+<h3 id="task-1">task 1</h3>
+<p>Perform a directory listing of your home directory to find a munchkin and retrieve a lollipop!</p>
+<pre><code>elf@fc41807707ff:~$ ls
+HELP  munchkin_19315479765589239  workshop
+</code></pre>
+<h3 id="task-2">task 2</h3>
+<p>Now find the munchkin inside the munchkin.</p>
+<pre><code>elf@fc41807707ff:~$ cat munchkin_19315479765589239 
+munchkin_24187022596776786
+</code></pre>
+<h3 id="task-3">task 3</h3>
+<p>Great, now remove the munchkin in your home directory.</p>
+<pre><code>elf@fc41807707ff:~$ rm munchkin_19315479765589239
+</code></pre>
+<h3 id="task-4">task 4</h3>
+<p>Print the present working directory using a command.</p>
+<pre><code>elf@fc41807707ff:~$ pwd
+/home/elf
+</code></pre>
+<h3 id="task-5">task 5</h3>
+<p>Good job but it looks like another munchkin hid itself in you home directory. Find the hidden munchkin!</p>
+<pre><code>elf@fc41807707ff:~$ ls -a
+.  ..  .bash_history  .bash_logout  .bashrc  .munchkin_5074624024543078  .profile  HELP  workshop
+</code></pre>
+<h3 id="task-6">task 6</h3>
+<p>Excellent, now find the munchkin in your command history.</p>
+<pre><code>elf@fc41807707ff:~$ history|grep munchkin
+    1  echo munchkin_9394554126440791
+    3  cat munchkin_19315479765589239 
+    4  rm munchkin_19315479765589239 
+    8  history|grep munchkin
+</code></pre>
+<h3 id="task-7">task 7</h3>
+<p>Find the munchkin in your environment variables.</p>
+<pre><code>elf@fc41807707ff:~$ env |grep munchkin
+z_MUNCHKIN=munchkin_20249649541603754
+</code></pre>
+<h3 id="task-8">task 8</h3>
+<p>Next, head into the workshop.</p>
+<pre><code>elf@fc41807707ff:~$ cd workshop
+</code></pre>
+<h3 id="task-9">task 9</h3>
+<p>A munchkin is hiding in one of the workshop toolboxes. Use "grep" while ignoring case to find which toolbox the munchkin is in.</p>
+<pre><code>elf@fc41807707ff:~/workshop$ grep -i munchkin *
+grep: electrical: Is a directory
+toolbox_191.txt:mUnChKin.4056180441832623
+</code></pre>
+<h3 id="task-10">task 10</h3>
+<p>A munchkin is blocking the lollipop_engine from starting. Run the lollipop_engine binary to retrieve this munchkin.</p>
+<pre><code>elf@fc41807707ff:~/workshop$ ls -al lollipop_engine
+-r--r--r-- 1 elf elf 5692640 Dec 10 18:19 lollipop_engine
+elf@fc41807707ff:~/workshop$ chmod +x lollipop_engine
+elf@fc41807707ff:~/workshop$ ./lollipop_engine
+munchkin.898906189498077
+</code></pre>
+<h3 id="task-11">task 11</h3>
+<p>Munchkins have blown the fuses in /home/elf/workshop/electrical. cd into electrical and rename blown_fuse0 to fuse0.</p>
+<pre><code>elf@fc41807707ff:~/workshop$ cd electrical/
+elf@fc41807707ff:~/workshop/electrical$ mv blown_fuse0 fuse0
+</code></pre>
+<h3 id="task-12">task 12</h3>
+<p>Now, make a symbolic link (symlink) named fuse1 that points to fuse0</p>
+<pre><code>elf@fc41807707ff:~/workshop/electrical$ ln -s fuse0 fuse1
+</code></pre>
+<h3 id="task-13">task 13</h3>
+<p>Make a copy of fuse1 named fuse2.</p>
+<pre><code>elf@fc41807707ff:~/workshop/electrical$ cp fuse1 fuse2
+</code></pre>
+<h3 id="task-14">task 14</h3>
+<p>We need to make sure munchkins don't come back. Add the characters "MUNCHKIN_REPELLENT" into the file fuse2.</p>
+<pre><code>elf@fc41807707ff:~/workshop/electrical$ echo &quot;MUNCHKIN_REPELLENT&quot; &gt;&gt; fuse2
+</code></pre>
+<h3 id="task-15">task 15</h3>
+<p>Find the munchkin somewhere in /opt/munchkin_den.</p>
+<pre><code>elf@38049d8f110c:/opt/munchkin_den$ find . |grep -i munch
+./apps/showcase/src/main/resources/mUnChKin.6253159819943018
+</code></pre>
+<h3 id="task-16">task 16</h3>
+<p>Find the file somewhere in /opt/munchkin_den that is owned by the user munchkin.</p>
+<pre><code>elf@38049d8f110c:/opt/munchkin_den$ ls -Ral |grep munchkin
+-rw-r--r-- 1 munchkin munchkin    0 Dec 10 18:20 niKhCnUm_9528909612014411
+</code></pre>
+<h3 id="task-17">task 17</h3>
+<p>Find the file created by munchkins that is greater than 108 kilobytes and less than 110 kilobytes located somewhere in /opt/munchkin_den.</p>
+<pre><code>elf@38049d8f110c:/opt/munchkin_den$ find . -size +108k -size -110k
+./plugins/portlet-mocks/src/test/java/org/apache/m_u_n_c_h_k_i_n_2579728047101724
+</code></pre>
+<h3 id="task-18">task 18</h3>
+<p>List running processes to find another munchkin.</p>
+<pre><code>elf@38049d8f110c:/opt/munchkin_den$ ps -fea
+UID        PID  PPID  C STIME TTY          TIME CMD
+init         1     0  0 01:09 pts/0    00:00:00 /usr/bin/python3 /usr/local/bin/tmuxp load ./mysession.yaml
+elf      19811 19808  0 02:03 pts/2    00:00:00 /usr/bin/python3 /14516_munchkin
+elf      21649   319  0 02:04 pts/3    00:00:00 ps -fea
+</code></pre>
+<h3 id="task-19">task 19</h3>
+<p>The 14516_munchkin process is listening on a tcp port. Use a command to have the only listening port display to the screen.</p>
+<pre><code>elf@38049d8f110c:/opt/munchkin_den$ netstat -antp
+(Not all processes could be identified, non-owned process info
+ will not be shown, you would have to be root to see it all.)
+Active Internet connections (servers and established)
+Proto Recv-Q Send-Q Local Address           Foreign Address         State       PID/Program name    
+tcp        0      0 0.0.0.0:54321           0.0.0.0:*               LISTEN      19811/python3  
+</code></pre>
+<h3 id="task-20">task 20</h3>
+<p>The service listening on port 54321 is an HTTP server. Interact with this server to retrieve the last munchkin.</p>
+<pre><code>elf@38049d8f110c:/opt/munchkin_den$ curl 0.0.0.0:54321
+munchkin.73180338045875
+</code></pre>
+<h3 id="task-21">task 21</h3>
+<p>Your final task is to stop the 14516_munchkin process to collect the remaining lollipops.</p>
+<pre><code>elf@38049d8f110c:/opt/munchkin_den$ kill -9 19811
+</code></pre>
+<p><img alt="Solved" src="../A-Linux-Primer-solved.png" />
+<img alt="Lollipops" src="../A-Linux-Primer-lollipops.png" /></p>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../../A-hiddenspot/A-HiddenSpot/" class="btn btn-neutral float-right" title="Achivement Hidden">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../../A-Kringle-kiosk/A-Kringle-kiosk/" class="btn btn-neutral" title="Achivement Kiosk"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+      
+        <span><a href="../../A-Kringle-kiosk/A-Kringle-kiosk/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../../A-hiddenspot/A-HiddenSpot/" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+    <script>var base_url = '../../..';</script>
+    <script src="../../../js/theme.js" defer></script>
+      <script src="../../../js/print-site-instant-loading.js" defer></script>
+      <script src="../../../js/print-site.js" defer></script>
+      <script src="../../../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>

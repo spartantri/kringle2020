@@ -1,4 +1,4 @@
-# SparatnTri KringleCon 2020 write-up
+# SpartanTri KringleCon 2020 write-up
 
 This is my write-up for the 2020 edition of [Kringlecon](https://2020.kringlecon.com/).
 

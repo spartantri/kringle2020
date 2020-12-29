@@ -11,6 +11,7 @@ RUN \
   && /usr/local/bin/python -m pip install --upgrade pip \
   && pip install --no-cache-dir \
         'mkdocs' \
+        'mkdocs-print-site-plugin' \
         #'mkdocs-with-pdf' \
   && apk del .build gcc musl-dev \
   && rm -rf /tmp/*
